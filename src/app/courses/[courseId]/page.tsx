@@ -1,11 +1,11 @@
 import { getCourseById } from '@/lib/courses-data';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { ArrowRight, BookOpen, GraduationCap, Microscope, Briefcase, ScrollText, BarChartBig, Laptop } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 import NavigationBar from '@/components/layout/navigation-bar';
 import Footer from '@/components/layout/footer';
+import { use } from 'react';
 
 const icons: { [key: string]: LucideIcon } = {
   GraduationCap,
@@ -16,7 +16,8 @@ const icons: { [key: string]: LucideIcon } = {
   Laptop
 };
 
-export default function CoursePage({ params }: { params: { courseId: string } }) {
+export default function CoursePage({ params: paramsPromise }: { params: { courseId: string } }) {
+  const params = use(Promise.resolve(paramsPromise));
   const course = getCourseById(params.courseId);
 
   if (!course) {
@@ -51,8 +52,8 @@ export default function CoursePage({ params }: { params: { courseId: string } })
             <div className="mx-auto grid max-w-6xl gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
               {course.semesters.map((semester) => (
                 <Link key={semester.id} href={`/courses/${course.id}/${semester.id}`}>
-                  <div className="flex h-40 cursor-pointer items-center justify-center rounded-lg bg-gradient-to-br from-primary to-secondary p-4 text-center text-white shadow-md transition-transform duration-300 hover:scale-105 hover:shadow-lg">
-                    <h3 className="text-2xl font-bold">{semester.name}</h3>
+                  <div className="flex h-40 cursor-pointer items-center justify-center rounded-lg bg-primary p-4 text-center text-primary-foreground shadow-md transition-transform duration-300 hover:scale-105 hover:shadow-lg">
+                    <h3 className="text-xl font-bold">{semester.name}</h3>
                   </div>
                 </Link>
               ))}
