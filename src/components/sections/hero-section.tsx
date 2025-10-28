@@ -8,7 +8,7 @@ const HeroSection = () => {
       <AnimatedHeroBackground />
       <div className="relative z-10 mx-auto max-w-3xl px-4 -mt-20">
         <h1 className="mb-4 text-4xl font-bold leading-tight md:text-6xl">
-          Welcome to LearnNova
+          Welcome to LearNova
         </h1>
         <p className="mx-auto mb-8 max-w-lg text-base text-white/90 md:text-xl">
           Your gateway to comprehensive learning resources across multiple subjects.

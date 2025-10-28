@@ -26,7 +26,7 @@ function SemesterClientPage({ course, semester }: { course: Course; semester: Se
       <main className="flex-grow">
         <section className="py-12 md:py-20 lg:py-24">
           <div className="container mx-auto px-4">
-            <BackButton className="mb-8" />
+            <BackButton href={`/courses/${course.id}`} className="mb-8" />
             <div className="mb-12 text-center md:mb-16">
               <h1 className="mb-2 text-3xl font-bold text-foreground md:text-5xl">{course.name} - {semester.name}</h1>
               <p className="text-lg md:text-xl text-primary font-semibold">{course.fullName}</p>
