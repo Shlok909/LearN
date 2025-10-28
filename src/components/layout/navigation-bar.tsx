@@ -29,7 +29,7 @@ const NavigationBar = () => {
   };
 
   return (
-    <header className="sticky top-0 z-[1000] h-[70px] bg-gradient-to-r from-primary to-secondary shadow-md">
+    <header className="sticky top-0 z-[1000] h-[70px] bg-gradient-to-r from-primary/50 to-secondary/50 backdrop-blur-sm shadow-md">
       <nav className="container mx-auto flex h-full items-center justify-between px-4">
         <Link href="/" className="text-2xl font-bold text-white md:text-[28px]">
           LearNova
