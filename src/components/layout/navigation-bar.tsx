@@ -8,7 +8,7 @@ import { Sheet, SheetContent, SheetClose, SheetTrigger, SheetTitle, SheetHeader 
 
 const navItems = [
   { name: 'Home', href: '/' },
-  { name: 'Courses', href: '/courses' },
+  { name: 'Courses', href: '/#courses' },
   { name: 'About Us', href: '/about' },
   { name: 'Contact', href: '#contact' },
 ];
@@ -19,7 +19,7 @@ const NavigationBar = () => {
   return (
     <header className="sticky top-0 z-[1000] h-[70px] bg-gradient-to-r from-primary to-secondary shadow-md">
       <nav className="container mx-auto flex h-full items-center justify-between px-4">
-        <Link href="/" className="text-2xl md:text-[28px] font-bold text-white">
+        <Link href="/" className="text-2xl font-bold text-white md:text-[28px]">
           LearNova
         </Link>
         
