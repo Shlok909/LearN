@@ -74,7 +74,7 @@ function SemesterClientPage({ course, semester }: { course: Course; semester: Se
 
 // The main page component is now a server component
 export default function SemesterPage({ params: paramsPromise }: { params: { courseId: string, semesterId: string } }) {
-  const params = use(Promise.resolve(paramsPromise));
+  const params = use(paramsPromise);
   const course = getCourseById(params.courseId);
   const semesterIdNum = parseInt(params.semesterId, 10);
   const semester = course?.semesters.find((s) => s.id === semesterIdNum);
