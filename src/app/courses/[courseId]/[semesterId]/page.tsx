@@ -7,6 +7,7 @@ import Footer from '@/components/layout/footer';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import Link from 'next/link';
 import type { Resource } from '@/lib/types';
+import BackButton from '@/components/back-button';
 
 
 const ResourceLink = ({ resource }: { resource: Resource }) => {
@@ -40,6 +41,7 @@ export default function SemesterPage({ params }: { params: { courseId: string, s
       <main className="flex-grow">
         <section className="py-20 lg:py-24">
           <div className="container mx-auto px-4">
+            <BackButton className="mb-8" />
             <div className="mb-12 text-center md:mb-16">
               <h1 className="mb-2 text-4xl font-bold text-foreground md:text-5xl">{course.name} - {semester.name}</h1>
               <p className="text-xl text-primary font-semibold">{course.fullName}</p>

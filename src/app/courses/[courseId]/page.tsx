@@ -5,6 +5,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { ArrowRight, BookOpen } from 'lucide-react';
 import NavigationBar from '@/components/layout/navigation-bar';
 import Footer from '@/components/layout/footer';
+import BackButton from '@/components/back-button';
 
 export default function CoursePage({ params }: { params: { courseId: string } }) {
   const course = getCourseById(params.courseId);
@@ -19,6 +20,7 @@ export default function CoursePage({ params }: { params: { courseId: string } })
       <main className="flex-grow">
         <section className="py-20 lg:py-24">
           <div className="container mx-auto px-4">
+            <BackButton className="mb-8" />
             <div className="mb-12 text-center md:mb-16">
               <h1 className="mb-2 text-4xl font-bold text-foreground md:text-5xl">{course.fullName}</h1>
               <p className="text-xl text-primary font-semibold">({course.name})</p>
