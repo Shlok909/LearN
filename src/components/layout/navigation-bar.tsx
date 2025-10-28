@@ -4,8 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Sheet, SheetContent, SheetClose, SheetTrigger } from '@/components/ui/sheet';
-import { cn } from '@/lib/utils';
+import { Sheet, SheetContent, SheetClose, SheetTrigger, SheetTitle, SheetHeader } from '@/components/ui/sheet';
 
 const navItems = [
   { name: 'Home', href: '/' },
@@ -44,17 +43,19 @@ const NavigationBar = () => {
             </SheetTrigger>
             <SheetContent side="right" className="w-[250px] bg-gradient-to-b from-primary to-secondary p-0">
               <div className="flex h-full flex-col">
-                <div className="flex items-center justify-between border-b border-white/20 p-4">
-                   <Link href="/" className="text-2xl font-bold text-white">
-                    LearnNova
-                  </Link>
+                <SheetHeader className="flex flex-row items-center justify-between border-b border-white/20 p-4">
+                   <SheetTitle asChild>
+                    <Link href="/" className="text-2xl font-bold text-white">
+                      LearnNova
+                    </Link>
+                   </SheetTitle>
                   <SheetClose asChild>
                     <Button variant="ghost" size="icon" className="text-white hover:bg-white/20 hover:text-white">
                       <X className="h-6 w-6" />
                       <span className="sr-only">Close menu</span>
                     </Button>
                   </SheetClose>
-                </div>
+                </SheetHeader>
                 <div className="flex flex-col space-y-4 p-4">
                   {navItems.map((item) => (
                     <SheetClose asChild key={item.name}>
