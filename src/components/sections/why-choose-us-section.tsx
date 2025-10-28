@@ -30,7 +30,7 @@ const WhyChooseUsSection = () => {
       <div className="container mx-auto px-4">
         <div className="mb-12 text-center md:mb-16">
           <h2 className="mb-4 text-3xl font-bold text-foreground md:text-4xl">
-            Why Choose LearnNova?
+            Why Choose LearNova?
           </h2>
           <div className="mx-auto h-1 w-20 rounded-full bg-primary" />
         </div>

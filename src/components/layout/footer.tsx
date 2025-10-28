@@ -17,7 +17,7 @@ const Footer = () => {
           </Link>
         </div>
         <p className="text-sm">
-          © {new Date().getFullYear()} LearnNova. Empowering minds through quality education.
+          © {new Date().getFullYear()} LearNova. Empowering minds through quality education.
         </p>
       </div>
     </footer>

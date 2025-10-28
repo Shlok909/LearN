@@ -3,7 +3,7 @@ import { Toaster } from "@/components/ui/toaster"
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'LearnNova - Your Gateway to Learning',
+  title: 'LearNova - Your Gateway to Learning',
   description: 'A modern educational resources website for college students, offering curated courses and personalized content recommendations.',
 };
 

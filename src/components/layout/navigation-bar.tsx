@@ -20,7 +20,7 @@ const NavigationBar = () => {
     <header className="sticky top-0 z-[1000] h-[70px] bg-gradient-to-r from-primary to-secondary shadow-md">
       <nav className="container mx-auto flex h-full items-center justify-between px-4">
         <Link href="/" className="text-2xl md:text-[28px] font-bold text-white">
-          LearnNova
+          LearNova
         </Link>
         
         {/* Desktop Menu */}
@@ -43,7 +43,7 @@ const NavigationBar = () => {
             </SheetTrigger>
             <SheetContent side="right" className="w-[250px] bg-gradient-to-b from-primary to-secondary p-0">
               <SheetHeader className="flex flex-row items-center justify-between border-b border-white/20 p-4">
-                  <SheetTitle className="text-2xl font-bold text-white">LearnNova</SheetTitle>
+                  <SheetTitle className="text-2xl font-bold text-white">LearNova</SheetTitle>
                 <SheetClose asChild>
                   <Button variant="ghost" size="icon" className="text-white hover:bg-white/20 hover:text-white">
                     <X className="h-6 w-6" />
