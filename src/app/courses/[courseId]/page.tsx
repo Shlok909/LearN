@@ -18,7 +18,7 @@ const icons: { [key: string]: LucideIcon } = {
 };
 
 export default function CoursePage({ params: paramsPromise }: { params: { courseId: string } }) {
-  const params = use(Promise.resolve(paramsPromise));
+  const params = use(paramsPromise);
   const course = getCourseById(params.courseId);
 
   if (!course) {

@@ -22,7 +22,7 @@ export const coursesData: CoursesData = {
             description: 'Master the fundamentals of data organization and algorithms.',
             resources: {
               notes: [
-                { id: 1, label: 'Link 1 II', url: '#', type: 'pdf' },
+                { id: 1, label: 'Link 1 II', url: 'https://coolors.co/palettes/trending', type: 'pdf' },
                 { id: 2, label: 'Link 2 II', url: '#', type: 'pdf' },
               ],
               pyqs: [
