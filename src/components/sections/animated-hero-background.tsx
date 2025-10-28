@@ -1,49 +1,46 @@
 "use client";
-
-import { GraduationCap, Book, Lightbulb, Laptop } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
-const icons = [GraduationCap, Book, Lightbulb, Laptop, GraduationCap, Book];
-
-type IconStyle = {
-  top: string;
-  left: string;
-  animationDelay: string;
-  animationDuration: string;
-};
+const NUM_PARTICLES = 150;
 
 const AnimatedHeroBackground = () => {
-  const [styles, setStyles] = useState<IconStyle[]>([]);
+  const [particles, setParticles] = useState<React.ReactNode[]>([]);
 
   useEffect(() => {
-    const newStyles = icons.map(() => ({
-      top: `${Math.random() * 90}%`,
-      left: `${Math.random() * 90}%`,
-      animationDelay: `${Math.random() * 5}s`,
-      animationDuration: `${Math.random() * 10 + 10}s`,
-    }));
-    setStyles(newStyles);
+    const newParticles = Array.from({ length: NUM_PARTICLES }).map((_, i) => {
+      const size = Math.random() * 2 + 1;
+      const xStart = Math.random() * 100;
+      const yStart = Math.random() * 100;
+      const xEnd = xStart + (Math.random() - 0.5) * 200;
+      const yEnd = yStart + (Math.random() - 0.5) * 200;
+      const duration = Math.random() * 10 + 5;
+      const delay = Math.random() * 5;
+      const color = Math.random() > 0.5 ? 'rgba(0, 194, 255, 0.7)' : 'rgba(255, 255, 255, 0.7)';
+
+      return (
+        <div
+          key={i}
+          className="particle"
+          style={{
+            width: `${size}px`,
+            height: `${size}px`,
+            left: `${xStart}%`,
+            top: `${yStart}%`,
+            backgroundColor: color,
+            // @ts-ignore
+            '--x-end': `${xEnd}px`,
+            '--y-end': `${yEnd}px`,
+            animation: `particle-animation ${duration}s linear ${delay}s infinite`,
+          }}
+        />
+      );
+    });
+    setParticles(newParticles);
   }, []);
 
   return (
-    <div className="absolute inset-0 z-0">
-      {styles.map((style, index) => {
-        const Icon = icons[index];
-        return (
-          <Icon
-            key={index}
-            className="absolute text-white/20"
-            style={{
-              ...style,
-              animationName: 'float',
-              animationTimingFunction: 'ease-in-out',
-              animationIterationCount: 'infinite',
-            }}
-            size={Math.random() * 30 + 40}
-            strokeWidth={1}
-          />
-        );
-      })}
+    <div className="absolute inset-0 z-0 overflow-hidden">
+      {particles}
     </div>
   );
 };
