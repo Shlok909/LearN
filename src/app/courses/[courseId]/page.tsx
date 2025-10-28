@@ -6,7 +6,6 @@ import { ArrowRight, BookOpen, GraduationCap, Microscope, Briefcase, ScrollText,
 import type { LucideIcon } from 'lucide-react';
 import NavigationBar from '@/components/layout/navigation-bar';
 import Footer from '@/components/layout/footer';
-import BackButton from '@/components/back-button';
 
 const icons: { [key: string]: LucideIcon } = {
   GraduationCap,
@@ -51,7 +50,7 @@ export default function CoursePage({ params }: { params: { courseId: string } })
 
             <div className="mx-auto grid max-w-6xl gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
               {course.semesters.map((semester) => (
-                <Link key={semester.id} href={`/courses/${course.id}/semester-${semester.id}`}>
+                <Link key={semester.id} href={`/courses/${course.id}/${semester.id}`}>
                   <div className="flex h-40 cursor-pointer items-center justify-center rounded-lg bg-gradient-to-br from-primary to-secondary p-4 text-center text-white shadow-md transition-transform duration-300 hover:scale-105 hover:shadow-lg">
                     <h3 className="text-2xl font-bold">{semester.name}</h3>
                   </div>

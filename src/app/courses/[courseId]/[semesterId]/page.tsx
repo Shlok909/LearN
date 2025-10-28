@@ -1,9 +1,9 @@
 'use client';
 
 import { getCourseById } from '@/lib/courses-data';
-import { notFound } from 'next/navigation';
+import { notFound, useParams } from 'next/navigation';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Book, FileText, Youtube, ArrowRight } from 'lucide-react';
+import { Book, ArrowRight } from 'lucide-react';
 import NavigationBar from '@/components/layout/navigation-bar';
 import Footer from '@/components/layout/footer';
 import BackButton from '@/components/back-button';
@@ -11,12 +11,14 @@ import { useState } from 'react';
 import type { Subject } from '@/lib/types';
 import ResourceModal from '@/components/course/resource-modal';
 
-export default function SemesterPage({ params }: { params: { courseId: string, semesterId: string } }) {
+export default function SemesterPage() {
   const [selectedSubject, setSelectedSubject] = useState<Subject | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  
+  const params = useParams() as { courseId: string; semesterId: string; };
 
   const course = getCourseById(params.courseId);
-  const semesterIdNum = parseInt(params.semesterId.replace('semester-', ''), 10);
+  const semesterIdNum = parseInt(params.semesterId, 10);
   const semester = course?.semesters.find(s => s.id === semesterIdNum);
 
   if (!course || !semester) {
