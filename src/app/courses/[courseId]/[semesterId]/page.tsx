@@ -7,19 +7,18 @@ import { Book, ArrowRight } from 'lucide-react';
 import NavigationBar from '@/components/layout/navigation-bar';
 import Footer from '@/components/layout/footer';
 import BackButton from '@/components/back-button';
-import { useState, use } from 'react';
+import { useState } from 'react';
 import type { Subject } from '@/lib/types';
 import ResourceModal from '@/components/course/resource-modal';
 
-export default function SemesterPage({ params: paramsPromise }: { params: { courseId: string, semesterId: string } }) {
+// This is a new component to handle client-side logic
+function SemesterClientPage({ params }: { params: { courseId: string; semesterId: string } }) {
   const [selectedSubject, setSelectedSubject] = useState<Subject | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  
-  const params = use(Promise.resolve(paramsPromise));
 
   const course = getCourseById(params.courseId);
   const semesterIdNum = parseInt(params.semesterId, 10);
-  const semester = course?.semesters.find(s => s.id === semesterIdNum);
+  const semester = course?.semesters.find((s) => s.id === semesterIdNum);
 
   if (!course || !semester) {
     notFound();
@@ -29,10 +28,9 @@ export default function SemesterPage({ params: paramsPromise }: { params: { cour
     setSelectedSubject(subject);
     setIsModalOpen(true);
   };
-
+  
   return (
-    <div className="flex min-h-screen flex-col bg-background">
-      <NavigationBar />
+    <>
       <main className="flex-grow">
         <section className="py-12 md:py-20 lg:py-24">
           <div className="container mx-auto px-4">
@@ -48,12 +46,12 @@ export default function SemesterPage({ params: paramsPromise }: { params: { cour
                 {semester.subjects.map((subject: any) => (
                   <Card key={subject.id} className="flex h-full transform-gpu flex-col overflow-hidden text-center transition-transform duration-300 hover:-translate-y-2 hover:shadow-xl">
                     <CardHeader className="items-center text-center">
-                      <div className="text-5xl mb-4">{subject.icon}</div>
+                      <div className="mb-4 text-5xl">{subject.icon}</div>
                       <CardTitle className="text-xl">{subject.name}</CardTitle>
                       {subject.code && <CardDescription>{subject.code}</CardDescription>}
                     </CardHeader>
                     <CardContent className="flex flex-grow flex-col justify-between p-6">
-                       <p className="mb-4 text-muted-foreground">{subject.description}</p>
+                       <p className="mb-4 text-sm text-muted-foreground md:text-base">{subject.description}</p>
                        <button onClick={() => handleSubjectClick(subject)} className="mt-auto inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground ring-offset-background transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50">
                          Access Resources <ArrowRight className="ml-2 h-4 w-4" />
                        </button>
@@ -70,14 +68,25 @@ export default function SemesterPage({ params: paramsPromise }: { params: { cour
           </div>
         </section>
       </main>
-      <Footer />
-       {isModalOpen && selectedSubject && (
+      {isModalOpen && selectedSubject && (
         <ResourceModal
           subject={selectedSubject}
           isOpen={isModalOpen}
           onClose={() => setIsModalOpen(false)}
         />
       )}
+    </>
+  );
+}
+
+
+// The main page component is now a server component
+export default function SemesterPage({ params }: { params: { courseId: string, semesterId: string } }) {
+  return (
+    <div className="flex min-h-screen flex-col bg-background">
+      <NavigationBar />
+      <SemesterClientPage params={params} />
+      <Footer />
     </div>
   );
 }
