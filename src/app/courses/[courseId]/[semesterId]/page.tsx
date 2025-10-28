@@ -8,21 +8,13 @@ import NavigationBar from '@/components/layout/navigation-bar';
 import Footer from '@/components/layout/footer';
 import BackButton from '@/components/back-button';
 import { useState } from 'react';
-import type { Subject } from '@/lib/types';
+import type { Subject, Course, Semester } from '@/lib/types';
 import ResourceModal from '@/components/course/resource-modal';
 
 // This is a new component to handle client-side logic
-function SemesterClientPage({ params }: { params: { courseId: string; semesterId: string } }) {
+function SemesterClientPage({ course, semester }: { course: Course; semester: Semester }) {
   const [selectedSubject, setSelectedSubject] = useState<Subject | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const course = getCourseById(params.courseId);
-  const semesterIdNum = parseInt(params.semesterId, 10);
-  const semester = course?.semesters.find((s) => s.id === semesterIdNum);
-
-  if (!course || !semester) {
-    notFound();
-  }
 
   const handleSubjectClick = (subject: Subject) => {
     setSelectedSubject(subject);
@@ -82,10 +74,18 @@ function SemesterClientPage({ params }: { params: { courseId: string; semesterId
 
 // The main page component is now a server component
 export default function SemesterPage({ params }: { params: { courseId: string, semesterId: string } }) {
+  const course = getCourseById(params.courseId);
+  const semesterIdNum = parseInt(params.semesterId, 10);
+  const semester = course?.semesters.find((s) => s.id === semesterIdNum);
+
+  if (!course || !semester) {
+    notFound();
+  }
+  
   return (
     <div className="flex min-h-screen flex-col bg-background">
       <NavigationBar />
-      <SemesterClientPage params={params} />
+      <SemesterClientPage course={course} semester={semester} />
       <Footer />
     </div>
   );
