@@ -29,7 +29,7 @@ const NavigationBar = () => {
   };
 
   return (
-    <header className="sticky top-0 z-[1000] h-[70px] bg-gradient-to-r from-primary/50 to-secondary/50 backdrop-blur-sm shadow-md">
+    <header className="sticky top-0 z-[1000] h-[70px] bg-primary/30 backdrop-blur-sm shadow-md">
       <nav className="container mx-auto flex h-full items-center justify-between px-4">
         <Link href="/" className="text-2xl font-bold text-white md:text-[28px]">
           LearNova
@@ -53,7 +53,7 @@ const NavigationBar = () => {
                 <span className="sr-only">Open menu</span>
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-[250px] bg-gradient-to-b from-primary to-secondary p-0">
+            <SheetContent side="right" className="w-[250px] bg-primary/80 p-0 backdrop-blur-md">
               <SheetHeader className="flex flex-row items-center justify-between border-b border-white/20 p-4">
                   <SheetTitle className="text-2xl font-bold text-white">LearNova</SheetTitle>
                 <SheetClose asChild>
