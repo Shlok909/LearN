@@ -8,8 +8,8 @@ import { Sheet, SheetContent, SheetClose, SheetTrigger, SheetTitle, SheetHeader 
 
 const navItems = [
   { name: 'Home', href: '/' },
-  { name: 'Courses', href: '#courses' },
-  { name: 'About Us', href: '#why-us' },
+  { name: 'Courses', href: '/courses' },
+  { name: 'About Us', href: '/about' },
   { name: 'Contact', href: '#contact' },
 ];
 
@@ -42,32 +42,27 @@ const NavigationBar = () => {
               </Button>
             </SheetTrigger>
             <SheetContent side="right" className="w-[250px] bg-gradient-to-b from-primary to-secondary p-0">
-              <div className="flex h-full flex-col">
-                <SheetHeader className="flex flex-row items-center justify-between border-b border-white/20 p-4">
-                   <SheetTitle asChild>
-                    <Link href="/" className="text-2xl font-bold text-white">
-                      LearnNova
+              <SheetHeader className="flex flex-row items-center justify-between border-b border-white/20 p-4">
+                  <SheetTitle className="text-2xl font-bold text-white">LearnNova</SheetTitle>
+                <SheetClose asChild>
+                  <Button variant="ghost" size="icon" className="text-white hover:bg-white/20 hover:text-white">
+                    <X className="h-6 w-6" />
+                    <span className="sr-only">Close menu</span>
+                  </Button>
+                </SheetClose>
+              </SheetHeader>
+              <div className="flex flex-col space-y-4 p-4">
+                {navItems.map((item) => (
+                  <SheetClose asChild key={item.name}>
+                    <Link
+                      href={item.href}
+                      className="rounded-md px-3 py-2 text-lg font-medium text-white/90 transition-colors hover:bg-white/10 hover:text-white"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      {item.name}
                     </Link>
-                   </SheetTitle>
-                  <SheetClose asChild>
-                    <Button variant="ghost" size="icon" className="text-white hover:bg-white/20 hover:text-white">
-                      <X className="h-6 w-6" />
-                      <span className="sr-only">Close menu</span>
-                    </Button>
                   </SheetClose>
-                </SheetHeader>
-                <div className="flex flex-col space-y-4 p-4">
-                  {navItems.map((item) => (
-                    <SheetClose asChild key={item.name}>
-                      <Link
-                        href={item.href}
-                        className="rounded-md px-3 py-2 text-lg font-medium text-white/90 transition-colors hover:bg-white/10 hover:text-white"
-                      >
-                        {item.name}
-                      </Link>
-                    </SheetClose>
-                  ))}
-                </div>
+                ))}
               </div>
             </SheetContent>
           </Sheet>
