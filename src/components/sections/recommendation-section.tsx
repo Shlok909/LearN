@@ -59,7 +59,7 @@ const RecommendationSection = () => {
   };
 
   return (
-    <section id="recommendations" className="bg-background py-20 lg:py-24">
+    <section id="recommendations" className="py-12 md:py-20 lg:py-24 bg-background">
       <div className="container mx-auto px-4">
         <div className="mb-12 text-center md:mb-16">
           <h2 className="mb-4 text-3xl font-bold text-foreground md:text-4xl">
@@ -71,7 +71,7 @@ const RecommendationSection = () => {
           </p>
         </div>
 
-        <div className="mx-auto grid max-w-4xl gap-8 md:grid-cols-2">
+        <div className="mx-auto grid max-w-4xl gap-8 lg:grid-cols-2">
           <Card className="shadow-lg">
             <CardHeader>
               <CardTitle>Tell Us About Yourself</CardTitle>
@@ -126,7 +126,7 @@ const RecommendationSection = () => {
               </CardTitle>
               <CardDescription>Courses tailored just for you will appear here.</CardDescription>
             </CardHeader>
-            <CardContent className="flex flex-grow items-center justify-center">
+            <CardContent className="flex flex-grow items-center justify-center p-6">
               {isLoading && <Loader2 className="h-8 w-8 animate-spin text-primary" />}
               {!isLoading && recommendations.length === 0 && (
                 <p className="text-center text-muted-foreground">Your recommended courses will be shown here.</p>
@@ -134,7 +134,7 @@ const RecommendationSection = () => {
               {!isLoading && recommendations.length > 0 && (
                 <ul className="w-full list-inside list-disc space-y-2 text-foreground">
                   {recommendations.map((rec, index) => (
-                    <li key={index} className="rounded-md bg-background p-3">{rec}</li>
+                    <li key={index} className="rounded-md bg-background p-3 text-sm md:text-base">{rec}</li>
                   ))}
                 </ul>
               )}
