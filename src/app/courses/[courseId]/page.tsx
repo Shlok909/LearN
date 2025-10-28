@@ -1,11 +1,12 @@
 import { getCourseById } from '@/lib/courses-data';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import { ArrowRight, BookOpen, GraduationCap, Microscope, Briefcase, ScrollText, BarChartBig, Laptop } from 'lucide-react';
+import { ArrowRight, GraduationCap, Microscope, Briefcase, ScrollText, BarChartBig, Laptop } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 import NavigationBar from '@/components/layout/navigation-bar';
 import Footer from '@/components/layout/footer';
 import { use } from 'react';
+import BackButton from '@/components/back-button';
 
 const icons: { [key: string]: LucideIcon } = {
   GraduationCap,
@@ -32,13 +33,7 @@ export default function CoursePage({ params: paramsPromise }: { params: { course
       <main className="flex-grow">
         <section className="py-20 lg:py-24">
           <div className="container mx-auto px-4">
-            <div className="mb-4">
-              <Link href="/" className="text-muted-foreground hover:text-primary">Home</Link>
-              <span className="mx-2 text-muted-foreground">/</span>
-              <Link href="/courses" className="text-muted-foreground hover:text-primary">Courses</Link>
-              <span className="mx-2 text-muted-foreground">/</span>
-              <span className="text-foreground">{course.name}</span>
-            </div>
+            <BackButton className="mb-8" />
             
             <div className="mb-12 text-center md:mb-16">
               <Icon className="mx-auto mb-4 h-20 w-20 text-primary" />
