@@ -67,7 +67,7 @@
   }
   body {
     @apply bg-background text-foreground;
-    background-image: url('https://storage.googleapis.com/aifirebase-demo-images/projects%2Flearnova%2F1701389886.jpeg');
+    background-image: url('https://img.freepik.com/free-vector/glowing-grid-lines-geometric-wallpaper-neon-style_1017-53633.jpg?semt=ais_hybrid&w=740&q=80');
     background-attachment: fixed;
     background-size: cover;
     -webkit-font-smoothing: antialiased;
