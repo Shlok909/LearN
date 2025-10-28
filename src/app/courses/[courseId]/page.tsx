@@ -52,8 +52,9 @@ export default function CoursePage({ params: paramsPromise }: { params: { course
             <div className="mx-auto grid max-w-6xl gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
               {course.semesters.map((semester) => (
                 <Link key={semester.id} href={`/courses/${course.id}/${semester.id}`}>
-                  <div className="flex h-40 cursor-pointer items-center justify-center rounded-lg bg-primary p-4 text-center text-primary-foreground shadow-md transition-transform duration-300 hover:scale-105 hover:shadow-lg">
-                    <h3 className="text-xl font-bold">{semester.name}</h3>
+                  <div className="group flex h-40 cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-border bg-card p-4 text-center shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-primary hover:shadow-lg">
+                    <h3 className="text-xl font-bold text-card-foreground group-hover:text-primary">{semester.name}</h3>
+                    <ArrowRight className="mt-2 h-5 w-5 text-muted-foreground opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                   </div>
                 </Link>
               ))}
