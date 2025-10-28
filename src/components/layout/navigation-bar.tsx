@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { Menu, X } from 'lucide-react';
+import { Menu } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetClose, SheetTrigger, SheetTitle, SheetHeader } from '@/components/ui/sheet';
 
@@ -29,7 +29,7 @@ const NavigationBar = () => {
   };
 
   return (
-    <header className="sticky top-0 z-[1000] h-[70px] bg-primary/30 backdrop-blur-sm shadow-md">
+    <header className="sticky top-0 z-[1000] h-[70px] bg-transparent backdrop-blur-sm shadow-md">
       <nav className="container mx-auto flex h-full items-center justify-between px-4">
         <Link href="/" className="text-2xl font-bold text-white md:text-[28px]">
           LearNova
@@ -53,15 +53,9 @@ const NavigationBar = () => {
                 <span className="sr-only">Open menu</span>
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-[250px] bg-primary/50 p-0 backdrop-blur-md">
-              <SheetHeader className="flex flex-row items-center justify-between border-b border-white/20 p-4">
+            <SheetContent side="right" className="w-[250px] bg-primary/95 p-0 backdrop-blur-md">
+              <SheetHeader className="border-b border-white/20 p-4">
                   <SheetTitle className="text-2xl font-bold text-white">LearNova</SheetTitle>
-                <SheetClose asChild>
-                  <Button variant="ghost" size="icon" className="text-white hover:bg-white/20 hover:text-white">
-                    <X className="h-6 w-6" />
-                    <span className="sr-only">Close menu</span>
-                  </Button>
-                </SheetClose>
               </SheetHeader>
               <div className="flex flex-col space-y-4 p-4">
                 {navItems.map((item) => (
