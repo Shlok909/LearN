@@ -16,6 +16,18 @@ const navItems = [
 const NavigationBar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
+  const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    const href = e.currentTarget.getAttribute('href');
+    if (href && href.startsWith('/#')) {
+      e.preventDefault();
+      const targetId = href.replace('/#', '');
+      const targetElement = document.getElementById(targetId);
+      if (targetElement) {
+        targetElement.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  };
+
   return (
     <header className="sticky top-0 z-[1000] h-[70px] bg-gradient-to-r from-primary to-secondary shadow-md">
       <nav className="container mx-auto flex h-full items-center justify-between px-4">
@@ -26,7 +38,7 @@ const NavigationBar = () => {
         {/* Desktop Menu */}
         <div className="hidden items-center space-x-8 md:flex">
           {navItems.map((item) => (
-            <Link key={item.name} href={item.href} className="nav-link text-base font-medium">
+            <Link key={item.name} href={item.href} onClick={handleScroll} className="nav-link text-base font-medium">
               {item.name}
             </Link>
           ))}
@@ -57,7 +69,10 @@ const NavigationBar = () => {
                     <Link
                       href={item.href}
                       className="rounded-md px-3 py-2 text-lg font-medium text-white/90 transition-colors hover:bg-white/10 hover:text-white"
-                      onClick={() => setIsMobileMenuOpen(false)}
+                      onClick={(e) => {
+                        handleScroll(e);
+                        setIsMobileMenuOpen(false);
+                      }}
                     >
                       {item.name}
                     </Link>
