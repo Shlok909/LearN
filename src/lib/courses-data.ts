@@ -8,7 +8,7 @@ export const coursesData: CoursesData = {
     duration: '4 Years',
     totalSemesters: 8,
     icon: 'GraduationCap',
-    description: 'Explore the world of computer applications and software development.',
+    description: 'Degree is a professional degree. The course is designed to provide students with the knowledge and skills required to succeed in computer science and information technology.',
     semesters: [
       {
         id: 1,
@@ -81,7 +81,7 @@ export const coursesData: CoursesData = {
     duration: '3 Years',
     totalSemesters: 6,
     icon: 'Microscope',
-    description: 'Dive into scientific theories and practical research in various fields.',
+    description: 'Explore scientific concepts and develop analytical skills across various science disciplines.',
     semesters: [
       { id: 1, name: 'Semester 1', subjects: [] },
       { id: 2, name: 'Semester 2', subjects: [] },
@@ -98,7 +98,7 @@ export const coursesData: CoursesData = {
     duration: '3 Years',
     totalSemesters: 6,
     icon: 'Briefcase',
-    description: 'Master the principles of commerce, finance, and accounting.',
+    description: 'Gain expertise in commerce, accounting, and business management.',
     semesters: [
       { id: 1, name: 'Semester 1', subjects: [] },
       { id: 2, name: 'Semester 2', subjects: [] },
@@ -115,7 +115,7 @@ export const coursesData: CoursesData = {
     duration: '3 Years',
     totalSemesters: 6,
     icon: 'ScrollText',
-    description: 'Engage with humanities, social sciences, and the liberal arts.',
+    description: 'Explore humanities, social sciences, and liberal arts subjects.',
     semesters: [
       { id: 1, name: 'Semester 1', subjects: [] },
       { id: 2, name: 'Semester 2', subjects: [] },
@@ -132,7 +132,7 @@ export const coursesData: CoursesData = {
     duration: '3 Years',
     totalSemesters: 6,
     icon: 'BarChartBig',
-    description: 'Develop leadership and management skills for the business world.',
+    description: 'Develop business management and administration skills.',
     semesters: [
       { id: 1, name: 'Semester 1', subjects: [] },
       { id: 2, name: 'Semester 2', subjects: [] },

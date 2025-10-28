@@ -7,11 +7,11 @@ import Link from 'next/link';
 
 const founders = [
   {
-    name: 'Jane Doe',
-    role: 'CEO & Co-Founder',
-    bio: 'Jane is a passionate educator with a vision to make learning accessible to everyone. Her expertise in curriculum design ensures the highest quality content on LearnNova.',
+    name: 'Rohan Gawande',
+    role: 'Co-Founder',
+    bio: 'Rohan is a passionate educator with a vision to make learning accessible to everyone. His expertise ensures the highest quality content on LearnNova.',
     imageUrl: 'https://picsum.photos/seed/founder1/400/400',
-    imageHint: 'woman portrait',
+    imageHint: 'man portrait',
     socials: {
       github: '#',
       linkedin: '#',
@@ -19,11 +19,23 @@ const founders = [
     },
   },
   {
-    name: 'John Smith',
-    role: 'CTO & Co-Founder',
-    bio: 'John is the technical mastermind behind LearnNova. With a background in scalable systems, he ensures our platform is fast, reliable, and user-friendly.',
+    name: 'Shlok Sane',
+    role: 'Co-Founder',
+    bio: 'Shlok is the technical mastermind behind LearnNova. With a background in scalable systems, he ensures our platform is fast, reliable, and user-friendly.',
     imageUrl: 'https://picsum.photos/seed/founder2/400/400',
     imageHint: 'man portrait',
+    socials: {
+      github: '#',
+      linkedin: '#',
+      twitter: '#',
+    },
+  },
+  {
+    name: 'Khushi Kumari',
+    role: 'Co-Founder',
+    bio: 'Khushi drives the platform\'s growth and user engagement. Her focus on student needs helps shape LearnNova\'s future.',
+    imageUrl: 'https://picsum.photos/seed/founder3/400/400',
+    imageHint: 'woman portrait',
     socials: {
       github: '#',
       linkedin: '#',
@@ -44,13 +56,13 @@ export default function AboutPage() {
                 About LearnNova
               </h1>
               <p className="mx-auto max-w-3xl text-lg text-muted-foreground">
-                Empowering the next generation of learners through accessible, high-quality educational resources.
+                Our mission is to provide centralized, organized access to educational resources for college students.
               </p>
               <div className="mx-auto mt-4 h-1 w-24 rounded-full bg-primary" />
             </div>
 
             <div className="mx-auto max-w-4xl rounded-lg bg-card p-8 text-center shadow-lg">
-              <h2 className="mb-4 text-2xl font-bold text-primary">Our Mission</h2>
+              <h2 className="mb-4 text-2xl font-bold text-primary">Our Vision</h2>
               <p className="text-base leading-relaxed text-card-foreground">
                 At LearnNova, our mission is to break down the barriers to education. We believe that every student deserves the opportunity to succeed, regardless of their background. We are committed to providing a comprehensive, easy-to-use platform that equips students with the knowledge and tools they need to excel in their academic journey. From detailed course materials to AI-powered personalized recommendations, we are redefining the future of learning.
               </p>
@@ -67,7 +79,7 @@ export default function AboutPage() {
               <div className="mx-auto h-1 w-20 rounded-full bg-primary" />
             </div>
 
-            <div className="mx-auto grid max-w-5xl gap-10 md:grid-cols-2">
+            <div className="mx-auto grid max-w-7xl gap-10 md:grid-cols-2 lg:grid-cols-3">
               {founders.map((founder) => (
                 <Card key={founder.name} className="overflow-hidden text-center">
                   <CardHeader className="p-0">

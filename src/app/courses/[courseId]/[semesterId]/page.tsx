@@ -1,32 +1,20 @@
+'use client';
+
 import { getCourseById } from '@/lib/courses-data';
 import { notFound } from 'next/navigation';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Book, FileText, Youtube } from 'lucide-react';
+import { Book, FileText, Youtube, ArrowRight } from 'lucide-react';
 import NavigationBar from '@/components/layout/navigation-bar';
 import Footer from '@/components/layout/footer';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
-import Link from 'next/link';
-import type { Resource } from '@/lib/types';
 import BackButton from '@/components/back-button';
-
-
-const ResourceLink = ({ resource }: { resource: Resource }) => {
-  const Icon = resource.type === 'youtube' ? Youtube : FileText;
-  return (
-    <Link
-      href={resource.url}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="flex items-center gap-2 rounded-md p-2 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
-    >
-      <Icon className="h-4 w-4" />
-      <span>{resource.label}</span>
-    </Link>
-  );
-};
-
+import { useState } from 'react';
+import type { Subject } from '@/lib/types';
+import ResourceModal from '@/components/course/resource-modal';
 
 export default function SemesterPage({ params }: { params: { courseId: string, semesterId: string } }) {
+  const [selectedSubject, setSelectedSubject] = useState<Subject | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const course = getCourseById(params.courseId);
   const semesterIdNum = parseInt(params.semesterId.replace('semester-', ''), 10);
   const semester = course?.semesters.find(s => s.id === semesterIdNum);
@@ -34,6 +22,11 @@ export default function SemesterPage({ params }: { params: { courseId: string, s
   if (!course || !semester) {
     notFound();
   }
+
+  const handleSubjectClick = (subject: Subject) => {
+    setSelectedSubject(subject);
+    setIsModalOpen(true);
+  };
 
   return (
     <div className="flex min-h-screen flex-col bg-background">
@@ -49,43 +42,19 @@ export default function SemesterPage({ params }: { params: { courseId: string, s
             </div>
 
             {semester.subjects.length > 0 ? (
-              <div className="mx-auto grid max-w-4xl gap-8">
+              <div className="mx-auto grid max-w-6xl grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
                 {semester.subjects.map((subject: any) => (
-                  <Card key={subject.id} className="overflow-hidden">
-                    <CardHeader>
-                      <CardTitle className="flex items-center gap-3 text-2xl">
-                        <span className="text-3xl">{subject.icon}</span>
-                        {subject.name}
-                      </CardTitle>
-                      <CardDescription>{subject.code && `(${subject.code}) - `}{subject.description}</CardDescription>
+                  <Card key={subject.id} className="flex h-full transform-gpu flex-col overflow-hidden text-center transition-transform duration-300 hover:-translate-y-2 hover:shadow-xl">
+                    <CardHeader className="items-center text-center">
+                      <div className="text-5xl mb-4">{subject.icon}</div>
+                      <CardTitle className="text-xl">{subject.name}</CardTitle>
+                      {subject.code && <CardDescription>{subject.code}</CardDescription>}
                     </CardHeader>
-                    <CardContent>
-                      <Accordion type="single" collapsible className="w-full">
-                        <AccordionItem value="notes">
-                          <AccordionTrigger>Notes</AccordionTrigger>
-                          <AccordionContent>
-                            {subject.resources.notes.length > 0 ? subject.resources.notes.map((res: Resource) => <ResourceLink key={res.id} resource={res} />) : <p className="p-2 text-sm text-muted-foreground">No notes available yet.</p>}
-                          </AccordionContent>
-                        </AccordionItem>
-                        <AccordionItem value="pyqs">
-                          <AccordionTrigger>Previous Year Questions</AccordionTrigger>
-                          <AccordionContent>
-                            {subject.resources.pyqs.length > 0 ? subject.resources.pyqs.map((res: Resource) => <ResourceLink key={res.id} resource={res} />) : <p className="p-2 text-sm text-muted-foreground">No PYQs available yet.</p>}
-                          </AccordionContent>
-                        </AccordionItem>
-                        <AccordionItem value="lectures">
-                          <AccordionTrigger>Lectures</AccordionTrigger>
-                          <AccordionContent>
-                            {subject.resources.lectures.length > 0 ? subject.resources.lectures.map((res: Resource) => <ResourceLink key={res.id} resource={res} />) : <p className="p-2 text-sm text-muted-foreground">No lectures available yet.</p>}
-                          </AccordionContent>
-                        </AccordionItem>
-                         <AccordionItem value="practicals">
-                          <AccordionTrigger>Practicals</AccordionTrigger>
-                          <AccordionContent>
-                            {subject.resources.practicals.length > 0 ? subject.resources.practicals.map((res: Resource) => <ResourceLink key={res.id} resource={res} />) : <p className="p-2 text-sm text-muted-foreground">No practicals available yet.</p>}
-                          </AccordionContent>
-                        </AccordionItem>
-                      </Accordion>
+                    <CardContent className="flex flex-grow flex-col justify-between">
+                       <p className="mb-4 text-muted-foreground">{subject.description}</p>
+                       <button onClick={() => handleSubjectClick(subject)} className="mt-auto inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground ring-offset-background transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50">
+                         Access Resources <ArrowRight className="ml-2 h-4 w-4" />
+                       </button>
                     </CardContent>
                   </Card>
                 ))}
@@ -100,6 +69,13 @@ export default function SemesterPage({ params }: { params: { courseId: string, s
         </section>
       </main>
       <Footer />
+       {isModalOpen && selectedSubject && (
+        <ResourceModal
+          subject={selectedSubject}
+          isOpen={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+        />
+      )}
     </div>
   );
 }
