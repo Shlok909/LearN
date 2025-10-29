@@ -10,8 +10,8 @@ const founders = [
     name: 'Rohan Gawande',
     role: 'Co-Founder',
     bio: 'Rohan is a passionate educator with a vision to make learning accessible to everyone. His expertise ensures the highest quality content on LearNova.',
-    imageUrl: 'https://picsum.photos/seed/naruto/400/400',
-    imageHint: 'excited anime',
+    imageUrl: 'https://picsum.photos/seed/anime-character/400/400',
+    imageHint: 'glowing eyes',
     socials: {
       github: '#',
       linkedin: '#',
