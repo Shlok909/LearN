@@ -6,15 +6,6 @@ const HeroSection = () => {
   return (
     <section className="relative flex h-[calc(100vh-70px)] min-h-[500px] w-full items-center justify-center overflow-hidden bg-transparent text-center text-white md:min-h-[600px]">
       <AnimatedHeroBackground />
-      <div
-        className="absolute inset-0 z-0 bg-cover bg-center"
-        style={{
-          backgroundImage:
-            'url(https://i.ytimg.com/vi/sR5O_p01sAA/maxresdefault.jpg)',
-          mixBlendMode: 'screen',
-          opacity: 0.6,
-        }}
-      />
       <div className="absolute inset-0 z-[1] bg-black/50" />
       <div className="relative z-10 -mt-20 mx-auto max-w-3xl px-4">
         <h1 className="mb-4 text-4xl font-bold leading-tight md:text-6xl">
