@@ -64,10 +64,6 @@
   }
   html {
     @apply scroll-smooth;
-    background-image: url('https://img.freepik.com/free-vector/glowing-grid-lines-geometric-wallpaper-neon-style_1017-53633.jpg?semt=ais_hybrid&w=740&q=80');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
   }
   body {
     @apply bg-background text-foreground;
