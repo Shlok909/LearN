@@ -33,7 +33,7 @@ const founders = [
   {
     name: 'Khushi Kumari',
     role: 'Co-Founder',
-    bio: 'Khushi drives the platform\'s growth and user engagement. Her focus on student needs helps shape LearNova\'s future.',
+    bio: "Khushi drives the platform's growth and user engagement. Her focus on student needs helps shape LearNova's future.",
     imageUrl: 'https://picsum.photos/seed/founder3/400/400',
     imageHint: 'woman portrait',
     socials: {
@@ -98,7 +98,7 @@ export default function AboutPage() {
                     </div>
                   </CardHeader>
                   <CardContent className="px-6 pb-6">
-                    <p className="text-muted-foreground">{founder.bio}</p>
+                    <p className="text-card-foreground">{founder.bio}</p>
                     <div className="mt-6 flex justify-center space-x-4">
                       <Link href={founder.socials.github} className="text-muted-foreground transition-colors hover:text-primary"><Github /></Link>
                       <Link href={founder.socials.linkedin} className="text-muted-foreground transition-colors hover:text-primary"><Linkedin /></Link>
