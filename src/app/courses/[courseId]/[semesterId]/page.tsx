@@ -24,7 +24,7 @@ function SemesterClientPage({ course, semester }: { course: Course; semester: Se
   return (
     <>
       <main className="flex-grow">
-        <section className="py-8 md:py-16 lg:py-20">
+        <section className="py-8 md:py-12 lg:py-16">
           <div className="container mx-auto px-4">
             <BackButton href={`/courses/${course.id}`} className="mb-8" />
             <div className="mb-12 text-center md:mb-16">

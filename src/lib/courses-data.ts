@@ -61,6 +61,7 @@ export const coursesData: CoursesData = {
           { id: 'operating-system', name: 'Operating System', code: 'BCA106', icon: '💻', description: 'Understand how operating systems work.', resources: { notes: [], pyqs: [], lectures: [], practicals: [] } },
         ],
       },
+      
       /* !!!!!!!!!!!          BCA Semester 2         !!!!!!!!!!*/
       { id: 2, name: 'Semester 2', subjects: [
         {
@@ -89,13 +90,14 @@ export const coursesData: CoursesData = {
               { id: 7, label: 'Data structures summer 2018_2', url: '#', type: 'pdf' },
             ],
             lectures: [
-              { id: 1, label: 'Link 1 II', url: '#', type: 'youtube' },
-              { id: 2, label: 'Link 2 II', url: '#', type: 'youtube' },
-              { id: 3, label: 'Link 2 II', url: '#', type: 'youtube' },
-              { id: 4, label: 'Link 2 II', url: '#', type: 'youtube' },
-              { id: 5, label: 'Link 2 II', url: '#', type: 'youtube' },
-              { id: 6, label: 'Link 2 II', url: '#', type: 'youtube' },
-              { id: 7, label: 'Link 2 II', url: '#', type: 'youtube' },
+              { id: 1, label: 'Link 1 ', url: 'https://youtu.be/MdG0Vw9f1A4?si=QmF6df5SHgZDYQHo', type: 'youtube' },
+              { id: 2, label: 'Link 2 ', url: 'https://youtu.be/J0OvDNmAWNw?si=nVjGorUrDjT_szES', type: 'youtube' },
+              { id: 3, label: 'Link 3 ', url: 'https://youtu.be/OkS9YkfW50s?si=K38UEmaOUJO1Vlch', type: 'youtube' },
+              { id: 4, label: 'Link 4 ', url: 'https://youtu.be/0rIcIgpl664?si=OdJqoytAzn1qgmlQ', type: 'youtube' },
+              { id: 5, label: 'Link 5 ', url: 'https://youtube.com/playlist?list=PLqleLpAMfxGAf5rrWdm92WMK3-gsrxgz5&si=GDZBrnXzwnYeksqi', type: 'youtube' },
+              { id: 6, label: 'Link 3 ', url: 'https://youtu.be/8TVaEGeaGGc?si=A-JLzxn_8XkO-Bo9', type: 'youtube' },
+              { id: 7, label: 'Link 5 ', url: 'https://youtu.be/zeNnWyEcqSk?si=RJXNYpKpsn4fxUmm', type: 'youtube' },
+              { id: 8, label: 'Link 6 ', url: 'https://youtu.be/3Ut-Hha-tmk?si=XuCrUhXS24rCUM2U', type: 'youtube' },
             ],
             practicals: [{ id: 1, label: 'Link 1 II', url: '#', type: 'pdf' }],
           },
