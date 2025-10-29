@@ -101,6 +101,10 @@
   .nav-link:hover::after {
     @apply origin-left scale-x-100;
   }
+
+  .particle {
+    @apply absolute rounded-full;
+  }
 }
 
 @layer utilities {
@@ -124,5 +128,16 @@
   }
   to {
     opacity: 1;
+  }
+}
+
+@keyframes particle-animation {
+  from {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+  to {
+    transform: translate(var(--x-end), var(--y-end));
+    opacity: 0;
   }
 }
