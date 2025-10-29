@@ -94,7 +94,6 @@ export default function AboutPage() {
                     </div>
                     <div className="p-6">
                       <CardTitle className="text-xl md:text-2xl">{founder.name}</CardTitle>
-                      <p className="font-semibold text-primary">{founder.role}</p>
                     </div>
                   </CardHeader>
                   <CardContent className="px-6 pb-6">
