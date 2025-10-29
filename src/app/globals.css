@@ -71,15 +71,14 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
-
-  body::before {
-    content: '';
-    @apply fixed inset-0 z-[-1] bg-cover bg-center;
-    background-image: url('https://img.freepik.com/free-vector/glowing-grid-lines-geometric-wallpaper-neon-style_1017-53633.jpg?semt=ais_hybrid&w=740&q=80');
-  }
 }
 
 @layer components {
+  #background-container {
+    background-image: url('https://img.freepik.com/free-vector/glowing-grid-lines-geometric-wallpaper-neon-style_1017-53633.jpg?semt=ais_hybrid&w=740&q=80');
+    @apply fixed inset-0 z-[-1] bg-cover bg-center bg-no-repeat;
+  }
+  
   .nav-link {
     @apply relative text-white/90 transition-opacity duration-300;
   }
