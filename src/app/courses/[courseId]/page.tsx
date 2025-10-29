@@ -31,7 +31,7 @@ export default function CoursePage({ params: paramsPromise }: { params: { course
     <div className="flex min-h-screen flex-col bg-background">
       <NavigationBar />
       <main className="flex-grow">
-        <section className="py-12 md:py-20 lg:py-24">
+        <section className="py-8 md:py-16 lg:py-20">
           <div className="container mx-auto px-4">
             <BackButton href="/" className="mb-8" />
             
