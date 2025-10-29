@@ -21,12 +21,6 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap" rel="stylesheet" />
       </head>
       <body className="font-body antialiased">
-        <div
-          className="fixed inset-0 z-[-1] bg-cover bg-center"
-          style={{
-            backgroundImage: "url('https://img.freepik.com/free-vector/glowing-grid-lines-geometric-wallpaper-neon-style_1017-53633.jpg?semt=ais_hybrid&w=740&q=80')",
-          }}
-        />
         <AnimatedHeroBackground />
         <div className="relative z-10">
           {children}
