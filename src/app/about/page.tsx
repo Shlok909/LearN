@@ -10,8 +10,8 @@ const founders = [
     name: 'Rohan Gawande',
     role: 'Co-Founder',
     bio: 'Rohan is a passionate educator with a vision to make learning accessible to everyone. His expertise ensures the highest quality content on LearNova.',
-    imageUrl: 'https://picsum.photos/seed/founder1/400/400',
-    imageHint: 'man portrait',
+    imageUrl: 'https://picsum.photos/seed/naruto/400/400',
+    imageHint: 'excited anime',
     socials: {
       github: '#',
       linkedin: '#',
@@ -22,8 +22,8 @@ const founders = [
     name: 'Shlok Sane',
     role: 'Co-Founder',
     bio: 'Shlok is the technical mastermind behind LearNova. With a background in scalable systems, he ensures our platform is fast, reliable, and user-friendly.',
-    imageUrl: 'https://picsum.photos/seed/founder2/400/400',
-    imageHint: 'man portrait',
+    imageUrl: 'https://picsum.photos/seed/batman/400/400',
+    imageHint: 'dark knight',
     socials: {
       github: '#',
       linkedin: '#',
