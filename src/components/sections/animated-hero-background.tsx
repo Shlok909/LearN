@@ -1,9 +1,8 @@
 "use client";
-import { useMemo } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 
 const NUM_PARTICLES = 150;
 
-// This function is outside the component to avoid being recreated on every render.
 const createParticle = (i: number) => {
   const size = Math.random() * 2 + 1;
   const xStart = Math.random() * 100;
@@ -34,12 +33,25 @@ const createParticle = (i: number) => {
 };
 
 const AnimatedHeroBackground = () => {
-  // useMemo ensures that the particles are created only once and the array is memoized.
-  // This prevents re-creation on re-renders, which was causing the animation to "jump".
-  const particles = useMemo(() => 
-    Array.from({ length: NUM_PARTICLES }).map((_, i) => createParticle(i)),
-    [] // Empty dependency array means this runs only once.
-  );
+  const [particles, setParticles] = useState<React.ReactNode[]>([]);
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    // This will only run on the client, after the component has mounted.
+    setIsMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (isMounted) {
+      // Generate particles only on the client-side.
+      setParticles(Array.from({ length: NUM_PARTICLES }).map((_, i) => createParticle(i)));
+    }
+  }, [isMounted]);
+
+  if (!isMounted) {
+    // Render nothing on the server and during initial client render.
+    return null;
+  }
 
   return (
     <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none">
