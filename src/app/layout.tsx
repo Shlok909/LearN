@@ -22,7 +22,9 @@ export default function RootLayout({
       </head>
       <body className="font-body antialiased">
         <AnimatedHeroBackground />
-        {children}
+        <div className="relative z-10">
+          {children}
+        </div>
         <Toaster />
       </body>
     </html>
