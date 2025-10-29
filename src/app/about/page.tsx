@@ -49,7 +49,7 @@ export default function AboutPage() {
     <div className="flex min-h-screen flex-col bg-background">
       <NavigationBar />
       <main className="flex-grow">
-        <section className="py-12 md:py-20 lg:py-24">
+        <section className="py-8 md:py-16 lg:py-20">
           <div className="container mx-auto px-4">
             <div className="mb-12 text-center md:mb-16">
               <h1 className="mb-4 text-4xl font-bold text-foreground md:text-5xl">
