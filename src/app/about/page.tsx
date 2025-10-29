@@ -8,7 +8,6 @@ import Link from 'next/link';
 const founders = [
   {
     name: 'Rohan Gawande',
-    role: 'Co-Founder',
     bio: 'Rohan is a passionate educator with a vision to make learning accessible to everyone. His expertise ensures the highest quality content on LearNova.',
     imageUrl: 'https://4kwallpapers.com/images/walls/thumbs_3t/17972.jpg',
     imageHint: 'excited anime',
@@ -20,7 +19,6 @@ const founders = [
   },
   {
     name: 'Shlok Sane',
-    role: 'Co-Founder',
     bio: 'Shlok is the technical mastermind behind LearNova. With a background in scalable systems, he ensures our platform is fast, reliable, and user-friendly.',
     imageUrl: 'https://wallpapers.com/images/hd/an-excited-naruto-uzumaki-p8qffarnsfxwovme.jpg',
     imageHint: 'dark knight',
@@ -32,7 +30,6 @@ const founders = [
   },
   {
     name: 'Khushi Kumari',
-    role: 'Co-Founder',
     bio: "Khushi drives the platform's growth and user engagement. Her focus on student needs helps shape LearNova's future.",
     imageUrl: 'https://picsum.photos/seed/founder3/400/400',
     imageHint: 'woman portrait',
@@ -62,7 +59,7 @@ export default function AboutPage() {
             </div>
 
             <div className="mx-auto max-w-4xl rounded-lg bg-card p-6 md:p-8 text-center shadow-lg">
-              <h2 className="mb-4 text-2xl md:text-3xl font-bold text-primary">Our Vision</h2>
+              <h2 className="mb-4 text-2xl md:text-3xl font-bold text-foreground">Our Vision</h2>
               <p className="text-base leading-relaxed text-card-foreground">
                 At LearNova, our mission is to break down the barriers to education. We believe that every student deserves the opportunity to succeed, regardless of their background. We are committed to providing a comprehensive, easy-to-use platform that equips students with the knowledge and tools they need to excel in their academic journey. From detailed course materials to AI-powered personalized recommendations, we are redefining the future of learning.
               </p>
