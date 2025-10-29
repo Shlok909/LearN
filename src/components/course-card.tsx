@@ -25,7 +25,7 @@ export interface CourseCardProps {
 const CourseCard: FC<CourseCardProps> = ({ id, icon, name, duration, description }) => {
   const Icon = icons[icon as keyof typeof icons] || Laptop;
   return (
-    <Card className="h-full transform-gpu overflow-hidden text-center transition-all duration-300 ease-in-out hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/20">
+    <Card className="h-full transform-gpu overflow-hidden text-center transition-all duration-300 ease-in-out hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/20 hover:border-white">
       <CardHeader className="items-center pb-4">
         <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-primary to-accent">
           <Icon className="h-8 w-8 text-white" />
