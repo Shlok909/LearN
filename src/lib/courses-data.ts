@@ -106,7 +106,38 @@ export const coursesData: CoursesData = {
           code: 'BCA102',
           icon: '📜',
           description: 'Explore the foundational document of Indian democracy.',
-          resources: { notes: [], pyqs: [], lectures: [], practicals: [] },
+          resources: { 
+            notes: [
+              { id: 1, label: 'Link 1 II', url: '#', type: 'pdf' },
+              { id: 2, label: 'Link 2 II', url: '#', type: 'pdf' },
+              { id: 3, label: 'Link 2 II', url: '#', type: 'pdf' },
+              { id: 4, label: 'Link 2 II', url: '#', type: 'pdf' },
+              { id: 5, label: 'Link 2 II', url: '#', type: 'pdf' },
+              { id: 6, label: 'Link 2 II', url: '#', type: 'pdf' },
+            ], 
+            pyqs: [
+              { id: 1, label: 'Data structures summer 2019', url: '#', type: 'pdf' },
+              { id: 2, label: 'Data structures summer 2018_1', url: '#', type: 'pdf' },
+              { id: 3, label: 'Data structures summer 2018_2', url: '#', type: 'pdf' },
+              { id: 4, label: 'Data structures summer 2018_2', url: '#', type: 'pdf' },
+              { id: 5, label: 'Data structures summer 2018_2', url: '#', type: 'pdf' },
+              { id: 6, label: 'Data structures summer 2018_2', url: '#', type: 'pdf' },
+              { id: 7, label: 'Data structures summer 2018_2', url: '#', type: 'pdf' },
+            ], 
+            lectures: [
+              { id: 1, label: 'Link 1 II', url: '#', type: 'youtube' },
+              { id: 2, label: 'Link 2 II', url: '#', type: 'youtube' },
+              { id: 3, label: 'Link 2 II', url: '#', type: 'youtube' },
+              { id: 4, label: 'Link 2 II', url: '#', type: 'youtube' },
+              { id: 5, label: 'Link 2 II', url: '#', type: 'youtube' },
+              { id: 6, label: 'Link 2 II', url: '#', type: 'youtube' },
+              { id: 7, label: 'Link 2 II', url: '#', type: 'youtube' }, 
+            ], 
+            practicals: [
+              
+
+            ] 
+          },
         },
         {
           id: 'dbms',
