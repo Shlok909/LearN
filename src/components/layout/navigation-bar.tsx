@@ -1,7 +1,9 @@
+
 "use client";
 
 import { useState } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { Menu } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetClose, SheetTrigger, SheetTitle, SheetHeader } from '@/components/ui/sheet';
@@ -15,16 +17,26 @@ const navItems = [
 
 const NavigationBar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
 
   const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>) => {
     const href = e.currentTarget.getAttribute('href');
-    if (href && (href.startsWith('/#') || href.startsWith('#'))) {
-      e.preventDefault();
-      const targetId = href.replace('/#', '').replace('#', '');
-      const targetElement = document.getElementById(targetId);
-      if (targetElement) {
-        targetElement.scrollIntoView({ behavior: 'smooth' });
-      }
+    if (!href) return;
+
+    const isHashLink = href.startsWith('#') || href.startsWith('/#');
+    if (!isHashLink) return;
+
+    // If we are on a different page, let the default Link behavior handle it.
+    if (pathname !== '/' && href.startsWith('/#')) {
+      return;
+    }
+    
+    e.preventDefault();
+    const targetId = href.replace('/#', '').replace('#', '');
+    const targetElement = document.getElementById(targetId);
+    
+    if (targetElement) {
+      targetElement.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
