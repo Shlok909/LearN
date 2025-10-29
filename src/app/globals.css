@@ -4,7 +4,7 @@
 
 @layer base {
   :root {
-    --background: 210 100% 6% / 0.3;
+    --background: 210 100% 6% / 0;
     --foreground: 0 0% 98%;
     --card: 210 100% 17% / 0.3;
     --card-foreground: 0 0% 98%;
@@ -31,7 +31,7 @@
     --radius: 0.5rem;
   }
   .dark {
-    --background: 210 100% 6% / 0.3;
+    --background: 210 100% 6% / 0;
     --foreground: 0 0% 98%;
     --card: 210 100% 17% / 0.3;
     --card-foreground: 0 0% 98%;
@@ -64,13 +64,14 @@
   }
   html {
     @apply scroll-smooth;
-  }
-  body {
-    @apply bg-background text-foreground;
     background-image: url('https://img.freepik.com/free-vector/glowing-grid-lines-geometric-wallpaper-neon-style_1017-53633.jpg?semt=ais_hybrid&w=740&q=80');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
+  }
+  body {
+    @apply bg-background text-foreground;
+    background-color: hsla(var(--background));
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
