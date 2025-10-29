@@ -36,7 +36,7 @@ function SemesterClientPage({ course, semester }: { course: Course; semester: Se
             {semester.subjects.length > 0 ? (
               <div className="mx-auto grid max-w-6xl grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
                 {semester.subjects.map((subject: any) => (
-                  <Card key={subject.id} className="flex h-full transform-gpu flex-col overflow-hidden text-center transition-transform duration-300 hover:-translate-y-2 hover:shadow-xl">
+                  <Card key={subject.id} className="flex h-full transform-gpu flex-col overflow-hidden text-center transition-all duration-300 hover:-translate-y-2 hover:shadow-xl border-2 border-border hover:border-white">
                     <CardHeader className="items-center text-center">
                       <div className="mb-4 text-5xl">{subject.icon}</div>
                       <CardTitle className="text-xl">{subject.name}</CardTitle>
