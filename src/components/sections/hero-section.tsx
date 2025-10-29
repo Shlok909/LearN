@@ -1,11 +1,9 @@
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import AnimatedHeroBackground from './animated-hero-background';
 
 const HeroSection = () => {
   return (
     <section className="relative flex h-[calc(100vh-70px)] min-h-[500px] w-full items-center justify-center overflow-hidden bg-transparent text-center text-white md:min-h-[600px]">
-      <AnimatedHeroBackground />
       <div className="absolute inset-0 z-[1] bg-black/30" />
       <div className="relative z-10 -mt-20 mx-auto max-w-3xl px-4">
         <h1 className="mb-4 text-4xl font-bold leading-tight md:text-6xl">
