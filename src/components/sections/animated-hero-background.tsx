@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect } from 'react';
 
 const NUM_PARTICLES = 150;
 
@@ -49,7 +49,7 @@ const AnimatedHeroBackground = () => {
   }, [isMounted]);
 
   if (!isMounted) {
-    // Render nothing on the server and during initial client render.
+    // Render nothing on the server and during initial client render to avoid hydration mismatch.
     return null;
   }
 
