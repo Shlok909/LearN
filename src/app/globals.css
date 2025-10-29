@@ -76,7 +76,17 @@
 @layer components {
   #background-container {
     background-image: url('https://img.freepik.com/free-vector/glowing-grid-lines-geometric-wallpaper-neon-style_1017-53633.jpg?semt=ais_hybrid&w=740&q=80');
-    @apply fixed inset-0 z-[-1] bg-cover bg-center bg-no-repeat;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100vw;
+    height: 100vh;
   }
   
   .nav-link {
