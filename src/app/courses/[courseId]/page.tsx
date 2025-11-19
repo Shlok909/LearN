@@ -1,3 +1,4 @@
+
 import { getCourseById } from '@/lib/courses-data';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
@@ -47,7 +48,7 @@ export default function CoursePage({ params: paramsPromise }: { params: { course
             <div className="mx-auto grid max-w-6xl gap-5 grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
               {course.semesters.map((semester) => (
                 <Link key={semester.id} href={`/courses/${course.id}/${semester.id}`}>
-                  <div className="group flex h-32 md:h-40 cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-border bg-card p-4 text-center shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-white hover:shadow-lg">
+                  <div className="group flex h-32 md:h-40 cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-white bg-card p-4 text-center shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
                     <h3 className="text-lg md:text-xl font-bold text-card-foreground group-hover:text-primary">{semester.name}</h3>
                     <ArrowRight className="mt-2 h-5 w-5 text-muted-foreground opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                   </div>
