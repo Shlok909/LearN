@@ -1,3 +1,4 @@
+
 import NavigationBar from '@/components/layout/navigation-bar';
 import CoursesSection from '@/components/sections/courses-section';
 import RecommendationSection from '@/components/sections/recommendation-section';
@@ -21,6 +22,9 @@ export default function HomePage() {
             <div className="mt-10 flex items-center justify-center gap-x-6">
               <Button asChild size="lg">
                 <Link href="#courses">Get Started</Link>
+              </Button>
+              <Button asChild size="lg" variant="outline" className="text-white">
+                <Link href="#recommendations">Give us your feedback</Link>
               </Button>
             </div>
           </div>
