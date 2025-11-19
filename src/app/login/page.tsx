@@ -20,8 +20,9 @@ import { useToast } from '@/hooks/use-toast';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { Loader2 } from 'lucide-react';
-import { signInWithEmailAndPassword, AuthErrorCodes, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
-import { useAuth } from '@/firebase';
+import { signInWithEmailAndPassword, AuthErrorCodes, signInWithPopup, GoogleAuthProvider, User } from 'firebase/auth';
+import { useAuth, useFirestore } from '@/firebase';
+import { doc, setDoc } from 'firebase/firestore';
 
 const formSchema = z.object({
   email: z.string().email({ message: 'Invalid email address.' }),
@@ -55,6 +56,7 @@ export default function LoginPage() {
   const { toast } = useToast();
   const router = useRouter();
   const auth = useAuth();
+  const firestore = useFirestore();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -63,6 +65,16 @@ export default function LoginPage() {
       password: '',
     },
   });
+
+  const createUserProfile = async (user: User) => {
+    if (!firestore) return;
+    const userRef = doc(firestore, 'users', user.uid);
+    await setDoc(userRef, {
+      displayName: user.displayName,
+      email: user.email,
+      photoURL: user.photoURL,
+    }, { merge: true });
+  };
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     if (!auth) return;
@@ -86,7 +98,8 @@ export default function LoginPage() {
     setGoogleLoading(true);
     try {
       const provider = new GoogleAuthProvider();
-      await signInWithPopup(auth, provider);
+      const result = await signInWithPopup(auth, provider);
+      await createUserProfile(result.user);
       toast({
         title: 'Login Successful',
         description: "Welcome!",
