@@ -59,6 +59,40 @@
         "displayName",
         "email"
       ]
+    },
+    "Feedback": {
+      "title": "Feedback",
+      "description": "Stores user feedback.",
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Name of the user providing feedback."
+        },
+        "likes": {
+          "type": "string",
+          "description": "What the user liked about the platform."
+        },
+        "improvements": {
+          "type": "string",
+          "description": "What the user thinks can be improved."
+        },
+        "userId": {
+          "type": "string",
+          "description": "The UID of the user who submitted the feedback."
+        },
+        "email": {
+          "type": "string",
+          "format": "email",
+          "description": "The email of the user."
+        },
+        "submittedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Timestamp of when the feedback was submitted."
+        }
+      },
+      "required": ["name", "likes", "improvements", "userId", "email", "submittedAt"]
     }
   },
   "auth": {
@@ -87,6 +121,16 @@
             "$ref": "#/backend/entities/UserProfile"
           },
           "description": "Stores user profile information."
+        }
+      },
+      {
+        "path": "/feedback/{userId}",
+        "definition": {
+          "entityName": "Feedback",
+          "schema": {
+            "$ref": "#/backend/entities/Feedback"
+          },
+          "description": "Stores feedback submitted by a user. The document ID is the user's UID."
         }
       }
     ]
