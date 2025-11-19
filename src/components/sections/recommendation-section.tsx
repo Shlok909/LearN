@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, useEffect } from 'react';
@@ -12,7 +13,7 @@ import { Input } from '@/components/ui/input';
 import { Loader2 } from 'lucide-react';
 import { useToast } from "@/hooks/use-toast";
 import { useUser, useFirestore } from '@/firebase';
-import { doc, setDoc } from 'firebase/firestore';
+import { collection, addDoc } from 'firebase/firestore';
 
 const feedbackSchema = z.object({
   name: z.string().min(2, 'Please enter your name.'),
@@ -56,7 +57,7 @@ const RecommendationSection = () => {
     setIsLoading(true);
     
     try {
-      const feedbackRef = doc(firestore, 'Feedback', user.uid);
+      const feedbackCollectionRef = collection(firestore, 'Feedback');
       
       const feedbackData = {
         ...data,
@@ -65,7 +66,7 @@ const RecommendationSection = () => {
         submittedAt: new Date(),
       };
 
-      await setDoc(feedbackRef, feedbackData, { merge: true });
+      await addDoc(feedbackCollectionRef, feedbackData);
 
       toast({
         title: "Thanks for the feedback!",
@@ -164,4 +165,3 @@ const RecommendationSection = () => {
 };
 
 export default RecommendationSection;
-
