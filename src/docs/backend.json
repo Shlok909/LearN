@@ -124,7 +124,7 @@
         }
       },
       {
-        "path": "/feedback/{userId}",
+        "path": "/Feedback/{userId}",
         "definition": {
           "entityName": "Feedback",
           "schema": {
