@@ -20,12 +20,12 @@ service cloud.firestore {
     }
 
     // Feedback collection
-    match /feedback/{userId} {
-      // Allow authenticated user to create or update their own feedback document
-      allow create, update: if request.auth != null && request.auth.uid == userId;
+    match /Feedback/{feedbackId} {
+      // Allow any authenticated user to create feedback.
+      allow create: if request.auth != null;
       
       // Only allow owner to read their feedback, or perhaps an admin role in the future
-      allow read, delete: if request.auth != null && request.auth.uid == userId;
+      allow read, update, delete: if request.auth != null && request.auth.uid == resource.data.userId;
     }
   }
 }
