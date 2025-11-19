@@ -32,7 +32,7 @@ const navItems = [
   { name: 'Contact', href: '#contact' },
 ];
 
-const NavigationBar = () => {
+const NavigationBar = ({ hideNavLinks = false }: { hideNavLinks?: boolean }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const pathname = usePathname();
   const router = useRouter();
@@ -88,18 +88,20 @@ const NavigationBar = () => {
         </Link>
 
         {/* Desktop Menu */}
-        <div className="hidden items-center space-x-8 md:flex">
-          {getNavItems().map((item) => (
-            <Link
-              key={item.name}
-              href={item.href}
-              onClick={handleScroll}
-              className="nav-link text-base font-medium"
-            >
-              {item.name}
-            </Link>
-          ))}
-        </div>
+        {!hideNavLinks && (
+          <div className="hidden items-center space-x-8 md:flex">
+            {getNavItems().map((item) => (
+              <Link
+                key={item.name}
+                href={item.href}
+                onClick={handleScroll}
+                className="nav-link text-base font-medium"
+              >
+                {item.name}
+              </Link>
+            ))}
+          </div>
+        )}
 
         <div className="flex items-center gap-4">
           <div className="hidden md:flex items-center gap-4">
@@ -171,7 +173,7 @@ const NavigationBar = () => {
                   <SheetTitle className="text-2xl font-bold text-white">LearNova</SheetTitle>
                 </SheetHeader>
                 <div className="flex flex-col space-y-4 p-4">
-                  {getNavItems().map((item) => (
+                  {!hideNavLinks && getNavItems().map((item) => (
                     <SheetClose asChild key={item.name}>
                       <Link
                         href={item.href}
