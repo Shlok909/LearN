@@ -31,7 +31,7 @@ const founders = [
   {
     name: 'Khushi Kumari',
     bio: "Khushi drives the platform's growth and user engagement. Her focus on student needs helps shape LearNova's future.",
-    imageUrl: 'https://picsum.photos/seed/founder3/400/400',
+    imageUrl: 'https://a.storyblok.com/f/178900/1920x1080/ab7a8d0a63/the-fragrant-flower-blooms-with-dignity.png',
     imageHint: 'woman portrait',
     socials: {
       github: '#',
