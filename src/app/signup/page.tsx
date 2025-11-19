@@ -73,11 +73,11 @@ export default function SignupPage() {
     },
   });
 
-  const createUserProfile = async (user: User) => {
+  const createUserProfile = async (user: User, name?: string) => {
     if (!firestore) return;
     const userRef = doc(firestore, 'users', user.uid);
     await setDoc(userRef, {
-      displayName: user.displayName,
+      displayName: name || user.displayName,
       email: user.email,
       photoURL: user.photoURL,
     }, { merge: true });
@@ -93,13 +93,7 @@ export default function SignupPage() {
         displayName: values.name,
       });
 
-      // We need to create a new user object with the updated display name to pass to createUserProfile
-      const updatedUser = {
-        ...userCredential.user,
-        displayName: values.name,
-      };
-
-      await createUserProfile(updatedUser as User);
+      await createUserProfile(userCredential.user, values.name);
       
       toast({
         title: 'Account Created',
