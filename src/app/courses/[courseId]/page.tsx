@@ -6,7 +6,6 @@ import { ArrowRight, GraduationCap, Microscope, Briefcase, ScrollText, BarChartB
 import type { LucideIcon } from 'lucide-react';
 import NavigationBar from '@/components/layout/navigation-bar';
 import Footer from '@/components/layout/footer';
-import { use } from 'react';
 import BackButton from '@/components/back-button';
 
 const icons: { [key: string]: LucideIcon } = {
@@ -18,8 +17,7 @@ const icons: { [key: string]: LucideIcon } = {
   Laptop
 };
 
-export default function CoursePage({ params: paramsPromise }: { params: { courseId: string } }) {
-  const params = use(paramsPromise);
+export default async function CoursePage({ params }: { params: { courseId: string } }) {
   const course = getCourseById(params.courseId);
 
   if (!course) {
@@ -34,7 +32,7 @@ export default function CoursePage({ params: paramsPromise }: { params: { course
       <main className="flex-grow">
         <section className="py-8 md:py-16 lg:py-20">
           <div className="container mx-auto px-4">
-            <BackButton href="/" className="mb-8" />
+            <BackButton href="/home" className="mb-8" />
             
             <div className="mb-12 text-center md:mb-16">
               <Icon className="mx-auto mb-4 h-16 w-16 md:h-20 md:w-20 text-primary" />

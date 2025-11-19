@@ -7,7 +7,7 @@ import { Book, ArrowRight } from 'lucide-react';
 import NavigationBar from '@/components/layout/navigation-bar';
 import Footer from '@/components/layout/footer';
 import BackButton from '@/components/back-button';
-import { useState, use } from 'react';
+import { useState } from 'react';
 import type { Subject, Course, Semester } from '@/lib/types';
 import ResourceModal from '@/components/course/resource-modal';
 
@@ -73,13 +73,17 @@ function SemesterClientPage({ course, semester }: { course: Course; semester: Se
 
 
 // The main page component is now a server component
-export default function SemesterPage({ params: paramsPromise }: { params: { courseId: string, semesterId: string } }) {
-  const params = use(paramsPromise);
+export default async function SemesterPage({ params }: { params: { courseId: string, semesterId: string } }) {
   const course = getCourseById(params.courseId);
   const semesterIdNum = parseInt(params.semesterId, 10);
-  const semester = course?.semesters.find((s) => s.id === semesterIdNum);
 
-  if (!course || !semester) {
+  if (!course || isNaN(semesterIdNum)) {
+    notFound();
+  }
+  
+  const semester = course.semesters.find((s) => s.id === semesterIdNum);
+
+  if (!semester) {
     notFound();
   }
   
