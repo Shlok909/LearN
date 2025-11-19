@@ -100,7 +100,7 @@ const RecommendationSection = () => {
         </div>
 
         <div className="mx-auto grid max-w-xl grid-cols-1 gap-8">
-          <Card className="shadow-lg">
+          <Card className="shadow-lg border-white">
             <CardHeader>
               <CardTitle>Share Your Thoughts</CardTitle>
               <CardDescription>The more details you provide, the better we can understand your needs.</CardDescription>
@@ -115,7 +115,7 @@ const RecommendationSection = () => {
                       <FormItem>
                         <FormLabel>Name</FormLabel>
                         <FormControl>
-                          <Input placeholder="Your Name" {...field} />
+                          <Input placeholder="Your Name" {...field} className="border-white" />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -128,7 +128,7 @@ const RecommendationSection = () => {
                       <FormItem>
                         <FormLabel>What do you like about LearNova?</FormLabel>
                         <FormControl>
-                          <Textarea placeholder="e.g., The interface is clean and easy to navigate..." {...field} rows={4} />
+                          <Textarea placeholder="e.g., The interface is clean and easy to navigate..." {...field} rows={4} className="border-white" />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -141,7 +141,7 @@ const RecommendationSection = () => {
                       <FormItem>
                         <FormLabel>What can we improve?</FormLabel>
                         <FormControl>
-                          <Textarea placeholder="e.g., I would love to see more courses on..." {...field} rows={4} />
+                          <Textarea placeholder="e.g., I would love to see more courses on..." {...field} rows={4} className="border-white" />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -165,3 +165,4 @@ const RecommendationSection = () => {
 };
 
 export default RecommendationSection;
+
