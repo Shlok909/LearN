@@ -123,6 +123,32 @@ export const coursesData: CoursesData = {
             practicals: [] 
           },
         },
+
+        {
+          id: 'constitution-india',
+          name: 'Web Technology',
+          code: 'BCA102',
+          icon: '🌐',
+          description: 'Dive into modern web development. HTML, CSS, JavaScript, and frameworks.',
+          resources: { 
+            notes: [], 
+            pyqs: [
+              { id: 1, label: 'Web Technology summer 2016', url: 'https://www.rtmnuonline.com/papers/bca-3-sem-web-technology-summer-2016.pdf', type: 'pdf' },
+              { id: 2, label: 'Web Technology winter 2016', url: 'https://www.rtmnuonline.com/papers/bca-3-sem-web-technology-winter-2016.pdf', type: 'pdf' },
+              { id: 3, label: 'Web Technology summer 2019', url: 'https://www.rtmnuonline.com/papers/bca-4-sem-web-technology-2-2235-summer-2019.pdf', type: 'pdf' },
+              { id: 4, label: 'Web Technology summer 2018', url: 'https://www.rtmnuonline.com/papers/bca-3-sem-web-technology-summer-2018.pdf', type: 'pdf' },
+              { id: 5, label: 'Web Technology winter 2018', url: 'https://www.rtmnuonline.com/papers/bca-3-sem-web-technology-winter-2018.pdf', type: 'pdf' },
+              { id: 6, label: 'Web Technology summer 2017', url: 'https://www.rtmnuonline.com/papers/bca-3-sem-web-technology-summer-2017.pdf', type: 'pdf' },
+              { id: 7, label: 'Web Technology winter 2017', url: 'https://www.rtmnuonline.com/papers/bca-3-sem-web-technology-winter-2017.pdf', type: 'pdf' },
+            ], 
+            lectures: [
+              { id: 1, label: 'Link 1 ', url: 'https://youtu.be/1V9mhVgVH3A?si=na6l6GkjruofsR4A"><i class="fab fa-youtube', type: 'youtube' },
+              { id: 2, label: 'Link 2 ', url: 'https://youtube.com/playlist?list=PLrjkTql3jnm8d1ddpVKifXO_fPjSKATCp&si=7iDNZzFCcK9DXiC_', type: 'youtube' },
+              { id: 3, label: 'Link 3 ', url: 'https://youtube.com/playlist?list=PLV8vIYTIdSnbwIFENjqBK7yyAkSVSoLBC&si=_k06Hv9tmzDDbJmU', type: 'youtube' },
+            ], 
+            practicals: [] 
+          },
+        },
         
         {
           id: 'dbms-sem2',
@@ -317,3 +343,4 @@ export function getCourses() {
 export function getCourseById(id: string): Course | undefined {
   return coursesData[id];
 }
+
