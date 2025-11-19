@@ -11,8 +11,10 @@ service cloud.firestore {
 
     // User profiles
     match /users/{userId} {
-      // Anyone can create a user profile (for sign-up)
-      allow create: if request.auth != null;
+      // Allow user to create their own profile document, but not anyone else's.
+      // The document ID must match the user's UID.
+      allow create: if request.auth != null && request.auth.uid == userId;
+
       // Only the authenticated user can read or write their own profile
       allow read, update, delete: if request.auth != null && request.auth.uid == userId;
     }
