@@ -19,18 +19,15 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { useToast } from '@/hooks/use-toast';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { Loader2, Upload } from 'lucide-react';
+import { Loader2 } from 'lucide-react';
 import { createUserWithEmailAndPassword, updateProfile, AuthErrorCodes } from 'firebase/auth';
 import { useAuth } from '@/firebase';
-import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
-
 
 const formSchema = z.object({
     name: z.string().min(2, { message: 'Name must be at least 2 characters.' }),
     email: z.string().email({ message: 'Invalid email address.' }),
     password: z.string().min(6, { message: 'Password must be at least 6 characters.' }),
     repeatPassword: z.string(),
-    profilePhoto: z.instanceof(File).optional(),
   }).refine((data) => data.password === data.repeatPassword, {
     message: "Passwords don't match",
     path: ['repeatPassword'],
@@ -38,7 +35,6 @@ const formSchema = z.object({
 
 export default function SignupPage() {
   const [isLoading, setIsLoading] = useState(false);
-  const [photoName, setPhotoName] = useState<string | null>(null);
   const { toast } = useToast();
   const router = useRouter();
   const auth = useAuth();
@@ -58,18 +54,9 @@ export default function SignupPage() {
     setIsLoading(true);
     try {
       const userCredential = await createUserWithEmailAndPassword(auth, values.email, values.password);
-      let photoURL: string | undefined = undefined;
-
-      if(values.profilePhoto){
-        const storage = getStorage();
-        const storageRef = ref(storage, `profile-photos/${userCredential.user.uid}`);
-        const snapshot = await uploadBytes(storageRef, values.profilePhoto);
-        photoURL = await getDownloadURL(snapshot.ref);
-      }
       
       await updateProfile(userCredential.user, {
         displayName: values.name,
-        photoURL: photoURL,
       });
       
       toast({
@@ -126,37 +113,6 @@ export default function SignupPage() {
                     <FormLabel>Email</FormLabel>
                     <FormControl>
                       <Input placeholder="you@example.com" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-               <FormField
-                control={form.control}
-                name="profilePhoto"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Profile Photo</FormLabel>
-                    <FormControl>
-                      <div className="relative">
-                        <Input
-                          id="profilePhoto"
-                          type="file"
-                          className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
-                          accept="image/*"
-                          onChange={(e) => {
-                            const file = e.target.files?.[0];
-                            if(file) {
-                              field.onChange(file);
-                              setPhotoName(file.name);
-                            }
-                          }}
-                        />
-                        <label htmlFor="profilePhoto" className="flex items-center justify-center w-full h-10 px-3 py-2 text-sm border rounded-md cursor-pointer border-input bg-background ring-offset-background hover:bg-accent hover:text-accent-foreground">
-                          <Upload className="w-4 h-4 mr-2" />
-                          <span>{photoName || 'Choose a photo'}</span>
-                        </label>
-                      </div>
                     </FormControl>
                     <FormMessage />
                   </FormItem>
