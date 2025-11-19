@@ -42,6 +42,10 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  experimental: {
+    // This prevents the server from restarting when next.config.ts is touched
+    watcherExclude: ['**/.next/**', 'next.config.ts'],
+  },
 };
 
 export default nextConfig;
