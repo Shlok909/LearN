@@ -84,7 +84,7 @@ export default function SignupPage() {
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4 py-12">
-      <Card className="w-full max-w-md">
+      <Card className="w-full max-w-md border-white">
         <CardHeader>
           <CardTitle>Create an Account</CardTitle>
           <CardDescription>Join LearNova to start your learning journey.</CardDescription>
@@ -150,7 +150,7 @@ export default function SignupPage() {
               </Button>
             </form>
           </Form>
-          <p className="mt-6 text-center text-sm text-muted-foreground">
+          <p className="mt-6 text-center text-sm text-foreground">
             Already have an account?{' '}
             <Link href="/login" className="font-semibold text-primary hover:underline">
               Sign in
