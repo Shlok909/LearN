@@ -233,7 +233,7 @@ export const coursesData: CoursesData = {
       { id: 2, name: 'Semester 2', subjects: [] },
       { id: 3, name: 'Semester 3', subjects: [] },
       { id: 4, name: 'Semester 4', subjects: [] },
-      { id:  5, name: 'Semester 5', subjects: [] },
+      { id: 5, name: 'Semester 5', subjects: [] },
       { id: 6, name: 'Semester 6', subjects: [] },
     ],
   },

@@ -13,13 +13,23 @@ const HeroSection = () => {
           Your gateway to comprehensive learning resources across multiple
           subjects.
         </p>
-        <Button
-          asChild
-          size="lg"
-          className="h-auto rounded-full bg-white px-8 py-3 text-base font-semibold text-primary transition-transform duration-300 hover:scale-105 hover:bg-white hover:shadow-lg md:px-12 md:py-4 md:text-lg"
-        >
-          <Link href="#why-us">Explore Features</Link>
-        </Button>
+        <div className="mt-10 flex items-center justify-center gap-x-6">
+           <Button
+            asChild
+            variant="outline"
+            size="lg"
+            className="h-auto rounded-full border-2 border-white bg-transparent px-8 py-3 text-base font-semibold text-white transition-transform duration-300 hover:scale-105 hover:bg-white/10"
+          >
+            <Link href="/login">Login</Link>
+          </Button>
+          <Button
+            asChild
+            size="lg"
+            className="h-auto rounded-full bg-white px-8 py-3 text-base font-semibold text-primary transition-transform duration-300 hover:scale-105 hover:bg-white/90"
+          >
+            <Link href="/signup">Sign Up</Link>
+          </Button>
+        </div>
       </div>
     </section>
   );
