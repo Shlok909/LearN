@@ -23,7 +23,7 @@ export default function HomePage() {
               <Button asChild size="lg">
                 <Link href="#courses">Get Started</Link>
               </Button>
-              <Button asChild size="lg" variant="outline" className="border-white text-white hover:bg-white/10 hover:text-white">
+              <Button asChild size="lg" variant="outline" className="border-white text-white hover:bg-secondary hover:text-secondary-foreground hover:border-secondary">
                 <Link href="#recommendations">Give us your feedback</Link>
               </Button>
             </div>
