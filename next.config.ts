@@ -29,7 +29,7 @@ const nextConfig: NextConfig = {
         pathname: '/**',
       },
       {
-        protocol: 'https',
+        protocol: 'https://',
         hostname: 'wallpapers.com',
         port: '',
         pathname: '/**',
@@ -47,10 +47,6 @@ const nextConfig: NextConfig = {
         pathname: '/**',
       },
     ],
-  },
-  experimental: {
-    // This prevents the server from restarting when next.config.ts is touched
-    watcherExclude: ['**/.next/**', 'next.config.ts'],
   },
 };
 
