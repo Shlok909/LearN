@@ -117,7 +117,17 @@ export default function LoginPage() {
     let title = 'An unexpected error occurred';
     let description = 'Please try again later.';
 
-    if (error.code === AuthErrorCodes.INVALID_PASSWORD || error.code === 'auth/invalid-credential' || error.code === AuthErrorCodes.USER_DELETED) {
+    if (error.code === 'auth/invalid-credential' || error.code === AuthErrorCodes.USER_DELETED) {
+      title = 'Login Failed';
+      description = "First you have to create a account in order to log in";
+      toast({
+        variant: 'destructive',
+        title,
+        description,
+      });
+      router.push('/signup');
+      return;
+    } else if (error.code === AuthErrorCodes.INVALID_PASSWORD) {
       title = 'Login Failed';
       description = 'Password or Email is incorrect';
     } else if (error.code === 'auth/popup-closed-by-user') {
