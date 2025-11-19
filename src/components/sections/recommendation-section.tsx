@@ -1,7 +1,7 @@
 
 "use client";
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useForm, type SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
@@ -10,10 +10,13 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Textarea } from '@/components/ui/textarea';
+import { Input } from '@/components/ui/input';
 import { Loader2, Sparkles } from 'lucide-react';
 import { useToast } from "@/hooks/use-toast";
+import { useUser } from '@/firebase';
 
 const feedbackSchema = z.object({
+  name: z.string().min(2, 'Please enter your name.'),
   academicHistory: z.string().min(10, 'Please provide more details (at least 10 characters).'),
   interests: z.string().min(10, 'Please tell us more (at least 10 characters).'),
 });
@@ -24,14 +27,22 @@ const RecommendationSection = () => {
   const [recommendations, setRecommendations] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
+  const { user } = useUser();
 
   const form = useForm<FeedbackFormValues>({
     resolver: zodResolver(feedbackSchema),
     defaultValues: {
+      name: '',
       academicHistory: '',
       interests: '',
     },
   });
+
+  useEffect(() => {
+    if (user?.displayName) {
+      form.setValue('name', user.displayName);
+    }
+  }, [user, form]);
 
   const onSubmit: SubmitHandler<FeedbackFormValues> = async (data) => {
     setIsLoading(true);
@@ -85,6 +96,19 @@ const RecommendationSection = () => {
             <CardContent>
               <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                  <FormField
+                    control={form.control}
+                    name="name"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Name</FormLabel>
+                        <FormControl>
+                          <Input placeholder="Your Name" {...field} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
                   <FormField
                     control={form.control}
                     name="academicHistory"

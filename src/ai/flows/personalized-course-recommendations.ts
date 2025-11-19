@@ -13,6 +13,7 @@ import {ai} from '@/ai/genkit';
 import {z} from 'genkit';
 
 const PersonalizedCourseRecommendationsInputSchema = z.object({
+  name: z.string().describe("The name of the user providing feedback."),
   academicHistory: z
     .string()
     .describe('The first part of the user feedback or query.'),
@@ -40,7 +41,7 @@ const prompt = ai.definePrompt({
   output: {schema: PersonalizedCourseRecommendationsOutputSchema},
   prompt: `You are an expert academic advisor and user feedback analyst for a platform called LearNova.
 
-  Your role is to analyze user input and provide a helpful response. The user might be asking for course recommendations OR providing feedback.
+  Your role is to analyze user input and provide a helpful response. The user might be asking for course recommendations OR providing feedback. The feedback is from a user named {{name}}.
 
   - If they are asking for recommendations, use their academic history and interests to recommend a list of courses.
   - If they are providing feedback (likes and dislikes), summarize their feedback and thank them.
