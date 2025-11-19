@@ -29,7 +29,6 @@ import { signOut } from 'firebase/auth';
 const navItems = [
   { name: 'Home', href: '/' },
   { name: 'About Us', href: '/about' },
-  { name: 'Contact', href: '#contact' },
 ];
 
 const NavigationBar = ({ hideNavLinks = false }: { hideNavLinks?: boolean }) => {
@@ -74,7 +73,6 @@ const NavigationBar = ({ hideNavLinks = false }: { hideNavLinks?: boolean }) => 
       return [
         { name: 'Home', href: '/home' },
         { name: 'About Us', href: '/about' },
-        { name: 'Contact', href: '#contact' },
       ];
     }
     return navItems;
