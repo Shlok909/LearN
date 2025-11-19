@@ -57,7 +57,7 @@ const RecommendationSection = () => {
     setIsLoading(true);
     
     try {
-      const feedbackRef = doc(firestore, 'feedback', user.uid);
+      const feedbackRef = doc(firestore, 'Feedback', user.uid);
       
       const feedbackData = {
         ...data,
