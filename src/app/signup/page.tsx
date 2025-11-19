@@ -82,7 +82,7 @@ export default function SignupPage() {
       photoURL: user.photoURL,
     }, { merge: true });
 
-    const feedbackRef = doc(firestore, 'feedback', user.uid);
+    const feedbackRef = doc(firestore, 'Feedback', user.uid);
     await setDoc(feedbackRef, {
       userId: user.uid,
       email: user.email,
