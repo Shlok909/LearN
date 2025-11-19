@@ -80,7 +80,7 @@ export default function SignupPage() {
       displayName: name || user.displayName,
       email: user.email,
       photoURL: user.photoURL,
-    }, { merge: true });
+    });
 
     const feedbackRef = doc(firestore, 'Feedback', user.uid);
     await setDoc(feedbackRef, {

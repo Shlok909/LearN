@@ -22,7 +22,7 @@ import Link from 'next/link';
 import { Loader2 } from 'lucide-react';
 import { signInWithEmailAndPassword, AuthErrorCodes, signInWithPopup, GoogleAuthProvider, User } from 'firebase/auth';
 import { useAuth, useFirestore } from '@/firebase';
-import { doc, setDoc } from 'firebase/firestore';
+import { doc, getDoc, setDoc } from 'firebase/firestore';
 
 const formSchema = z.object({
   email: z.string().email({ message: 'Invalid email address.' }),
@@ -69,11 +69,14 @@ export default function LoginPage() {
   const createUserProfile = async (user: User) => {
     if (!firestore) return;
     const userRef = doc(firestore, 'users', user.uid);
-    await setDoc(userRef, {
-      displayName: user.displayName,
-      email: user.email,
-      photoURL: user.photoURL,
-    }, { merge: true });
+    const docSnap = await getDoc(userRef);
+    if (!docSnap.exists()) {
+        await setDoc(userRef, {
+            displayName: user.displayName,
+            email: user.email,
+            photoURL: user.photoURL,
+        });
+    }
   };
 
   async function onSubmit(values: z.infer<typeof formSchema>) {

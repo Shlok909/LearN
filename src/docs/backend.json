@@ -124,13 +124,13 @@
         }
       },
       {
-        "path": "/Feedback/{userId}",
+        "path": "/Feedback/{feedbackId}",
         "definition": {
           "entityName": "Feedback",
           "schema": {
             "$ref": "#/backend/entities/Feedback"
           },
-          "description": "Stores feedback submitted by a user. The document ID is the user's UID."
+          "description": "Stores feedback submitted by a user. The document ID is auto-generated."
         }
       }
     ]
