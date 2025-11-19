@@ -51,7 +51,7 @@ export default function LoginPage() {
         title: 'Login Successful',
         description: "Welcome back!",
       });
-      router.push('/dashboard');
+      router.push('/');
     } catch (error: any) {
       let title = 'An unexpected error occurred';
       let description = 'Please try again later.';
@@ -59,8 +59,6 @@ export default function LoginPage() {
       if (error.code === AuthErrorCodes.INVALID_PASSWORD || error.code === 'auth/invalid-credential' || error.code === AuthErrorCodes.USER_DELETED) {
         title = 'Login Failed';
         description = 'Password or Email is incorrect';
-      } else {
-        console.error(error.code, error.message);
       }
       
       toast({
