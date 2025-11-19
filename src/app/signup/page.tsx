@@ -93,7 +93,13 @@ export default function SignupPage() {
         displayName: values.name,
       });
 
-      await createUserProfile(userCredential.user);
+      // We need to create a new user object with the updated display name to pass to createUserProfile
+      const updatedUser = {
+        ...userCredential.user,
+        displayName: values.name,
+      };
+
+      await createUserProfile(updatedUser as User);
       
       toast({
         title: 'Account Created',

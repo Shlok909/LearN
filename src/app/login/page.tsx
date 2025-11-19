@@ -80,7 +80,8 @@ export default function LoginPage() {
     if (!auth) return;
     setIsLoading(true);
     try {
-      await signInWithEmailAndPassword(auth, values.email, values.password);
+      const userCredential = await signInWithEmailAndPassword(auth, values.email, values.password);
+      await createUserProfile(userCredential.user);
       toast({
         title: 'Login Successful',
         description: "Welcome back!",
