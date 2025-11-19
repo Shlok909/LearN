@@ -3,6 +3,7 @@ import { Toaster } from "@/components/ui/toaster"
 import './globals.css';
 import AnimatedHeroBackground from '@/components/sections/animated-hero-background';
 import { FirebaseClientProvider } from '@/firebase';
+import AuthGuard from '@/components/auth-guard';
 
 export const metadata: Metadata = {
   title: 'LearNova - Your Gateway to Learning',
@@ -23,12 +24,14 @@ export default function RootLayout({
       </head>
       <body className="font-body antialiased">
         <FirebaseClientProvider>
-          <div id="background-container" />
-          <AnimatedHeroBackground />
-          <div className="relative z-10">
-            {children}
-          </div>
-          <Toaster />
+          <AuthGuard>
+            <div id="background-container" />
+            <AnimatedHeroBackground />
+            <div className="relative z-10">
+              {children}
+            </div>
+            <Toaster />
+          </AuthGuard>
         </FirebaseClientProvider>
       </body>
     </html>
