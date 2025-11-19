@@ -1,0 +1,66 @@
+{
+  "entities": {
+    "Course": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Course",
+      "type": "object",
+      "description": "Represents a course offered on the LearnNova platform.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the course."
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the course."
+        },
+        "description": {
+          "type": "string",
+          "description": "Brief description of the course content."
+        },
+        "duration": {
+          "type": "string",
+          "description": "The duration of the course (e.g., '3 months')."
+        },
+        "icon": {
+          "type": "string",
+          "description": "Icon associated with the course (e.g., graduation cap, microscope)."
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "description",
+        "duration",
+        "icon"
+      ]
+    }
+  },
+  "auth": {
+    "providers": [
+      "password",
+      "anonymous"
+    ]
+  },
+  "firestore": {
+    "structure": [
+      {
+        "path": "/courses/{courseId}",
+        "definition": {
+          "entityName": "Course",
+          "schema": {
+            "$ref": "#/backend/entities/Course"
+          },
+          "description": "Stores course information. Each document represents a course offered on the LearnNova platform.",
+          "params": [
+            {
+              "name": "courseId",
+              "description": "Unique identifier for the course."
+            }
+          ]
+        }
+      }
+    ],
+    "reasoning": "The Firestore structure is designed to store course data. A top-level `courses` collection stores course information. This structure is simple and scalable for future enhancements.\n\n**Authorization Independence:** Since there are no explicit authorization requirements mentioned in the prompt (e.g., user-specific courses, collaborative courses), the structure doesn't require denormalization for authorization. If, in the future, courses need to be owned by users or have specific access controls, the `Course` documents will need to denormalize relevant authorization data.\n\n**QAPs:**\n*   The segregation of course data into a single collection (`courses`) ensures that all documents share the same security requirements. This simplifies the security rules and ensures that listing courses can be done securely.\n*   If user-specific data is added later, path-based ownership or membership maps will be used to provide Authorization Independence and enable secure listing of user-specific data."
+  }
+}

@@ -1,0 +1,37 @@
+/**
+ * @fileoverview Firestore Security Rules for LearnNova.
+ *
+ * Core Philosophy:
+ * This ruleset enforces public read access to all courses, allowing any user (signed in or not) to view the course catalog.
+ * Write access (create, update, delete) is currently disabled, reflecting the absence of authorization requirements in the prompt.
+ * In a production environment, these write rules would need to be updated to include authentication and authorization checks (e.g., only admins can create courses).
+ *
+ * Data Structure:
+ * The data is structured with a single top-level collection: `/courses/{courseId}`.
+ * Each document in the `/courses` collection represents a single course.
+ *
+ * Key Security Decisions:
+ * - Public Read Access: All users can read course data without authentication.
+ * - No User Listing: There are no user-specific collections, so user listing is not applicable.
+ * - Strict Write Restrictions (Currently): Write operations are explicitly denied until proper authorization is implemented.
+ * - Denormalization for Authorization: Not currently needed because there are no specified authorization constraints. If authorization is added later (e.g., admin-only writes), fields like `creatorId` or an `admins` map would be added to the `Course` documents.
+ */
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    /**
+     * @description Allows anyone to read course information. Write access is denied pending authorization implementation.
+     * @path /courses/{courseId}
+     * @allow (get, list): Any user can read course information.
+     * @deny (create, update, delete): No user can create, update, or delete courses until authorization logic is added.
+     * @principle Public read access with restricted writes (currently disabled pending authorization).
+     */
+    match /courses/{courseId} {
+      allow get, list: if true;
+      allow create: if false;
+      allow update: if false;
+      allow delete: if false;
+    }
+  }
+}
