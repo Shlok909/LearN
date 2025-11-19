@@ -40,12 +40,21 @@ const nextConfig: NextConfig = {
         port: '',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'a.storyblok.com',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'static.wikia.nocookie.net',
+        port: '',
+        pathname: '/**',
+      },
     ],
-  },
-  experimental: {
-    // This prevents the server from restarting when next.config.ts is touched
-    watcherExclude: ['**/.next/**', 'next.config.ts'],
   },
 };
 
 export default nextConfig;
+
