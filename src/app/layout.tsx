@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Toaster } from "@/components/ui/toaster"
 import './globals.css';
 import AnimatedHeroBackground from '@/components/sections/animated-hero-background';
+import { FirebaseClientProvider } from '@/firebase';
 
 export const metadata: Metadata = {
   title: 'LearNova - Your Gateway to Learning',
@@ -21,12 +22,14 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap" rel="stylesheet" />
       </head>
       <body className="font-body antialiased">
-        <div id="background-container" />
-        <AnimatedHeroBackground />
-        <div className="relative z-10">
-          {children}
-        </div>
-        <Toaster />
+        <FirebaseClientProvider>
+          <div id="background-container" />
+          <AnimatedHeroBackground />
+          <div className="relative z-10">
+            {children}
+          </div>
+          <Toaster />
+        </FirebaseClientProvider>
       </body>
     </html>
   );
