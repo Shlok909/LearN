@@ -20,7 +20,7 @@ service cloud.firestore {
     }
 
     // Feedback collection
-    match /feedback/{userId} {
+    match /Feedback/{userId} {
       // Allow authenticated user to create or update their own feedback document
       allow create, update: if request.auth != null && request.auth.uid == userId;
       
