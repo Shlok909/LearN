@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState } from 'react';
@@ -39,6 +40,10 @@ const RecommendationSection = () => {
       const result = await personalizedCourseRecommendations(data);
       if (result && result.courseRecommendations) {
         setRecommendations(result.courseRecommendations);
+        toast({
+          title: "Recommendations Ready!",
+          description: "We've generated a custom course list for you.",
+        });
       } else {
          toast({
           variant: "destructive",
@@ -71,7 +76,7 @@ const RecommendationSection = () => {
           </p>
         </div>
 
-        <div className="mx-auto grid max-w-4xl gap-8 lg:grid-cols-2">
+        <div className="mx-auto grid max-w-xl grid-cols-1 gap-8">
           <Card className="shadow-lg">
             <CardHeader>
               <CardTitle>Tell Us About Yourself</CardTitle>
@@ -117,29 +122,25 @@ const RecommendationSection = () => {
               </Form>
             </CardContent>
           </Card>
-          
-          <Card className="flex flex-col bg-card">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Sparkles className="h-5 w-5 text-primary" />
-                Your Custom Course List
-              </CardTitle>
-              <CardDescription>Courses tailored just for you will appear here.</CardDescription>
-            </CardHeader>
-            <CardContent className="flex flex-grow items-center justify-center p-6">
-              {isLoading && <Loader2 className="h-8 w-8 animate-spin text-primary" />}
-              {!isLoading && recommendations.length === 0 && (
-                <p className="text-center text-muted-foreground">Your recommended courses will be shown here.</p>
-              )}
-              {!isLoading && recommendations.length > 0 && (
-                <ul className="w-full list-inside list-disc space-y-2 text-foreground">
-                  {recommendations.map((rec, index) => (
-                    <li key={index} className="rounded-md bg-background p-3 text-sm md:text-base">{rec}</li>
-                  ))}
-                </ul>
-              )}
-            </CardContent>
-          </Card>
+
+          {recommendations.length > 0 && (
+             <Card className="mt-8">
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <Sparkles className="h-5 w-5 text-primary" />
+                    Your Custom Course List
+                  </CardTitle>
+                  <CardDescription>Here are the courses tailored just for you.</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <ul className="w-full list-inside list-disc space-y-2 text-foreground">
+                    {recommendations.map((rec, index) => (
+                      <li key={index} className="rounded-md bg-background p-3 text-sm md:text-base">{rec}</li>
+                    ))}
+                  </ul>
+                </CardContent>
+              </Card>
+          )}
         </div>
       </div>
     </section>
