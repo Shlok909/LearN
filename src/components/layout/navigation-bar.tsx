@@ -116,7 +116,7 @@ const NavigationBar = () => {
                   <DropdownMenuItem asChild>
                     <Link href="/dashboard">
                       <LayoutDashboard className="mr-2 h-4 w-4" />
-                      <span>Dashboard</span>
+                      <span>My Profile</span>
                     </Link>
                   </DropdownMenuItem>
                   <DropdownMenuSeparator />
@@ -182,7 +182,7 @@ const NavigationBar = () => {
                         className="rounded-md px-3 py-2 text-lg font-medium text-white/90 transition-colors hover:bg-white/10 hover:text-white"
                         onClick={() => setIsMobileMenuOpen(false)}
                       >
-                        Dashboard
+                        My Profile
                       </Link>
                     </SheetClose>
                   )}
