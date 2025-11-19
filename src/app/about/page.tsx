@@ -31,8 +31,8 @@ const founders = [
   {
     name: 'Khushi Kumari',
     bio: "Khushi drives the platform's growth and user engagement. Her focus on student needs helps shape LearNova's future.",
-    imageUrl: 'https://a.storyblok.com/f/178900/1920x1080/ab7a8d0a63/the-fragrant-flower-blooms-with-dignity.png',
-    imageHint: 'woman portrait',
+    imageUrl: 'https://static.wikia.nocookie.net/aobuta/images/d/d8/Mai_Sakurajima_Anime_-_Screenshot_1.png/revision/latest?cb=20251105033658',
+    imageHint: 'anime girl',
     socials: {
       github: '#',
       linkedin: '#',
