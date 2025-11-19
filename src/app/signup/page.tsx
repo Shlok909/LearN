@@ -73,13 +73,19 @@ export default function SignupPage() {
     },
   });
 
-  const createUserProfile = async (user: User, name?: string) => {
+  const createUserDocuments = async (user: User, name?: string) => {
     if (!firestore) return;
     const userRef = doc(firestore, 'users', user.uid);
     await setDoc(userRef, {
       displayName: name || user.displayName,
       email: user.email,
       photoURL: user.photoURL,
+    }, { merge: true });
+
+    const feedbackRef = doc(firestore, 'feedback', user.uid);
+    await setDoc(feedbackRef, {
+      userId: user.uid,
+      email: user.email,
     }, { merge: true });
   };
 
@@ -93,7 +99,7 @@ export default function SignupPage() {
         displayName: values.name,
       });
 
-      await createUserProfile(userCredential.user, values.name);
+      await createUserDocuments(userCredential.user, values.name);
       
       toast({
         title: 'Account Created',
@@ -113,7 +119,7 @@ export default function SignupPage() {
     try {
       const provider = new GoogleAuthProvider();
       const result = await signInWithPopup(auth, provider);
-      await createUserProfile(result.user);
+      await createUserDocuments(result.user);
       toast({
         title: 'Account Created',
         description: "Welcome!",
