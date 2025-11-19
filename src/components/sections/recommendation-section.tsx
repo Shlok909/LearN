@@ -13,27 +13,27 @@ import { Textarea } from '@/components/ui/textarea';
 import { Loader2, Sparkles } from 'lucide-react';
 import { useToast } from "@/hooks/use-toast";
 
-const recommendationSchema = z.object({
-  academicHistory: z.string().min(20, 'Please provide more details about your academic history (at least 20 characters).'),
-  interests: z.string().min(10, 'Please tell us more about your interests (at least 10 characters).'),
+const feedbackSchema = z.object({
+  academicHistory: z.string().min(10, 'Please provide more details (at least 10 characters).'),
+  interests: z.string().min(10, 'Please tell us more (at least 10 characters).'),
 });
 
-type RecommendationFormValues = z.infer<typeof recommendationSchema>;
+type FeedbackFormValues = z.infer<typeof feedbackSchema>;
 
 const RecommendationSection = () => {
   const [recommendations, setRecommendations] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
 
-  const form = useForm<RecommendationFormValues>({
-    resolver: zodResolver(recommendationSchema),
+  const form = useForm<FeedbackFormValues>({
+    resolver: zodResolver(feedbackSchema),
     defaultValues: {
       academicHistory: '',
       interests: '',
     },
   });
 
-  const onSubmit: SubmitHandler<RecommendationFormValues> = async (data) => {
+  const onSubmit: SubmitHandler<FeedbackFormValues> = async (data) => {
     setIsLoading(true);
     setRecommendations([]);
     try {
@@ -41,20 +41,20 @@ const RecommendationSection = () => {
       if (result && result.courseRecommendations) {
         setRecommendations(result.courseRecommendations);
         toast({
-          title: "Recommendations Ready!",
-          description: "We've generated a custom course list for you.",
+          title: "Feedback Received!",
+          description: "Thank you for your valuable input.",
         });
       } else {
          toast({
           variant: "destructive",
           title: "An unexpected error occurred",
-          description: "Could not get recommendations. Please try again.",
+          description: "Could not submit feedback. Please try again.",
         });
       }
     } catch (error) {
        toast({
         variant: "destructive",
-        title: "Error Getting Recommendations",
+        title: "Error Submitting Feedback",
         description: "There was a problem communicating with the AI. Please try again later.",
       });
       console.error("Error getting recommendations:", error);
@@ -68,19 +68,19 @@ const RecommendationSection = () => {
       <div className="container mx-auto px-4">
         <div className="mb-12 text-center md:mb-16">
           <h2 className="mb-4 text-3xl font-bold text-foreground md:text-4xl">
-            Get Personalized Recommendations
+            Give us your feedback
           </h2>
           <div className="mx-auto h-1 w-20 rounded-full bg-primary" />
           <p className="mx-auto mt-4 max-w-2xl text-muted-foreground">
-            Let our AI assistant suggest the perfect courses for you based on your background and passions.
+            Let us know what you think. Your feedback helps us improve LearNova.
           </p>
         </div>
 
         <div className="mx-auto grid max-w-xl grid-cols-1 gap-8">
           <Card className="shadow-lg">
             <CardHeader>
-              <CardTitle>Tell Us About Yourself</CardTitle>
-              <CardDescription>The more details you provide, the better the recommendations.</CardDescription>
+              <CardTitle>Share Your Thoughts</CardTitle>
+              <CardDescription>The more details you provide, the better we can understand your needs.</CardDescription>
             </CardHeader>
             <CardContent>
               <Form {...form}>
@@ -90,9 +90,9 @@ const RecommendationSection = () => {
                     name="academicHistory"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Academic History</FormLabel>
+                        <FormLabel>What do you like about LearNova?</FormLabel>
                         <FormControl>
-                          <Textarea placeholder="e.g., Completed high school with a focus on science. Enjoyed math but struggled with history..." {...field} rows={4} />
+                          <Textarea placeholder="e.g., The interface is clean and easy to navigate..." {...field} rows={4} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -103,9 +103,9 @@ const RecommendationSection = () => {
                     name="interests"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Your Interests</FormLabel>
+                        <FormLabel>What can we improve?</FormLabel>
                         <FormControl>
-                          <Textarea placeholder="e.g., I love coding, building websites, and gaming. I'm also interested in AI and machine learning." {...field} rows={4} />
+                          <Textarea placeholder="e.g., I would love to see more courses on..." {...field} rows={4} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -113,9 +113,9 @@ const RecommendationSection = () => {
                   />
                   <Button type="submit" disabled={isLoading} className="w-full">
                     {isLoading ? (
-                      <><Loader2 className="mr-2 h-4 w-4 animate-spin" /> Generating...</>
+                      <><Loader2 className="mr-2 h-4 w-4 animate-spin" /> Submitting...</>
                     ) : (
-                      'Get Recommendations'
+                      'Submit Feedback'
                     )}
                   </Button>
                 </form>
@@ -128,9 +128,9 @@ const RecommendationSection = () => {
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
                     <Sparkles className="h-5 w-5 text-primary" />
-                    Your Custom Course List
+                    AI-Generated Response
                   </CardTitle>
-                  <CardDescription>Here are the courses tailored just for you.</CardDescription>
+                  <CardDescription>Here is a summary of your feedback.</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <ul className="w-full list-inside list-disc space-y-2 text-foreground">

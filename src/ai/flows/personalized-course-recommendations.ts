@@ -1,3 +1,4 @@
+
 'use server';
 
 /**
@@ -14,15 +15,15 @@ import {z} from 'genkit';
 const PersonalizedCourseRecommendationsInputSchema = z.object({
   academicHistory: z
     .string()
-    .describe('The academic history of the student.'),
-  interests: z.string().describe('The interests of the student.'),
+    .describe('The first part of the user feedback or query.'),
+  interests: z.string().describe('The second part of the user feedback or query.'),
 });
 export type PersonalizedCourseRecommendationsInput =
   z.infer<typeof PersonalizedCourseRecommendationsInputSchema>;
 
 const PersonalizedCourseRecommendationsOutputSchema = z.object({
   courseRecommendations:
-    z.array(z.string()).describe('A list of personalized course recommendations.'),
+    z.array(z.string()).describe('A list of responses, recommendations, or feedback summaries.'),
 });
 export type PersonalizedCourseRecommendationsOutput =
   z.infer<typeof PersonalizedCourseRecommendationsOutputSchema>;
@@ -37,14 +38,17 @@ const prompt = ai.definePrompt({
   name: 'personalizedCourseRecommendationsPrompt',
   input: {schema: PersonalizedCourseRecommendationsInputSchema},
   output: {schema: PersonalizedCourseRecommendationsOutputSchema},
-  prompt: `You are an expert academic advisor specializing in recommending courses to students based on their academic history and interests.
+  prompt: `You are an expert academic advisor and user feedback analyst for a platform called LearNova.
 
-  You will use this information to recommend a list of courses that the student should take.
+  Your role is to analyze user input and provide a helpful response. The user might be asking for course recommendations OR providing feedback.
 
-  Academic History: {{{academicHistory}}}
-  Interests: {{{interests}}}
+  - If they are asking for recommendations, use their academic history and interests to recommend a list of courses.
+  - If they are providing feedback (likes and dislikes), summarize their feedback and thank them.
 
-  Please provide a list of course recommendations.`,
+  User Likes / Academic History: {{{academicHistory}}}
+  User Dislikes or Interests: {{{interests}}}
+
+  Please provide a helpful response as a list of items.`,
 });
 
 const personalizedCourseRecommendationsFlow = ai.defineFlow(
