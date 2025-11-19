@@ -2,29 +2,23 @@
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 
-const publicPaths = ['/', '/about', '/login', '/signup'];
-
-function isPublic(pathname: string, paths: string[]) {
-    return paths.some(path => {
-        if (path.endsWith('/')) {
-            return pathname === path || pathname.startsWith(`${path}`);
-        }
-        return pathname === path;
-    });
-}
+const protectedRoutes = ['/home', '/dashboard'];
+const publicOnlyRoutes = ['/login', '/signup', '/'];
 
 export function middleware(request: NextRequest) {
   const currentUser = request.cookies.get('firebase-auth-edge-token')?.value
   const { pathname } = request.nextUrl
 
-  const isPublicRoute = isPublic(pathname, publicPaths) || pathname.startsWith('/courses');
-
-  if (!currentUser && !isPublicRoute) {
+  if (protectedRoutes.some(path => pathname.startsWith(path)) && !currentUser) {
     return NextResponse.redirect(new URL('/login', request.url))
   }
-  
-  if (currentUser && (pathname.startsWith('/login') || pathname.startsWith('/signup'))) {
-    return NextResponse.redirect(new URL('/', request.url))
+
+  if (publicOnlyRoutes.includes(pathname) && currentUser) {
+     if (pathname.startsWith('/')) {
+        const url = request.nextUrl.clone()
+        url.pathname = '/home'
+        return NextResponse.redirect(url)
+     }
   }
 }
 

@@ -51,7 +51,7 @@ export default function LoginPage() {
         title: 'Login Successful',
         description: "Welcome back!",
       });
-      router.push('/');
+      router.push('/home');
     } catch (error: any) {
       let title = 'An unexpected error occurred';
       let description = 'Please try again later.';

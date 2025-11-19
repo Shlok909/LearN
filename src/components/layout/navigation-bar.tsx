@@ -28,7 +28,6 @@ import { signOut } from 'firebase/auth';
 
 const navItems = [
   { name: 'Home', href: '/' },
-  { name: 'Courses', href: '/#courses' },
   { name: 'About Us', href: '/about' },
   { name: 'Contact', href: '#contact' },
 ];
@@ -70,6 +69,17 @@ const NavigationBar = () => {
     }
   };
 
+  const getNavItems = () => {
+    if (user) {
+      return [
+        { name: 'Home', href: '/home' },
+        { name: 'About Us', href: '/about' },
+        { name: 'Contact', href: '#contact' },
+      ];
+    }
+    return navItems;
+  }
+
   return (
     <header className="sticky top-0 z-[1000] h-[70px] bg-transparent backdrop-blur-sm shadow-md">
       <nav className="container mx-auto flex h-full items-center justify-between px-4">
@@ -79,7 +89,7 @@ const NavigationBar = () => {
 
         {/* Desktop Menu */}
         <div className="hidden items-center space-x-8 md:flex">
-          {navItems.map((item) => (
+          {getNavItems().map((item) => (
             <Link
               key={item.name}
               href={item.href}
@@ -161,7 +171,7 @@ const NavigationBar = () => {
                   <SheetTitle className="text-2xl font-bold text-white">LearNova</SheetTitle>
                 </SheetHeader>
                 <div className="flex flex-col space-y-4 p-4">
-                  {navItems.map((item) => (
+                  {getNavItems().map((item) => (
                     <SheetClose asChild key={item.name}>
                       <Link
                         href={item.href}

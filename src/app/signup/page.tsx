@@ -61,9 +61,9 @@ export default function SignupPage() {
       
       toast({
         title: 'Account Created',
-        description: "Welcome to LearNova! Please sign in.",
+        description: "Welcome to LearNova!",
       });
-      router.push('/login');
+      router.push('/home');
     } catch (error: any) {
       console.error(error);
       let title = 'An unexpected error occurred';

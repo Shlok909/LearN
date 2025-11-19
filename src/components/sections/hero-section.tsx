@@ -18,7 +18,7 @@ const HeroSection = () => {
           size="lg"
           className="h-auto rounded-full bg-white px-8 py-3 text-base font-semibold text-primary transition-transform duration-300 hover:scale-105 hover:bg-white hover:shadow-lg md:px-12 md:py-4 md:text-lg"
         >
-          <Link href="#courses">Explore Courses</Link>
+          <Link href="#why-us">Explore Features</Link>
         </Button>
       </div>
     </section>
