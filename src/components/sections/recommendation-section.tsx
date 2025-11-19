@@ -100,7 +100,7 @@ const RecommendationSection = () => {
         </div>
 
         <div className="mx-auto grid max-w-xl grid-cols-1 gap-8">
-          <Card className="shadow-lg">
+          <Card className="shadow-lg border-white">
             <CardHeader>
               <CardTitle>Share Your Thoughts</CardTitle>
               <CardDescription>The more details you provide, the better we can understand your needs.</CardDescription>
