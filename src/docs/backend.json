@@ -1,0 +1,138 @@
+
+{
+  "entities": {
+    "Course": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Course",
+      "type": "object",
+      "description": "Represents a course offered on the LearnNova platform.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the course."
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the course."
+        },
+        "description": {
+          "type": "string",
+          "description": "Brief description of the course content."
+        },
+        "duration": {
+          "type": "string",
+          "description": "The duration of the course (e.g., '3 months')."
+        },
+        "icon": {
+          "type": "string",
+          "description": "Icon associated with the course (e.g., graduation cap, microscope)."
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "description",
+        "duration",
+        "icon"
+      ]
+    },
+    "UserProfile": {
+      "title": "User Profile",
+      "description": "Stores public information about a user.",
+      "type": "object",
+      "properties": {
+        "displayName": {
+          "type": "string",
+          "description": "The user's chosen display name."
+        },
+        "photoURL": {
+          "type": "string",
+          "description": "URL of the user's profile picture."
+        },
+        "email": {
+          "type": "string",
+          "format": "email",
+          "description": "The user's email address."
+        }
+      },
+      "required": [
+        "displayName",
+        "email"
+      ]
+    },
+    "Feedback": {
+      "title": "Feedback",
+      "description": "Stores user feedback.",
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Name of the user providing feedback."
+        },
+        "likes": {
+          "type": "string",
+          "description": "What the user liked about the platform."
+        },
+        "improvements": {
+          "type": "string",
+          "description": "What the user thinks can be improved."
+        },
+        "userId": {
+          "type": "string",
+          "description": "The UID of the user who submitted the feedback."
+        },
+        "email": {
+          "type": "string",
+          "format": "email",
+          "description": "The email of the user."
+        },
+        "submittedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Timestamp of when the feedback was submitted."
+        }
+      },
+      "required": ["name", "likes", "improvements", "userId", "email", "submittedAt"]
+    }
+  },
+  "auth": {
+    "providers": [
+      "password",
+      "google.com"
+    ]
+  },
+  "firestore": {
+    "structure": [
+      {
+        "path": "/courses/{courseId}",
+        "definition": {
+          "entityName": "Course",
+          "schema": {
+            "$ref": "#/backend/entities/Course"
+          },
+          "description": "Stores course information. Each document represents a course offered on the LearnNova platform."
+        }
+      },
+      {
+        "path": "/users/{userId}",
+        "definition": {
+          "entityName": "UserProfile",
+          "schema": {
+            "$ref": "#/backend/entities/UserProfile"
+          },
+          "description": "Stores user profile information."
+        }
+      },
+      {
+        "path": "/feedback/{userId}",
+        "definition": {
+          "entityName": "Feedback",
+          "schema": {
+            "$ref": "#/backend/entities/Feedback"
+          },
+          "description": "Stores feedback submitted by a user. The document ID is the user's UID."
+        }
+      }
+    ]
+  }
+}

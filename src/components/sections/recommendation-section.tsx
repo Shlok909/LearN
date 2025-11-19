@@ -5,36 +5,36 @@ import { useState, useEffect } from 'react';
 import { useForm, type SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { personalizedCourseRecommendations } from '@/ai/flows/personalized-course-recommendations';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Textarea } from '@/components/ui/textarea';
 import { Input } from '@/components/ui/input';
-import { Loader2, Sparkles } from 'lucide-react';
+import { Loader2 } from 'lucide-react';
 import { useToast } from "@/hooks/use-toast";
-import { useUser } from '@/firebase';
+import { useUser, useFirestore } from '@/firebase';
+import { doc, setDoc } from 'firebase/firestore';
 
 const feedbackSchema = z.object({
   name: z.string().min(2, 'Please enter your name.'),
-  academicHistory: z.string().min(10, 'Please provide more details (at least 10 characters).'),
-  interests: z.string().min(10, 'Please tell us more (at least 10 characters).'),
+  likes: z.string().min(10, 'Please provide more details (at least 10 characters).'),
+  improvements: z.string().min(10, 'Please tell us more (at least 10 characters).'),
 });
 
 type FeedbackFormValues = z.infer<typeof feedbackSchema>;
 
 const RecommendationSection = () => {
-  const [recommendations, setRecommendations] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
   const { user } = useUser();
+  const firestore = useFirestore();
 
   const form = useForm<FeedbackFormValues>({
     resolver: zodResolver(feedbackSchema),
     defaultValues: {
       name: '',
-      academicHistory: '',
-      interests: '',
+      likes: '',
+      improvements: '',
     },
   });
 
@@ -45,30 +45,42 @@ const RecommendationSection = () => {
   }, [user, form]);
 
   const onSubmit: SubmitHandler<FeedbackFormValues> = async (data) => {
+    if (!user || !firestore) {
+      toast({
+        variant: "destructive",
+        title: "Error",
+        description: "You must be logged in to submit feedback.",
+      });
+      return;
+    }
+
     setIsLoading(true);
-    setRecommendations([]);
+    
     try {
-      const result = await personalizedCourseRecommendations(data);
-      if (result && result.courseRecommendations) {
-        setRecommendations(result.courseRecommendations);
-        toast({
-          title: "Feedback Received!",
-          description: "Thank you for your valuable input.",
-        });
-      } else {
-         toast({
-          variant: "destructive",
-          title: "An unexpected error occurred",
-          description: "Could not submit feedback. Please try again.",
-        });
-      }
+      const feedbackRef = doc(firestore, 'feedback', user.uid);
+      
+      const feedbackData = {
+        ...data,
+        userId: user.uid,
+        email: user.email,
+        submittedAt: new Date(),
+      };
+
+      await setDoc(feedbackRef, feedbackData, { merge: true });
+
+      toast({
+        title: "Thanks for the feedback!",
+        description: "We appreciate you helping us improve LearNova.",
+      });
+      form.reset({ name: user.displayName || '', likes: '', improvements: '' });
+
     } catch (error) {
        toast({
         variant: "destructive",
         title: "Error Submitting Feedback",
-        description: "There was a problem communicating with the AI. Please try again later.",
+        description: "There was a problem saving your feedback. Please try again later.",
       });
-      console.error("Error getting recommendations:", error);
+      console.error("Error saving feedback:", error);
     } finally {
       setIsLoading(false);
     }
@@ -111,7 +123,7 @@ const RecommendationSection = () => {
                   />
                   <FormField
                     control={form.control}
-                    name="academicHistory"
+                    name="likes"
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel>What do you like about LearNova?</FormLabel>
@@ -124,7 +136,7 @@ const RecommendationSection = () => {
                   />
                   <FormField
                     control={form.control}
-                    name="interests"
+                    name="improvements"
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel>What can we improve?</FormLabel>
@@ -146,25 +158,6 @@ const RecommendationSection = () => {
               </Form>
             </CardContent>
           </Card>
-
-          {recommendations.length > 0 && (
-             <Card className="mt-8">
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
-                    <Sparkles className="h-5 w-5 text-primary" />
-                    AI-Generated Response
-                  </CardTitle>
-                  <CardDescription>Here is a summary of your feedback.</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <ul className="w-full list-inside list-disc space-y-2 text-foreground">
-                    {recommendations.map((rec, index) => (
-                      <li key={index} className="rounded-md bg-background p-3 text-sm md:text-base">{rec}</li>
-                    ))}
-                  </ul>
-                </CardContent>
-              </Card>
-          )}
         </div>
       </div>
     </section>

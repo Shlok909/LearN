@@ -18,5 +18,14 @@ service cloud.firestore {
       // Only the authenticated user can read or write their own profile
       allow read, update, delete: if request.auth != null && request.auth.uid == userId;
     }
+
+    // Feedback collection
+    match /feedback/{userId} {
+      // Allow authenticated user to create or update their own feedback document
+      allow create, update: if request.auth != null && request.auth.uid == userId;
+      
+      // Only allow owner to read their feedback, or perhaps an admin role in the future
+      allow read, delete: if request.auth != null && request.auth.uid == userId;
+    }
   }
 }
