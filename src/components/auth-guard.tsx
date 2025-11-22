@@ -6,9 +6,10 @@ import { usePathname, useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 import { Loader2 } from 'lucide-react';
 
-const protectedRoutes = ['/home', '/dashboard'];
-const publicOnlyRoutes = ['/login', '/signup', '/'];
-const verificationRoute = '/verify-email';
+const protectedRoutes = ['/home', '/dashboard', '/courses'];
+const publicRoutes = ['/login', '/signup', '/verify-email', '/about'];
+const landingPage = '/';
+
 
 export default function AuthGuard({ children }: { children: React.ReactNode }) {
   const { user, isUserLoading } = useUser();
@@ -21,23 +22,23 @@ export default function AuthGuard({ children }: { children: React.ReactNode }) {
     }
 
     const isProtectedRoute = protectedRoutes.some(path => pathname.startsWith(path));
-    const isPublicOnlyRoute = publicOnlyRoutes.includes(pathname);
-    const isVerificationRoute = pathname.startsWith(verificationRoute);
+    const isPublicRoute = publicRoutes.some(path => pathname.startsWith(path)) || pathname === landingPage;
 
     if (user) {
+      // User is logged in
       if (!user.emailVerified && user.providerData.some(p => p.providerId === 'password')) {
-        // User is signed in with email/password but not verified
-        if (!isVerificationRoute) {
+        // Logged in with email, but not verified
+        if (pathname !== '/verify-email') {
           router.replace(`/verify-email?email=${user.email}`);
         }
       } else {
-        // Verified user (or social login)
-        if (isPublicOnlyRoute || isVerificationRoute) {
+        // Verified user or social login
+        if (pathname === '/login' || pathname === '/signup' || pathname === '/verify-email' || pathname === landingPage) {
           router.replace('/home');
         }
       }
     } else {
-      // No user
+      // No user is logged in
       if (isProtectedRoute) {
         router.replace('/login');
       }
@@ -45,8 +46,7 @@ export default function AuthGuard({ children }: { children: React.ReactNode }) {
 
   }, [user, isUserLoading, router, pathname]);
 
-  // While loading, show a full-screen loader to prevent content flashing
-  if (isUserLoading || (user && !user.emailVerified && user.providerData.some(p => p.providerId === 'password') && !pathname.startsWith(verificationRoute)) ) {
+  if (isUserLoading) {
     return (
       <div className="flex min-h-screen w-full items-center justify-center bg-background">
         <Loader2 className="h-10 w-10 animate-spin text-primary" />
@@ -54,6 +54,14 @@ export default function AuthGuard({ children }: { children: React.ReactNode }) {
     );
   }
 
-  // If auth state is determined, render the children
+  // Prevent flash of content for unverified users on protected pages
+  if (user && !user.emailVerified && user.providerData.some(p => p.providerId === 'password') && pathname !== '/verify-email') {
+     return (
+      <div className="flex min-h-screen w-full items-center justify-center bg-background">
+        <Loader2 className="h-10 w-10 animate-spin text-primary" />
+      </div>
+    );
+  }
+
   return <>{children}</>;
 }
