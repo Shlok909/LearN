@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useUser } from '@/firebase';
@@ -21,23 +22,22 @@ export default function AuthGuard({ children }: { children: React.ReactNode }) {
     }
 
     const isProtectedRoute = protectedRoutes.some(path => pathname.startsWith(path));
-    const isPublicRoute = publicRoutes.some(path => pathname.startsWith(path)) || pathname === landingPage;
-
+    
     if (user) {
       // User is logged in
-      if (!user.emailVerified && user.providerData.some(p => p.providerId === 'password')) {
-        // Logged in with email, but not verified
-        if (pathname !== '/verify-email') {
-          router.replace(`/verify-email?email=${user.email}`);
-        }
-      } else {
-        // Verified user or social login
+      if (user.emailVerified) {
+        // Verified user (or social login), should not be on auth pages or landing page
         if (pathname === '/login' || pathname === '/signup' || pathname === '/verify-email' || pathname === landingPage) {
           router.replace('/home');
         }
+      } else if (user.providerData.some(p => p.providerId === 'password')) {
+        // Logged in with email, but not verified. Must be on verify-email page.
+        if (pathname !== '/verify-email') {
+          router.replace(`/verify-email?email=${user.email}`);
+        }
       }
     } else {
-      // No user is logged in
+      // No user is logged in, they can only access public routes
       if (isProtectedRoute) {
         router.replace('/login');
       }
@@ -53,7 +53,7 @@ export default function AuthGuard({ children }: { children: React.ReactNode }) {
     );
   }
 
-  // Prevent flash of content for unverified users on protected pages
+  // Prevent flash of unverified content on protected routes
   if (user && !user.emailVerified && user.providerData.some(p => p.providerId === 'password') && pathname !== '/verify-email') {
      return (
       <div className="flex min-h-screen w-full items-center justify-center bg-background">
