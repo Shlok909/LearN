@@ -20,7 +20,7 @@ import { useToast } from '@/hooks/use-toast';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { Loader2 } from 'lucide-react';
-import { createUserWithEmailAndPassword, updateProfile, AuthErrorCodes, signInWithPopup, GoogleAuthProvider, User } from 'firebase/auth';
+import { createUserWithEmailAndPassword, updateProfile, sendEmailVerification, AuthErrorCodes, signInWithPopup, GoogleAuthProvider, User } from 'firebase/auth';
 import { doc, setDoc } from 'firebase/firestore';
 import { useAuth, useFirestore } from '@/firebase';
 
@@ -100,12 +100,15 @@ export default function SignupPage() {
       });
 
       await createUserDocuments(userCredential.user, values.name);
+
+      await sendEmailVerification(userCredential.user);
       
       toast({
-        title: 'Account Created',
-        description: "Welcome to LearNova!",
+        title: 'Verification Email Sent',
+        description: "Please check your email to verify your account.",
       });
-      router.push('/home');
+      router.push(`/verify-email?email=${values.email}`);
+
     } catch (error: any) {
       handleAuthError(error);
     } finally {

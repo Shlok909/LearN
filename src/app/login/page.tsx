@@ -84,6 +84,17 @@ export default function LoginPage() {
     setIsLoading(true);
     try {
       const userCredential = await signInWithEmailAndPassword(auth, values.email, values.password);
+
+      if (!userCredential.user.emailVerified) {
+        toast({
+          variant: 'destructive',
+          title: 'Email Not Verified',
+          description: "Please verify your email before logging in.",
+        });
+        router.push(`/verify-email?email=${values.email}`);
+        return;
+      }
+
       await createUserProfile(userCredential.user);
       toast({
         title: 'Login Successful',
@@ -122,14 +133,7 @@ export default function LoginPage() {
 
     if (error.code === 'auth/invalid-credential' || error.code === AuthErrorCodes.USER_DELETED) {
       title = 'Login Failed';
-      description = "First you have to create a account in order to log in";
-      toast({
-        variant: 'destructive',
-        title,
-        description,
-      });
-      router.push('/signup');
-      return;
+      description = "Incorrect email or password.";
     } else if (error.code === AuthErrorCodes.INVALID_PASSWORD) {
       title = 'Login Failed';
       description = 'Password or Email is incorrect';
