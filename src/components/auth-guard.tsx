@@ -7,7 +7,7 @@ import { useEffect } from 'react';
 import { Loader2 } from 'lucide-react';
 
 const protectedRoutes = ['/home', '/dashboard', '/courses'];
-const publicRoutes = ['/login', '/signup', '/verify-email', '/about'];
+const publicRoutes = ['/login', '/signup', '/verify-email', '/about', '/forgot-password'];
 const landingPage = '/';
 
 
