@@ -1,5 +1,6 @@
 'use client';
 
+import React, { useState } from 'react';
 import { getCourseById } from '@/lib/courses-data';
 import { notFound } from 'next/navigation';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -7,11 +8,9 @@ import { Book, ArrowRight } from 'lucide-react';
 import NavigationBar from '@/components/layout/navigation-bar';
 import Footer from '@/components/layout/footer';
 import BackButton from '@/components/back-button';
-import { useState } from 'react';
 import type { Subject, Course, Semester } from '@/lib/types';
 import ResourceModal from '@/components/course/resource-modal';
 
-// This is a new component to handle client-side logic
 function SemesterClientPage({ course, semester }: { course: Course; semester: Semester }) {
   const [selectedSubject, setSelectedSubject] = useState<Subject | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -71,9 +70,9 @@ function SemesterClientPage({ course, semester }: { course: Course; semester: Se
   );
 }
 
-
-// The main page component is now a server component, so we remove 'use client' from the top
-export default async function SemesterPage({ params }: { params: { courseId: string, semesterId: string } }) {
+// The main page component is now a server component
+export default function SemesterPage({ params: paramsPromise }: { params: Promise<{ courseId: string; semesterId: string }> }) {
+  const params = React.use(paramsPromise);
   const course = getCourseById(params.courseId);
   const semesterIdNum = parseInt(params.semesterId, 10);
 
