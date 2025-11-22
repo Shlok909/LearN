@@ -22,7 +22,7 @@ import Link from 'next/link';
 import { Loader2 } from 'lucide-react';
 import { signInWithEmailAndPassword, AuthErrorCodes, signInWithPopup, GoogleAuthProvider, User } from 'firebase/auth';
 import { useAuth, useFirestore } from '@/firebase';
-import { doc, setDoc } from 'firebase/firestore';
+import { doc, getDoc, setDoc } from 'firebase/firestore';
 
 const formSchema = z.object({
   email: z.string().email({ message: 'Invalid email address.' }),
@@ -69,11 +69,14 @@ export default function LoginPage() {
   const createUserProfile = async (user: User) => {
     if (!firestore) return;
     const userRef = doc(firestore, 'users', user.uid);
-    await setDoc(userRef, {
-      displayName: user.displayName,
-      email: user.email,
-      photoURL: user.photoURL,
-    }, { merge: true });
+    const docSnap = await getDoc(userRef);
+    if (!docSnap.exists()) {
+        await setDoc(userRef, {
+            displayName: user.displayName,
+            email: user.email,
+            photoURL: user.photoURL,
+        });
+    }
   };
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
@@ -81,6 +84,17 @@ export default function LoginPage() {
     setIsLoading(true);
     try {
       const userCredential = await signInWithEmailAndPassword(auth, values.email, values.password);
+
+      if (!userCredential.user.emailVerified) {
+        toast({
+          variant: 'destructive',
+          title: 'Email Not Verified',
+          description: "Please verify your email before logging in.",
+        });
+        router.push(`/verify-email?email=${values.email}`);
+        return;
+      }
+
       await createUserProfile(userCredential.user);
       toast({
         title: 'Login Successful',
@@ -119,14 +133,7 @@ export default function LoginPage() {
 
     if (error.code === 'auth/invalid-credential' || error.code === AuthErrorCodes.USER_DELETED) {
       title = 'Login Failed';
-      description = "First you have to create a account in order to log in";
-      toast({
-        variant: 'destructive',
-        title,
-        description,
-      });
-      router.push('/signup');
-      return;
+      description = "Incorrect email or password.";
     } else if (error.code === AuthErrorCodes.INVALID_PASSWORD) {
       title = 'Login Failed';
       description = 'Password or Email is incorrect';
@@ -171,7 +178,12 @@ export default function LoginPage() {
                 name="password"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Password</FormLabel>
+                    <div className="flex justify-between items-center">
+                      <FormLabel>Password</FormLabel>
+                      <Link href="/forgot-password" passHref className="text-sm text-secondary hover:underline">
+                        Forgot password?
+                      </Link>
+                    </div>
                     <FormControl>
                       <Input type="password" placeholder="••••••••" {...field} />
                     </FormControl>
