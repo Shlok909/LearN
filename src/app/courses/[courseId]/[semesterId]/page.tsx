@@ -72,7 +72,7 @@ function SemesterClientPage({ course, semester }: { course: Course; semester: Se
 }
 
 
-// The main page component is now a server component
+// The main page component is now a server component, so we remove 'use client' from the top
 export default async function SemesterPage({ params }: { params: { courseId: string, semesterId: string } }) {
   const course = getCourseById(params.courseId);
   const semesterIdNum = parseInt(params.semesterId, 10);
@@ -90,6 +90,7 @@ export default async function SemesterPage({ params }: { params: { courseId: str
   return (
     <div className="flex min-h-screen flex-col bg-background">
       <NavigationBar />
+      {/* We pass the server-fetched data as props to the new client component */}
       <SemesterClientPage course={course} semester={semester} />
       <Footer />
     </div>
