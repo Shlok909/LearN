@@ -246,9 +246,9 @@ export const coursesData: CoursesData = {
                 { id: 11,label: 'Link 11 ', url: 'https://youtube.com/playlist?list=PLqcuf9-ILPYARwquS3KOD3bDe0NSaD-oK&si=ZhAB8Pl9pHLFz3Aj', type: 'youtube' },
                 { id: 12,label: 'Link 12 ', url: 'https://youtube.com/playlist?list=PLdo5W4Nhv31a5ucW_S1K3-x6ztBRD-PNa&si=COQ8zrzb8QFlPXTd', type: 'youtube' },
               ], 
-              practicals: [] } 
-            }],
-    },
+              practicals: [] } },
+            ],
+          },
 
     /* SEMESTER 3 BCA YEAAAAAAAAAAAAAAAAAAAAAAAAHHHHHHHHH!!!!!!!! */
       { id: 3, 
@@ -522,3 +522,4 @@ export function getCourses() {
 export function getCourseById(id: string): Course | undefined {
   return coursesData[id];
 }
+
