@@ -63,162 +63,171 @@ export const coursesData: CoursesData = {
       },
       
       /* !!!!!!!!!!!          BCA Semester 2         !!!!!!!!!!*/
-      { id: 2, name: 'Semester 2', subjects: [
-        {
-          id: 'data-structure',
-          name: 'Data Structure',
-          code: 'BCA101',
-          icon: '📊',
-          description: 'Master the fundamentals of data organization and algorithms.',
-          resources: {
-            notes: [],
-            pyqs: [
-              { id: 1, label: 'Data structures summer 2019',   url: 'https://www.rtmnuonline.com/papers/bca-3-sem-data-structures-2227-summer-2019.pdf', type: 'pdf' },
-              { id: 2, label: 'Data structures summer 2018_1', url: 'https://www.rtmnuonline.com/papers/bca-3-sem-data-structures-paper-3-summer-2018.pdf', type: 'pdf' },
-              { id: 3, label: 'Data structures summer 2018_2', url: 'https://www.rtmnuonline.com/papers/bca-3-sem-data-structures-summer-2018.pdf', type: 'pdf' },
-              { id: 4, label: 'Data structures winter 2018', url: 'https://www.rtmnuonline.com/papers/bca-3-sem-data-structures-winter-2018.pdf', type: 'pdf' },
-              { id: 5, label: 'Data structures summer 2017', url: 'https://www.rtmnuonline.com/papers/bca-3-sem-data-structures-summer-2017.pdf', type: 'pdf' },
-              { id: 6, label: 'Data structures winter 2017', url: 'https://www.rtmnuonline.com/papers/bca-3-sem-data-structures-winter-2017.pdf', type: 'pdf' },
-              { id: 7, label: 'Data structures summer 2016', url: 'https://www.rtmnuonline.com/papers/bca-3-sem-data-structures-summer-2016.pdf', type: 'pdf' },
-              { id: 8, label: 'Data structures winter 2016',url: 'https://www.rtmnuonline.com/papers/bca-3-sem-data-structures-winter-2016.pdf', type: 'pdf' },
-            ],
-            lectures: [
-              { id: 1, label: 'Link 1 ', url: 'https://youtu.be/MdG0Vw9f1A4?si=QmF6df5SHgZDYQHo', type: 'youtube' },
-              { id: 2, label: 'Link 2 ', url: 'https://youtu.be/J0OvDNmAWNw?si=nVjGorUrDjT_szES', type: 'youtube' },
-              { id: 3, label: 'Link 3 ', url: 'https://youtu.be/OkS9YkfW50s?si=K38UEmaOUJO1Vlch', type: 'youtube' },
-              { id: 4, label: 'Link 4 ', url: 'https://youtu.be/0rIcIgpl664?si=OdJqoytAzn1qgmlQ', type: 'youtube' },
-              { id: 5, label: 'Link 5 ', url: 'https://youtube.com/playlist?list=PLqleLpAMfxGAf5rrWdm92WMK3-gsrxgz5&si=GDZBrnXzwnYeksqi', type: 'youtube' },
-              { id: 6, label: 'Link 6 ', url: 'https://youtu.be/8TVaEGeaGGc?si=A-JLzxn_8XkO-Bo9', type: 'youtube' },
-              { id: 7, label: 'Link 7 ', url: 'https://youtu.be/zeNnWyEcqSk?si=RJXNYpKpsn4fxUmm', type: 'youtube' },
-              { id: 8, label: 'Link 8 ', url: 'https://youtu.be/3Ut-Hha-tmk?si=XuCrUhXS24rCUM2U', type: 'youtube' },
-            ],
-            practicals: [{ id: 1, label: 'Link 1 II', url: '#', type: 'pdf' }],
+      { 
+        id: 2, 
+        name: 'Semester 2', 
+        subjects: [
+          {
+            id: 'data-structure',
+            name: 'Data Structure',
+            code: 'BCA201', // Corrected from BCA101 (Duplicate)
+            icon: '📊',
+            description: 'Master the fundamentals of data organization and algorithms.',
+            resources: {
+              notes: [],
+              pyqs: [
+                { id: 1, label: 'Data structures summer 2019',   url: 'https://www.rtmnuonline.com/papers/bca-3-sem-data-structures-2227-summer-2019.pdf', type: 'pdf' },
+                { id: 2, label: 'Data structures summer 2018_1', url: 'https://www.rtmnuonline.com/papers/bca-3-sem-data-structures-paper-3-summer-2018.pdf', type: 'pdf' },
+                { id: 3, label: 'Data structures summer 2018_2', url: 'https://www.rtmnuonline.com/papers/bca-3-sem-data-structures-summer-2018.pdf', type: 'pdf' },
+                { id: 4, label: 'Data structures winter 2018', url: 'https://www.rtmnuonline.com/papers/bca-3-sem-data-structures-winter-2018.pdf', type: 'pdf' },
+                { id: 5, label: 'Data structures summer 2017', url: 'https://www.rtmnuonline.com/papers/bca-3-sem-data-structures-summer-2017.pdf', type: 'pdf' },
+                { id: 6, label: 'Data structures winter 2017', url: 'https://www.rtmnuonline.com/papers/bca-3-sem-data-structures-winter-2017.pdf', type: 'pdf' },
+                { id: 7, label: 'Data structures summer 2016', url: 'https://www.rtmnuonline.com/papers/bca-3-sem-data-structures-summer-2016.pdf', type: 'pdf' },
+                { id: 8, label: 'Data structures winter 2016',url: 'https://www.rtmnuonline.com/papers/bca-3-sem-data-structures-winter-2016.pdf', type: 'pdf' },
+              ],
+              lectures: [
+                { id: 1, label: 'Link 1 ', url: 'https://youtu.be/MdG0Vw9f1A4?si=QmF6df5SHgZDYQHo', type: 'youtube' },
+                { id: 2, label: 'Link 2 ', url: 'https://youtu.be/J0OvDNmAWNw?si=nVjGorUrDjT_szES', type: 'youtube' },
+                { id: 3, label: 'Link 3 ', url: 'https://youtu.be/OkS9YkfW50s?si=K38UEmaOUJO1Vlch', type: 'youtube' },
+                { id: 4, label: 'Link 4 ', url: 'https://youtu.be/0rIcIgpl664?si=OdJqoytAzn1qgmlQ', type: 'youtube' },
+                { id: 5, label: 'Link 5 ', url: 'https://youtube.com/playlist?list=PLqleLpAMfxGAf5rrWdm92WMK3-gsrxgz5&si=GDZBrnXzwnYeksqi', type: 'youtube' },
+                { id: 6, label: 'Link 6 ', url: 'https://youtu.be/8TVaEGeaGGc?si=A-JLzxn_8XkO-Bo9', type: 'youtube' },
+                { id: 7, label: 'Link 7 ', url: 'https://youtu.be/zeNnWyEcqSk?si=RJXNYpKpsn4fxUmm', type: 'youtube' },
+                { id: 8, label: 'Link 8 ', url: 'https://youtu.be/3Ut-Hha-tmk?si=XuCrUhXS24rCUM2U', type: 'youtube' },
+              ],
+              practicals: [{ id: 1, label: 'Link 1 II', url: '#', type: 'pdf' }],
+            },
           },
-        },
-        
-        {
-          id: 'constitution-india',
-          name: 'Constitution of India',
-          code: 'BCA102',
-          icon: '📜',
-          description: 'Explore the foundational document of Indian democracy.',
-          resources: { 
-            notes: [], 
-            pyqs: [
-              { id: 1, label: 'link 1', url: 'https://i.postimg.cc/gk82SYrg/IMG-20250520-WA0017.jpg', type: 'external' },
-              { id: 2, label: 'link 2', url: 'https://www.awesomescreenshot.com/image/57502621?key=984fb4f9fc4ad007e0b82bdcf190c914', type: 'external' },
-            ], 
-            lectures: [
-              { id: 1, label: 'Link 1 ', url: 'https://youtube.com/playlist?list=PLIEVEMAFhG48wZr7qyD4coAuF0EgieTz-&si=iqqsz9crtgRbSEf5', type: 'youtube' },
-              { id: 2, label: 'Link 2 ', url: 'https://youtube.com/playlist?list=PLNpnnvxnB2dvFiYlWGsRSpoJme9NaPgle&si=cJ7cg2F9uR2Ucx5e', type: 'youtube' },
-              { id: 3, label: 'Link 3 ', url: 'https://youtu.be/KpkoDha-gR4?si=3cqMfslbRddKfPPh', type: 'youtube' },
-              { id: 4, label: 'Link 4 ', url: 'https://youtu.be/W-OikE_-n-o?si=HyV2aYtNHOuSbsZY', type: 'youtube' },
-              { id: 5, label: 'Link 5 ', url: 'https://youtu.be/7dxt1vcJQQk?si=ovGizf7FZrkFdSg3', type: 'youtube' },
-              { id: 6, label: 'Link 6 ', url: 'https://youtu.be/jpU73yXBIWo?si=nPRtMbO9155JGG0Y', type: 'youtube' },
-              { id: 7, label: 'Link 7 ', url: 'https://youtu.be/RbsVIvUQEBA?si=wMfjAX2RhJXL1o7I', type: 'youtube' },
-              { id: 8, label: 'Link 8',  url: 'https://youtu.be/Dl85IEp8IRs?si=KpdLxq9_AJ1xc9JE', type: 'youtube' },  
-              { id: 9, label: 'Link 9',  url: 'https://youtu.be/IusiYyQBTfo?si=-wW5a85NT5muGFhK', type: 'youtube' }, 
-              { id: 10,label: 'Link 10', url: 'https://youtu.be/B1Ysu9xlmW0?si=XY-JeJCBiIij7dDp', type: 'youtube' },
-            ], 
-            practicals: [] 
+          
+          {
+            id: 'constitution-india',
+            name: 'Constitution of India',
+            code: 'BCA202', // Updated Code
+            icon: '📜',
+            description: 'Explore the foundational document of Indian democracy.',
+            resources: { 
+              notes: [], 
+              pyqs: [
+                { id: 1, label: 'link 1', url: 'https://i.postimg.cc/gk82SYrg/IMG-20250520-WA0017.jpg', type: 'external' }, // NOTE: Ensure 'external' is a valid type in types.ts
+                { id: 2, label: 'link 2', url: 'https://www.awesomescreenshot.com/image/57502621?key=984fb4f9fc4ad007e0b82bdcf190c914', type: 'external' },
+              ], 
+              lectures: [
+                { id: 1, label: 'Link 1 ', url: 'https://youtube.com/playlist?list=PLIEVEMAFhG48wZr7qyD4coAuF0EgieTz-&si=iqqsz9crtgRbSEf5', type: 'youtube' },
+                { id: 2, label: 'Link 2 ', url: 'https://youtube.com/playlist?list=PLNpnnvxnB2dvFiYlWGsRSpoJme9NaPgle&si=cJ7cg2F9uR2Ucx5e', type: 'youtube' },
+                { id: 3, label: 'Link 3 ', url: 'https://youtu.be/KpkoDha-gR4?si=3cqMfslbRddKfPPh', type: 'youtube' },
+                { id: 4, label: 'Link 4 ', url: 'https://youtu.be/W-OikE_-n-o?si=HyV2aYtNHOuSbsZY', type: 'youtube' },
+                { id: 5, label: 'Link 5 ', url: 'https://youtu.be/7dxt1vcJQQk?si=ovGizf7FZrkFdSg3', type: 'youtube' },
+                { id: 6, label: 'Link 6 ', url: 'https://youtu.be/jpU73yXBIWo?si=nPRtMbO9155JGG0Y', type: 'youtube' },
+                { id: 7, label: 'Link 7 ', url: 'https://youtu.be/RbsVIvUQEBA?si=wMfjAX2RhJXL1o7I', type: 'youtube' },
+                { id: 8, label: 'Link 8',  url: 'https://youtu.be/Dl85IEp8IRs?si=KpdLxq9_AJ1xc9JE', type: 'youtube' },  
+                { id: 9, label: 'Link 9',  url: 'https://youtu.be/IusiYyQBTfo?si=-wW5a85NT5muGFhK', type: 'youtube' }, 
+                { id: 10,label: 'Link 10', url: 'https://youtu.be/B1Ysu9xlmW0?si=XY-JeJCBiIij7dDp', type: 'youtube' },
+              ], 
+              practicals: [] 
+            },
           },
-        },
 
-        {
-          id: 'web-technology-sem2',
-          name: 'Web Technology',
-          code: 'BCA102',
-          icon: '🌐',
-          description: 'Dive into modern web development. HTML, CSS, JavaScript, and frameworks.',
-          resources: { 
-            notes: [], 
-            pyqs: [
-              { id: 1, label: 'Web Technology summer 2016', url: 'https://www.rtmnuonline.com/papers/bca-3-sem-web-technology-summer-2016.pdf', type: 'pdf' },
-              { id: 2, label: 'Web Technology winter 2016', url: 'https://www.rtmnuonline.com/papers/bca-3-sem-web-technology-winter-2016.pdf', type: 'pdf' },
-              { id: 3, label: 'Web Technology summer 2019', url: 'https://www.rtmnuonline.com/papers/bca-4-sem-web-technology-2-2235-summer-2019.pdf', type: 'pdf' },
-              { id: 4, label: 'Web Technology summer 2018', url: 'https://www.rtmnuonline.com/papers/bca-3-sem-web-technology-summer-2018.pdf', type: 'pdf' },
-              { id: 5, label: 'Web Technology winter 2018', url: 'https://www.rtmnuonline.com/papers/bca-3-sem-web-technology-winter-2018.pdf', type: 'pdf' },
-              { id: 6, label: 'Web Technology summer 2017', url: 'https://www.rtmnuonline.com/papers/bca-3-sem-web-technology-summer-2017.pdf', type: 'pdf' },
-              { id: 7, label: 'Web Technology winter 2017', url: 'https://www.rtmnuonline.com/papers/bca-3-sem-web-technology-winter-2017.pdf', type: 'pdf' },
-            ], 
-            lectures: [
-              { id: 1, label: 'Link 1 ', url: 'https://youtu.be/1V9mhVgVH3A?si=na6l6GkjruofsR4A', type: 'youtube' },
-              { id: 2, label: 'Link 2 ', url: 'https://youtube.com/playlist?list=PLrjkTql3jnm8d1ddpVKifXO_fPjSKATCp&si=7iDNZzFCcK9DXiC_', type: 'youtube' },
-              { id: 3, label: 'Link 3 ', url: 'https://youtube.com/playlist?list=PLV8vIYTIdSnbwIFENjqBK7yyAkSVSoLBC&si=_k06Hv9tmzDDbJmU', type: 'youtube' },
-            ], 
-            practicals: [] 
+          {
+            id: 'web-technology-sem2',
+            name: 'Web Technology',
+            code: 'BCA203',
+            icon: '🌐',
+            description: 'Dive into modern web development. HTML, CSS, JavaScript, and frameworks.',
+            resources: { 
+              notes: [], 
+              pyqs: [
+                { id: 1, label: 'Web Technology summer 2016', url: 'https://www.rtmnuonline.com/papers/bca-3-sem-web-technology-summer-2016.pdf', type: 'pdf' },
+                { id: 2, label: 'Web Technology winter 2016', url: 'https://www.rtmnuonline.com/papers/bca-3-sem-web-technology-winter-2016.pdf', type: 'pdf' },
+                { id: 3, label: 'Web Technology summer 2019', url: 'https://www.rtmnuonline.com/papers/bca-4-sem-web-technology-2-2235-summer-2019.pdf', type: 'pdf' },
+                { id: 4, label: 'Web Technology summer 2018', url: 'https://www.rtmnuonline.com/papers/bca-3-sem-web-technology-summer-2018.pdf', type: 'pdf' },
+                { id: 5, label: 'Web Technology winter 2018', url: 'https://www.rtmnuonline.com/papers/bca-3-sem-web-technology-winter-2018.pdf', type: 'pdf' },
+                { id: 6, label: 'Web Technology summer 2017', url: 'https://www.rtmnuonline.com/papers/bca-3-sem-web-technology-summer-2017.pdf', type: 'pdf' },
+                { id: 7, label: 'Web Technology winter 2017', url: 'https://www.rtmnuonline.com/papers/bca-3-sem-web-technology-winter-2017.pdf', type: 'pdf' },
+              ], 
+              lectures: [
+                { id: 1, label: 'Link 1 ', url: 'https://youtu.be/1V9mhVgVH3A?si=na6l6GkjruofsR4A', type: 'youtube' },
+                { id: 2, label: 'Link 2 ', url: 'https://youtube.com/playlist?list=PLrjkTql3jnm8d1ddpVKifXO_fPjSKATCp&si=7iDNZzFCcK9DXiC_', type: 'youtube' },
+                { id: 3, label: 'Link 3 ', url: 'https://youtube.com/playlist?list=PLV8vIYTIdSnbwIFENjqBK7yyAkSVSoLBC&si=_k06Hv9tmzDDbJmU', type: 'youtube' },
+              ], 
+              practicals: [] 
+            },
           },
-        },
-        
-        {
-          id: 'dbms-sem2',
-          name: 'Database Management System',
-          code: 'BCA103',
-          icon: '🗄️',
-          description: 'Learn to design, implement, and manage databases effectively.',
-          resources: { 
-            notes: [], 
-            pyqs: [
-              { id: 1, label: 'DBMS summer 2019',   url: 'https://www.rtmnuonline.com/papers/bca-3-sem-data-base-management-system-2226-summer-2019.pdf', type: 'pdf' },
-              { id: 2, label: 'DBMS summer 2018',   url: 'https://www.rtmnuonline.com/papers/bca-3-sem-database-management-system-paper-2-summer-2018.pdf', type: 'pdf' },
-              { id: 3, label: 'DBMS summer 2018_2', url: 'https://www.rtmnuonline.com/papers/bca-3-sem-database-management-system-summer-2018.pdf', type: 'pdf' },
-              { id: 4, label: 'DBMS winter 2018', url: 'https://www.rtmnuonline.com/papers/bca-3-sem-database-management-system-winter-2018.pdf', type: 'pdf' },
-              { id: 5, label: 'DBMS summer 2017', url: 'https://www.rtmnuonline.com/papers/bca-3-sem-database-management-system-summer-2017.pdf', type: 'pdf' },
-              { id: 6, label: 'DBMS winter 2017', url: 'https://www.rtmnuonline.com/papers/bca-3-sem-database-management-system-winter-2017.pdf', type: 'pdf' },
-              { id: 7, label: 'DBMS summer 2016', url: 'https://www.rtmnuonline.com/papers/bca-3-sem-database-management-system-summer-2016.pdf', type: 'pdf' },
-              { id: 8, label: 'DBMS winter 2016',url: 'https://www.rtmnuonline.com/papers/bca-3-sem-database-management-system-winter-2016.pdf', type: 'pdf' },
-            ], 
-            lectures: [
-              { id: 1, label: 'Link 1 ', url: 'https://youtu.be/YRnjGeQbsHQ?si=Yx00NuCfJHqN4-e3', type: 'youtube' },
-              { id: 2, label: 'Link 2 ', url: 'https://youtu.be/jzuzxEFoiss?si=JO-X39h39MWq2v9I', type: 'youtube' },
-              { id: 3, label: 'Link 3 ', url: 'https://youtu.be/dl00fOOYLOM?si=kyrAI2Q8i_v62W6a', type: 'youtube' },
-              { id: 4, label: 'Link 4 ', url: 'https://youtu.be/J0OvDNmAWNw?si=I-cJuHjL6gI-5Zjv', type: 'youtube' },
-              { id: 5, label: 'Link 5 ', url: 'https://youtu.be/viJzDvom2Yc?si=0pycMTlnkqOtY8al', type: 'youtube' },
-              { id: 6, label: 'Link 6 ', url: 'https://youtube.com/playlist?list=PLYwpaL_SFmcBU4HS74xGTK1cAFbY0rdVY&si=gnYk_t18icBGYPj-', type: 'youtube' },
-              { id: 7, label: 'Link 7 ', url: 'https://youtube.com/playlist?list=PLqleLpAMfxGDEClbx9ymd-KWDDJrx_W8C&si=MS46cOJ9IeFcT4Cp', type: 'youtube' },
-              { id: 8, label: 'Link 8',  url: 'https://youtube.com/playlist?list=PLBvTTYUOHEmcbkKi6G-7tg0sUnQwujApt&si=qVYZKuN3T42Lw_-o', type: 'youtube' },  
-              { id: 9, label: 'Link 9  (Unit- 1)', url: 'https://youtu.be/ptlIJiIByMc?si=UeMYRSvjUQDW0PrY', type: 'youtube' }, 
-              { id: 10,label: 'Link 10 (Unit- 2)', url: 'https://youtu.be/jRReZoQi1hw?si=QwQbFJAMZqsu9MEX', type: 'youtube' },
-              { id: 11,label: 'Link 11 (Unit- 3)', url: 'https://youtu.be/VAd8Audkxro?si=7dZWox_h3kK5kpfa', type: 'youtube' },
-              { id: 12,label: 'Link 12 (Unit- 4)', url: 'https://youtu.be/0Skq_YqrHjg?si=ZxHTvNHy4f21ol7t', type: 'youtube' },
-              { id: 13,label: 'Link 13', url: 'https://youtu.be/oR6IXFrJBEk?si=uNYjX4mp-M2LD08h', type: 'youtube' },
-            ], 
-            practicals: [] 
-          }
-        },
-        { id: 'cpp-sem2', 
-          name: 'C++', code: 'BCA105', 
-          icon: '⚡', 
-          description: 'Master object-oriented programming with C++.', 
-          resources: { 
-            notes: [], 
-            pyqs: [
-              { id: 1, label: ' C++ summer 2017',  url: 'https://www.rtmnuonline.com/papers/bca-2-sem-programming-in-cpp-summer-2017.pdf', type: 'pdf' },
-              { id: 2, label: ' C++ summer 2018',  url: 'https://www.rtmnuonline.com/papers/bca-2-sem-programming-in-cpp-2018.pdf', type: 'pdf' },
-              { id: 3, label: ' C++ summer 2018_2',url: 'https://www.rtmnuonline.com/papers/bca-2-sem-programming-in-cpp-paper-1-summer-2018.pdf', type: 'pdf' },
-              { id: 4, label: ' C++ winter 2018',  url: 'https://www.rtmnuonline.com/papers/bca-2-sem-programming-in-cpp-winter-2018.pdf', type: 'pdf' },
-              { id: 5, label: ' C++ winter 2017',  url: 'https://www.rtmnuonline.com/papers/bca-2-sem-programming-in-cpp-winter-2017.pdf', type: 'pdf' },
-              { id: 6, label: ' C++ winter 2016',  url: 'https://www.rtmnuonline.com/papers/bca-2-sem-programing-in-cpp-summer-2016.pdf', type: 'pdf' },
-              { id: 7, label: ' C++ winter 2016_2',  url: 'https://www.rtmnuonline.com/papers/bca-2-sem-programming-in-cpp-winter-2016.pdf', type: 'pdf' },
-              { id: 8, label: ' C++ winter 2015',  url: 'https://www.rtmnuonline.com/papers/bca-2-sem-programming-in-cpp-winter-2015.pdf', type: 'pdf' },
-            
-            ], lectures: [
-              { id: 1, label: 'Link 1 ', url: 'https://youtube.com/playlist?list=PL724pdDXl9Q0yZUx9bkqarHO584JOsKfE&si=Tt7SUIIwwmYm2f_a', type: 'youtube' },
-              { id: 2, label: 'Link 2 ', url: 'https://youtube.com/playlist?list=PLmRclvVt5DtlXMvqL0zDqQu9Cvy6rsmd4&si=DN_whLhVx31_Pmuv', type: 'youtube' },
-              { id: 3, label: 'Link 3 ', url: 'https://youtube.com/playlist?list=PLqleLpAMfxGDq9Ehl8FUstcRrCRQPQO7n&si=ltxcBEEYDa6UdO3K', type: 'youtube' },
-              { id: 4, label: 'Link 4 ', url: 'https://youtu.be/stqrJl3pIaI?si=eYa1p3seFIDjO0RD', type: 'youtube' },
-              { id: 5, label: 'Link 5 ', url: 'https://youtu.be/OQ0En1dQ3zI?si=pXqWcqDoKGqFc3AZ', type: 'youtube' },
-              { id: 6, label: 'Link 6 ', url: 'https://youtu.be/mlIUKyZIUUU?si=N-C1uF9w3rp0VbFv', type: 'youtube' },
-              { id: 7, label: 'Link 7 ', url: 'https://youtube.com/playlist?list=PLxCzCOWd7aiF6yRNI5OHQsnUJQfl7Geqj&si=jV9OsM6ZAyxfe1HY', type: 'youtube' },
-              { id: 8, label: 'Link 8 ', url: 'https://youtu.be/9roJTTghZJI?si=yi4iSn53TeDTIBii', type: 'youtube' },
-              { id: 9, label: 'Link 9 ', url: 'https://youtu.be/oi1ffu6lBXE?si=ywnaLOR6HpE55VJn', type: 'youtube' },
-              { id: 10, label: 'Link 10 ', url: 'https://youtu.be/oi1ffu6lBXE?si=ywnaLOR6HpE55VJn', type: 'youtube' },
-            ], 
-            practicals: [] } },
-        
-            { id: 'operating-system-sem2', 
+          
+          {
+            id: 'dbms-sem2',
+            name: 'Database Management System',
+            code: 'BCA204',
+            icon: '🗄️',
+            description: 'Learn to design, implement, and manage databases effectively.',
+            resources: { 
+              notes: [], 
+              pyqs: [
+                { id: 1, label: 'DBMS summer 2019',   url: 'https://www.rtmnuonline.com/papers/bca-3-sem-data-base-management-system-2226-summer-2019.pdf', type: 'pdf' },
+                { id: 2, label: 'DBMS summer 2018',   url: 'https://www.rtmnuonline.com/papers/bca-3-sem-database-management-system-paper-2-summer-2018.pdf', type: 'pdf' },
+                { id: 3, label: 'DBMS summer 2018_2', url: 'https://www.rtmnuonline.com/papers/bca-3-sem-database-management-system-summer-2018.pdf', type: 'pdf' },
+                { id: 4, label: 'DBMS winter 2018', url: 'https://www.rtmnuonline.com/papers/bca-3-sem-database-management-system-winter-2018.pdf', type: 'pdf' },
+                { id: 5, label: 'DBMS summer 2017', url: 'https://www.rtmnuonline.com/papers/bca-3-sem-database-management-system-summer-2017.pdf', type: 'pdf' },
+                { id: 6, label: 'DBMS winter 2017', url: 'https://www.rtmnuonline.com/papers/bca-3-sem-database-management-system-winter-2017.pdf', type: 'pdf' },
+                { id: 7, label: 'DBMS summer 2016', url: 'https://www.rtmnuonline.com/papers/bca-3-sem-database-management-system-summer-2016.pdf', type: 'pdf' },
+                { id: 8, label: 'DBMS winter 2016',url: 'https://www.rtmnuonline.com/papers/bca-3-sem-database-management-system-winter-2016.pdf', type: 'pdf' },
+              ], 
+              lectures: [
+                { id: 1, label: 'Link 1 ', url: 'https://youtu.be/YRnjGeQbsHQ?si=Yx00NuCfJHqN4-e3', type: 'youtube' },
+                { id: 2, label: 'Link 2 ', url: 'https://youtu.be/jzuzxEFoiss?si=JO-X39h39MWq2v9I', type: 'youtube' },
+                { id: 3, label: 'Link 3 ', url: 'https://youtu.be/dl00fOOYLOM?si=kyrAI2Q8i_v62W6a', type: 'youtube' },
+                { id: 4, label: 'Link 4 ', url: 'https://youtu.be/J0OvDNmAWNw?si=I-cJuHjL6gI-5Zjv', type: 'youtube' },
+                { id: 5, label: 'Link 5 ', url: 'https://youtu.be/viJzDvom2Yc?si=0pycMTlnkqOtY8al', type: 'youtube' },
+                { id: 6, label: 'Link 6 ', url: 'https://youtube.com/playlist?list=PLYwpaL_SFmcBU4HS74xGTK1cAFbY0rdVY&si=gnYk_t18icBGYPj-', type: 'youtube' },
+                { id: 7, label: 'Link 7 ', url: 'https://youtube.com/playlist?list=PLqleLpAMfxGDEClbx9ymd-KWDDJrx_W8C&si=MS46cOJ9IeFcT4Cp', type: 'youtube' },
+                { id: 8, label: 'Link 8',  url: 'https://youtube.com/playlist?list=PLBvTTYUOHEmcbkKi6G-7tg0sUnQwujApt&si=qVYZKuN3T42Lw_-o', type: 'youtube' },  
+                { id: 9, label: 'Link 9  (Unit- 1)', url: 'https://youtu.be/ptlIJiIByMc?si=UeMYRSvjUQDW0PrY', type: 'youtube' }, 
+                { id: 10,label: 'Link 10 (Unit- 2)', url: 'https://youtu.be/jRReZoQi1hw?si=QwQbFJAMZqsu9MEX', type: 'youtube' },
+                { id: 11,label: 'Link 11 (Unit- 3)', url: 'https://youtu.be/VAd8Audkxro?si=7dZWox_h3kK5kpfa', type: 'youtube' },
+                { id: 12,label: 'Link 12 (Unit- 4)', url: 'https://youtu.be/0Skq_YqrHjg?si=ZxHTvNHy4f21ol7t', type: 'youtube' },
+                { id: 13,label: 'Link 13', url: 'https://youtu.be/oR6IXFrJBEk?si=uNYjX4mp-M2LD08h', type: 'youtube' },
+              ], 
+              practicals: [] 
+            }
+          },
+          { 
+            id: 'cpp-sem2', 
+            name: 'C++', 
+            code: 'BCA205', 
+            icon: '⚡', 
+            description: 'Master object-oriented programming with C++.', 
+            resources: { 
+              notes: [], 
+              pyqs: [
+                { id: 1, label: ' C++ summer 2017',  url: 'https://www.rtmnuonline.com/papers/bca-2-sem-programming-in-cpp-summer-2017.pdf', type: 'pdf' },
+                { id: 2, label: ' C++ summer 2018',  url: 'https://www.rtmnuonline.com/papers/bca-2-sem-programming-in-cpp-2018.pdf', type: 'pdf' },
+                { id: 3, label: ' C++ summer 2018_2',url: 'https://www.rtmnuonline.com/papers/bca-2-sem-programming-in-cpp-paper-1-summer-2018.pdf', type: 'pdf' },
+                { id: 4, label: ' C++ winter 2018',  url: 'https://www.rtmnuonline.com/papers/bca-2-sem-programming-in-cpp-winter-2018.pdf', type: 'pdf' },
+                { id: 5, label: ' C++ winter 2017',  url: 'https://www.rtmnuonline.com/papers/bca-2-sem-programming-in-cpp-winter-2017.pdf', type: 'pdf' },
+                { id: 6, label: ' C++ winter 2016',  url: 'https://www.rtmnuonline.com/papers/bca-2-sem-programing-in-cpp-summer-2016.pdf', type: 'pdf' },
+                { id: 7, label: ' C++ winter 2016_2',  url: 'https://www.rtmnuonline.com/papers/bca-2-sem-programming-in-cpp-winter-2016.pdf', type: 'pdf' },
+                { id: 8, label: ' C++ winter 2015',  url: 'https://www.rtmnuonline.com/papers/bca-2-sem-programming-in-cpp-winter-2015.pdf', type: 'pdf' },
+              
+              ], lectures: [
+                { id: 1, label: 'Link 1 ', url: 'https://youtube.com/playlist?list=PL724pdDXl9Q0yZUx9bkqarHO584JOsKfE&si=Tt7SUIIwwmYm2f_a', type: 'youtube' },
+                { id: 2, label: 'Link 2 ', url: 'https://youtube.com/playlist?list=PLmRclvVt5DtlXMvqL0zDqQu9Cvy6rsmd4&si=DN_whLhVx31_Pmuv', type: 'youtube' },
+                { id: 3, label: 'Link 3 ', url: 'https://youtube.com/playlist?list=PLqleLpAMfxGDq9Ehl8FUstcRrCRQPQO7n&si=ltxcBEEYDa6UdO3K', type: 'youtube' },
+                { id: 4, label: 'Link 4 ', url: 'https://youtu.be/stqrJl3pIaI?si=eYa1p3seFIDjO0RD', type: 'youtube' },
+                { id: 5, label: 'Link 5 ', url: 'https://youtu.be/OQ0En1dQ3zI?si=pXqWcqDoKGqFc3AZ', type: 'youtube' },
+                { id: 6, label: 'Link 6 ', url: 'https://youtu.be/mlIUKyZIUUU?si=N-C1uF9w3rp0VbFv', type: 'youtube' },
+                { id: 7, label: 'Link 7 ', url: 'https://youtube.com/playlist?list=PLxCzCOWd7aiF6yRNI5OHQsnUJQfl7Geqj&si=jV9OsM6ZAyxfe1HY', type: 'youtube' },
+                { id: 8, label: 'Link 8 ', url: 'https://youtu.be/9roJTTghZJI?si=yi4iSn53TeDTIBii', type: 'youtube' },
+                { id: 9, label: 'Link 9 ', url: 'https://youtu.be/oi1ffu6lBXE?si=ywnaLOR6HpE55VJn', type: 'youtube' },
+                { id: 10, label: 'Link 10 ', url: 'https://youtu.be/oi1ffu6lBXE?si=ywnaLOR6HpE55VJn', type: 'youtube' },
+              ], 
+              practicals: [] 
+            } 
+          },
+          
+          { 
+            id: 'operating-system-sem2', 
             name: 'Operating System', 
-            code: 'BCA106', icon: '💻', 
+            code: 'BCA106', 
+            icon: '💻', 
             description: 'Understand how operating systems work.', 
             resources: { 
               notes: [], 
@@ -231,7 +240,7 @@ export const coursesData: CoursesData = {
                 { id: 6, label: ' Operating System summer 2018_2',   url: 'https://www.rtmnuonline.com/papers/bca-2-sem-linux-operating-system-2018.pdf', type: 'pdf' },
                 { id: 7, label: ' Operating System summer 2017_2',   url: 'https://www.rtmnuonline.com/papers/bca-2-sem-linux-operating-system-2017.pdf', type: 'pdf' },
                 { id: 8, label: ' Operating System summer 2017_1', url: 'https://www.rtmnuonline.com/papers/bca-2-sem-linux-operating-system-summer-2017.pdf', type: 'pdf' },
-                ], 
+              ], 
               lectures: [
                 { id: 1, label: 'Link 1 ', url: 'https://youtu.be/xw_OuOhjauw?si=AKRM9F2qZJBIXS-j', type: 'youtube' },
                 { id: 2, label: 'Link 2 ', url: 'https://youtu.be/8XBtAjKwCm4?si=L3dllyH_lYBQaWUy', type: 'youtube' },
@@ -247,13 +256,14 @@ export const coursesData: CoursesData = {
                 { id: 12,label: 'Link 12 ', url: 'https://youtube.com/playlist?list=PLdo5W4Nhv31a5ucW_S1K3-x6ztBRD-PNa&si=COQ8zrzb8QFlPXTd', type: 'youtube' },
               ], 
               practicals: [] 
-            } 
-          } // <--- Fixed missing closing brace here
+            } // <-- THIS WAS THE MISSING BRACE IN YOUR ORIGINAL CODE
+          }
         ]
       },
 
-    /* SEMESTER 3 BCA YEAAAAAAAAAAAAAAAAAAAAAAAAHHHHHHHHH!!!!!!!! */
-      { id: 3, 
+    /* SEMESTER 3 BCA */
+      { 
+        id: 3, 
         name: 'Semester 3', 
         subjects: [
           {
@@ -292,8 +302,8 @@ export const coursesData: CoursesData = {
           },
 
           {
-            id: 'Software Enginnering',
-            name: 'Software Enginnering',
+            id: 'Software Engineering', // Fixed typo "Enginnering"
+            name: 'Software Engineering',
             code: 'BCA302',
             icon: '⚙️',
             description: 'Have Fun with engineering!!',
@@ -398,7 +408,7 @@ export const coursesData: CoursesData = {
           {
             id: 'Data Analytics & Spreadsheets',
             name: 'Data Analytics & Spreadsheets',
-            code: 'BCA3012',
+            code: 'BCA305', // Fixed BCA3012
             icon: '📊',
             description: 'Data Analytics increases the chances of chances',
             resources: {
@@ -424,12 +434,13 @@ export const coursesData: CoursesData = {
                 { id: 8, label: 'Link 8 ', url: 'https://youtube.com/playlist?list=PLoyECfvEFOjYOt0f8CKyj0a_-YnETyKF1&si=_5aCGfihVPylJEeY', type: 'youtube' },
                 { id: 9, label: 'Link 9 ', url: 'https://youtube.com/playlist?list=PLoyECfvEFOjZNdBAHDlVlR242FifiYGjl&si=wTxYcLUve1-VvK0x', type: 'youtube' },
                 { id:10, label: 'Link 10', url: 'https://youtu.be/-Tts712mDZs?si=Ux1g3fRGuAzz_btJ', type: 'youtube' },
-                { id: 8, label: 'Link 11', url: 'https://youtu.be/-Tts712mDZs?si=fnrWuXEjhQu96PhL', type: 'youtube' },
+                { id:11, label: 'Link 11', url: 'https://youtu.be/-Tts712mDZs?si=fnrWuXEjhQu96PhL', type: 'youtube' }, // Fixed Duplicate ID 8
               ],
               practicals: [],
             },
           },
-        ] },
+        ] 
+      },
       { id: 4, name: 'Semester 4', subjects: [] },
       { id: 5, name: 'Semester 5', subjects: [] },
       { id: 6, name: 'Semester 6', subjects: [] },
@@ -524,4 +535,5 @@ export function getCourses() {
 export function getCourseById(id: string): Course | undefined {
   return coursesData[id];
 }
+
 
