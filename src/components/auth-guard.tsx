@@ -54,7 +54,7 @@ export default function AuthGuard({ children }: { children: React.ReactNode }) {
   }
 
   // Prevent flash of unverified content on protected routes
-  if (user && !user.emailVerified && user.providerData.some(p => p.providerId === 'password') && pathname !== '/verify-email') {
+  if (user && !user.emailVerified && user.providerData.some(p => p.providerId === 'password') && pathname !== '/verify-email' && pathname !== '/login') {
      return (
       <div className="flex min-h-screen w-full items-center justify-center bg-background">
         <Loader2 className="h-10 w-10 animate-spin text-primary" />
