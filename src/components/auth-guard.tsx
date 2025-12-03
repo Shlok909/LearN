@@ -18,11 +18,12 @@ export default function AuthGuard({ children }: { children: React.ReactNode }) {
   const [isInitialLoad, setIsInitialLoad] = useState(true);
 
   useEffect(() => {
+    // Don't do anything until Firebase auth state is determined
     if (isUserLoading) {
       return;
     }
 
-    // Only set initial load to false after the first check is complete
+    // Mark initial load as complete after the first auth check.
     if (isInitialLoad) {
       setIsInitialLoad(false);
     }
@@ -30,29 +31,31 @@ export default function AuthGuard({ children }: { children: React.ReactNode }) {
     const isProtectedRoute = protectedRoutes.some(path => pathname.startsWith(path));
 
     if (user) {
-      // User is logged in
+      // --- User is logged in ---
       if (user.emailVerified) {
-        // Verified user (or social login), should not be on auth pages or landing page
+        // If a verified user is on an auth page or the landing page, redirect them to home.
         if (pathname === '/login' || pathname === '/signup' || pathname === '/verify-email' || pathname === landingPage) {
           router.replace('/home');
         }
       } else if (user.providerData.some(p => p.providerId === 'password')) {
-        // Logged in with email, but not verified. Must be on verify-email page.
-        // Allow navigation to /login from /verify-email.
+        // If an unverified email user is NOT on the verify-email or login page, redirect them.
         if (pathname !== '/verify-email' && pathname !== '/login') {
           router.replace(`/verify-email?email=${user.email}`);
         }
       }
     } else {
-      // No user is logged in, they can only access public routes
+      // --- No user is logged in ---
+      // If an unauthenticated user tries to access a protected route, redirect to login.
       if (isProtectedRoute) {
         router.replace('/login');
       }
     }
   }, [user, isUserLoading, router, pathname, isInitialLoad]);
 
-  // Show a full-screen loader ONLY during the initial authentication check.
-  if (isInitialLoad && isUserLoading) {
+  // --- Render Logic ---
+
+  // 1. Show a full-screen loader ONLY during the very initial authentication check.
+  if (isUserLoading && isInitialLoad) {
     return (
       <div className="flex min-h-screen w-full items-center justify-center bg-background">
         <Loader2 className="h-10 w-10 animate-spin text-primary" />
@@ -60,8 +63,16 @@ export default function AuthGuard({ children }: { children: React.ReactNode }) {
     );
   }
 
-  // Prevent flash of unverified content on protected routes while redirecting.
-  if (user && !user.emailVerified && user.providerData.some(p => p.providerId === 'password') && pathname !== '/verify-email' && pathname !== '/login') {
+  // 2. If a logged-in user with an unverified email is being redirected,
+  // show a loader to prevent a flash of protected content.
+  const isUnverifiedAndNeedsRedirect =
+    user &&
+    !user.emailVerified &&
+    user.providerData.some(p => p.providerId === 'password') &&
+    pathname !== '/verify-email' &&
+    pathname !== '/login';
+
+  if (isUnverifiedAndNeedsRedirect) {
     return (
       <div className="flex min-h-screen w-full items-center justify-center bg-background">
         <Loader2 className="h-10 w-10 animate-spin text-primary" />
@@ -69,6 +80,6 @@ export default function AuthGuard({ children }: { children: React.ReactNode }) {
     );
   }
 
-  // Once initial load is complete, render children immediately.
+  // 3. For all other cases (including navigating between authenticated pages), render the children immediately.
   return <>{children}</>;
 }
