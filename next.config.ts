@@ -1,3 +1,4 @@
+
 import type {NextConfig} from 'next';
 
 const nextConfig: NextConfig = {
@@ -49,6 +50,12 @@ const nextConfig: NextConfig = {
       {
         protocol: 'https',
         hostname: 'static.wikia.nocookie.net',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'img.youtube.com',
         port: '',
         pathname: '/**',
       },
