@@ -60,13 +60,16 @@ export default function ResourceModal({ subject, isOpen, onClose }: ResourceModa
   useEffect(() => {
     const handleKeyDown = (event: globalThis.KeyboardEvent) => {
       if (event.key === 'Escape') {
-        onClose();
-        setSelectedVideoId(null);
+        if (selectedVideoId) {
+          setSelectedVideoId(null);
+        } else {
+          onClose();
+        }
       }
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [onClose]);
+  }, [onClose, selectedVideoId]);
 
   const handleLectureClick = (videoUrl: string) => {
     const videoId = getYouTubeVideoId(videoUrl);
@@ -93,14 +96,11 @@ export default function ResourceModal({ subject, isOpen, onClose }: ResourceModa
     );
   };
 
-  if (!isOpen) return null;
-
   return (
     <>
       <Dialog open={isOpen} onOpenChange={(open) => {
         if (!open) {
           onClose();
-          setSelectedVideoId(null);
         }
       }}>
         <DialogContent className="max-h-[90vh] max-w-2xl overflow-y-auto">
@@ -169,4 +169,3 @@ export default function ResourceModal({ subject, isOpen, onClose }: ResourceModa
     </>
   );
 }
-
