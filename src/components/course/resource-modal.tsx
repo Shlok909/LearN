@@ -1,3 +1,4 @@
+
 'use client';
 import { useState, useEffect, KeyboardEvent } from 'react';
 import { Subject, Resource } from '@/lib/types';
@@ -5,12 +6,20 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } f
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import Link from 'next/link';
 import { FileText, Youtube, BookOpen, FlaskConical, PencilRuler, ExternalLink } from 'lucide-react';
+import YoutubeThumbnailModal from './youtube-thumbnail-modal';
 
 interface ResourceModalProps {
   subject: Subject;
   isOpen: boolean;
   onClose: () => void;
 }
+
+const getYouTubeVideoId = (url: string): string | null => {
+    if (!url) return null;
+    const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+    const match = url.match(regExp);
+    return (match && match[2].length === 11) ? match[2] : null;
+};
 
 const ResourceLink = ({ resource }: { resource: Resource }) => {
   const Icon = resource.type === 'youtube' ? Youtube : FileText;
@@ -30,91 +39,134 @@ const ResourceLink = ({ resource }: { resource: Resource }) => {
   );
 };
 
-const renderResourceList = (resources: Resource[]) => {
-  if (resources.length === 0) {
-    return <p className="px-2 py-4 text-sm text-muted-foreground italic">No resources available yet.</p>;
-  }
-
+const YoutubeLink = ({ resource, onClick }: { resource: Resource, onClick: () => void }) => {
   return (
-    <ul className="space-y-1 py-2">
-      {resources.map((resource) => (
-        <ResourceLink key={resource.id} resource={resource} />
-      ))}
-    </ul>
+    <li key={resource.id}>
+      <button
+        onClick={onClick}
+        className="flex w-full items-center rounded-md p-2 text-left text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+      >
+        <Youtube className="mr-3 h-4 w-4 flex-shrink-0" />
+        <span className="flex-grow">{resource.label}</span>
+      </button>
+    </li>
   );
 };
 
 
 export default function ResourceModal({ subject, isOpen, onClose }: ResourceModalProps) {
-  
+  const [selectedVideoId, setSelectedVideoId] = useState<string | null>(null);
+
   useEffect(() => {
     const handleKeyDown = (event: globalThis.KeyboardEvent) => {
       if (event.key === 'Escape') {
         onClose();
+        setSelectedVideoId(null);
       }
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [onClose]);
 
+  const handleLectureClick = (videoUrl: string) => {
+    const videoId = getYouTubeVideoId(videoUrl);
+    if (videoId) {
+      setSelectedVideoId(videoId);
+    }
+  };
+
+  const renderResourceList = (resources: Resource[], isLecture = false) => {
+    if (resources.length === 0) {
+      return <p className="px-2 py-4 text-sm text-muted-foreground italic">No resources available yet.</p>;
+    }
+  
+    return (
+      <ul className="space-y-1 py-2">
+        {resources.map((resource) => (
+          isLecture ? (
+             <YoutubeLink key={resource.id} resource={resource} onClick={() => handleLectureClick(resource.url)} />
+          ) : (
+            <ResourceLink key={resource.id} resource={resource} />
+          )
+        ))}
+      </ul>
+    );
+  };
+
   if (!isOpen) return null;
 
   return (
-    <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-h-[90vh] max-w-2xl overflow-y-auto">
-        <DialogHeader>
-          <DialogTitle className="flex items-center gap-3 text-2xl">
-            <span className="text-3xl">{subject.icon}</span>
-            {subject.name}
-          </DialogTitle>
-          <DialogDescription className="pt-2">{subject.description}</DialogDescription>
-        </DialogHeader>
+    <>
+      <Dialog open={isOpen} onOpenChange={(open) => {
+        if (!open) {
+          onClose();
+          setSelectedVideoId(null);
+        }
+      }}>
+        <DialogContent className="max-h-[90vh] max-w-2xl overflow-y-auto">
+          <DialogHeader>
+            <DialogTitle className="flex items-center gap-3 text-2xl">
+              <span className="text-3xl">{subject.icon}</span>
+              {subject.name}
+            </DialogTitle>
+            <DialogDescription className="pt-2">{subject.description}</DialogDescription>
+          </DialogHeader>
 
-        <div className="py-4">
-          <Accordion type="multiple" className="w-full" defaultValue={['notes']}>
-            <AccordionItem value="notes">
-              <AccordionTrigger>
-                <div className="flex items-center gap-2">
-                  <BookOpen className="h-5 w-5" /> Notes
-                </div>
-              </AccordionTrigger>
-              <AccordionContent>
-                {renderResourceList(subject.resources.notes)}
-              </AccordionContent>
-            </AccordionItem>
-            <AccordionItem value="pyqs">
-              <AccordionTrigger>
-                 <div className="flex items-center gap-2">
-                  <PencilRuler className="h-5 w-5" /> Previous Year Questions
-                </div>
-              </AccordionTrigger>
-              <AccordionContent>
-                {renderResourceList(subject.resources.pyqs)}
-              </AccordionContent>
-            </AccordionItem>
-            <AccordionItem value="lectures">
-              <AccordionTrigger>
-                 <div className="flex items-center gap-2">
-                  <Youtube className="h-5 w-5" /> Lectures
-                </div>
-              </AccordionTrigger>
-              <AccordionContent>
-                {renderResourceList(subject.resources.lectures)}
-              </AccordionContent>
-            </AccordionItem>
-            <AccordionItem value="practicals">
-              <AccordionTrigger>
-                 <div className="flex items-center gap-2">
-                  <FlaskConical className="h-5 w-5" /> Practicals
-                </div>
-              </AccordionTrigger>
-              <AccordionContent>
-                {renderResourceList(subject.resources.practicals)}
-              </AccordionContent>
-            </AccordionItem>
-          </Accordion>
-        </div>
-      </DialogContent>
-    </Dialog>
+          <div className="py-4">
+            <Accordion type="multiple" className="w-full" defaultValue={['notes']}>
+              <AccordionItem value="notes">
+                <AccordionTrigger>
+                  <div className="flex items-center gap-2">
+                    <BookOpen className="h-5 w-5" /> Notes
+                  </div>
+                </AccordionTrigger>
+                <AccordionContent>
+                  {renderResourceList(subject.resources.notes)}
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="pyqs">
+                <AccordionTrigger>
+                   <div className="flex items-center gap-2">
+                    <PencilRuler className="h-5 w-5" /> Previous Year Questions
+                  </div>
+                </AccordionTrigger>
+                <AccordionContent>
+                  {renderResourceList(subject.resources.pyqs)}
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="lectures">
+                <AccordionTrigger>
+                   <div className="flex items-center gap-2">
+                    <Youtube className="h-5 w-5" /> Lectures
+                  </div>
+                </AccordionTrigger>
+                <AccordionContent>
+                  {renderResourceList(subject.resources.lectures, true)}
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="practicals">
+                <AccordionTrigger>
+                   <div className="flex items-center gap-2">
+                    <FlaskConical className="h-5 w-5" /> Practicals
+                  </div>
+                </AccordionTrigger>
+                <AccordionContent>
+                  {renderResourceList(subject.resources.practicals)}
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
+          </div>
+        </DialogContent>
+      </Dialog>
+      
+      {selectedVideoId && (
+        <YoutubeThumbnailModal
+          videoId={selectedVideoId}
+          isOpen={!!selectedVideoId}
+          onClose={() => setSelectedVideoId(null)}
+        />
+      )}
+    </>
   );
 }
+
