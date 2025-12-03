@@ -13,13 +13,7 @@ import ResourceModal from '@/components/course/resource-modal';
 
 function SemesterClientPage({ course, semester }: { course: Course; semester: Semester }) {
   const [selectedSubject, setSelectedSubject] = useState<Subject | null>(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const handleSubjectClick = (subject: Subject) => {
-    setSelectedSubject(subject);
-    setIsModalOpen(true);
-  };
-  
   return (
     <>
       <main className="flex-grow">
@@ -43,7 +37,7 @@ function SemesterClientPage({ course, semester }: { course: Course; semester: Se
                     </CardHeader>
                     <CardContent className="flex flex-grow flex-col justify-between p-6">
                        <p className="mb-4 text-sm text-muted-foreground md:text-base">{subject.description}</p>
-                       <button onClick={() => handleSubjectClick(subject)} className="mt-auto inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground ring-offset-background transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50">
+                       <button onClick={() => setSelectedSubject(subject)} className="mt-auto inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground ring-offset-background transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50">
                          Access Resources <ArrowRight className="ml-2 h-4 w-4" />
                        </button>
                     </CardContent>
@@ -59,11 +53,10 @@ function SemesterClientPage({ course, semester }: { course: Course; semester: Se
           </div>
         </section>
       </main>
-      {isModalOpen && selectedSubject && (
+      {selectedSubject && (
         <ResourceModal
           subject={selectedSubject}
-          isOpen={isModalOpen}
-          onClose={() => setIsModalOpen(false)}
+          onClose={() => setSelectedSubject(null)}
         />
       )}
     </>

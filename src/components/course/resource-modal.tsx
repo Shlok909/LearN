@@ -1,6 +1,6 @@
 
 'use client';
-import { useState, useEffect, KeyboardEvent } from 'react';
+import { useState, useEffect } from 'react';
 import { Subject, Resource } from '@/lib/types';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
@@ -10,7 +10,6 @@ import YoutubeThumbnailModal from './youtube-thumbnail-modal';
 
 interface ResourceModalProps {
   subject: Subject;
-  isOpen: boolean;
   onClose: () => void;
 }
 
@@ -54,7 +53,7 @@ const YoutubeLink = ({ resource, onClick }: { resource: Resource, onClick: () =>
 };
 
 
-export default function ResourceModal({ subject, isOpen, onClose }: ResourceModalProps) {
+export default function ResourceModal({ subject, onClose }: ResourceModalProps) {
   const [selectedVideoId, setSelectedVideoId] = useState<string | null>(null);
 
   useEffect(() => {
@@ -98,7 +97,7 @@ export default function ResourceModal({ subject, isOpen, onClose }: ResourceModa
 
   return (
     <>
-      <Dialog open={isOpen} onOpenChange={(open) => {
+      <Dialog open={!!subject} onOpenChange={(open) => {
         if (!open) {
           onClose();
         }
