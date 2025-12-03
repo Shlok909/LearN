@@ -78,7 +78,7 @@ const YoutubeLink = ({ resource, onClick }: { resource: Resource; onClick: (vide
         className="flex w-full items-center rounded-md p-2 text-left text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
       >
         <Youtube className="mr-3 h-4 w-4 flex-shrink-0" />
-        <span className="flex-grow">{resource.label} One-Short</span>
+        <span className="flex-grow">{resource.label} [One - Short]</span>
       </button>
     </li>
   );
