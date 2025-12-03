@@ -5,13 +5,13 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 interface YoutubeThumbnailModalProps {
-  videoId: string;
+  videoId: string | null;
   isOpen: boolean;
   onClose: () => void;
 }
 
 export default function YoutubeThumbnailModal({ videoId, isOpen, onClose }: YoutubeThumbnailModalProps) {
-  if (!isOpen) return null;
+  if (!isOpen || !videoId) return null;
 
   const thumbnailUrl = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
   const videoUrl = `https://www.youtube.com/watch?v=${videoId}`;

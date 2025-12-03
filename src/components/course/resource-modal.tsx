@@ -1,12 +1,32 @@
 
 'use client';
 import { useState, useEffect } from 'react';
-import { Subject, Resource } from '@/lib/types';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import Link from 'next/link';
 import { FileText, Youtube, BookOpen, FlaskConical, PencilRuler, ExternalLink } from 'lucide-react';
 import YoutubeThumbnailModal from './youtube-thumbnail-modal';
+
+// Mock types for demonstration
+interface Resource {
+  id: number;
+  label: string;
+  url: string;
+  type: string;
+}
+
+interface Subject {
+  id: string;
+  name: string;
+  icon: string;
+  description: string;
+  resources: {
+    notes: Resource[];
+    pyqs: Resource[];
+    lectures: Resource[];
+    practicals: Resource[];
+  };
+}
 
 interface ResourceModalProps {
   subject: Subject;
@@ -23,7 +43,7 @@ const getYouTubeVideoId = (url: string): string | null => {
 const ResourceLink = ({ resource }: { resource: Resource }) => {
   const Icon = resource.type === 'youtube' ? Youtube : FileText;
   return (
-    <li key={resource.id}>
+    <li>
       <Link
         href={resource.url}
         target="_blank"
@@ -38,11 +58,16 @@ const ResourceLink = ({ resource }: { resource: Resource }) => {
   );
 };
 
-const YoutubeLink = ({ resource, onClick }: { resource: Resource, onClick: () => void }) => {
+const YoutubeLink = ({ resource, onClick }: { resource: Resource; onClick: (videoId: string) => void }) => {
+  const videoId = getYouTubeVideoId(resource.url);
+  if (!videoId) {
+    return <ResourceLink resource={resource} />;
+  }
+
   return (
-    <li key={resource.id}>
+    <li>
       <button
-        onClick={onClick}
+        onClick={() => onClick(videoId)}
         className="flex w-full items-center rounded-md p-2 text-left text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
       >
         <Youtube className="mr-3 h-4 w-4 flex-shrink-0" />
@@ -52,12 +77,11 @@ const YoutubeLink = ({ resource, onClick }: { resource: Resource, onClick: () =>
   );
 };
 
-
 export default function ResourceModal({ subject, onClose }: ResourceModalProps) {
   const [selectedVideoId, setSelectedVideoId] = useState<string | null>(null);
 
   useEffect(() => {
-    const handleKeyDown = (event: globalThis.KeyboardEvent) => {
+    const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
         if (selectedVideoId) {
           setSelectedVideoId(null);
@@ -70,23 +94,20 @@ export default function ResourceModal({ subject, onClose }: ResourceModalProps) 
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [onClose, selectedVideoId]);
 
-  const handleLectureClick = (videoUrl: string) => {
-    const videoId = getYouTubeVideoId(videoUrl);
-    if (videoId) {
-      setSelectedVideoId(videoId);
-    }
-  };
-
   const renderResourceList = (resources: Resource[], isLecture = false) => {
     if (resources.length === 0) {
       return <p className="px-2 py-4 text-sm text-muted-foreground italic">No resources available yet.</p>;
     }
-  
+
     return (
       <ul className="space-y-1 py-2">
         {resources.map((resource) => (
           isLecture ? (
-             <YoutubeLink key={resource.id} resource={resource} onClick={() => handleLectureClick(resource.url)} />
+            <YoutubeLink 
+              key={resource.id} 
+              resource={resource} 
+              onClick={setSelectedVideoId} 
+            />
           ) : (
             <ResourceLink key={resource.id} resource={resource} />
           )
@@ -125,7 +146,7 @@ export default function ResourceModal({ subject, onClose }: ResourceModalProps) 
               </AccordionItem>
               <AccordionItem value="pyqs">
                 <AccordionTrigger>
-                   <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-2">
                     <PencilRuler className="h-5 w-5" /> Previous Year Questions
                   </div>
                 </AccordionTrigger>
@@ -135,7 +156,7 @@ export default function ResourceModal({ subject, onClose }: ResourceModalProps) 
               </AccordionItem>
               <AccordionItem value="lectures">
                 <AccordionTrigger>
-                   <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-2">
                     <Youtube className="h-5 w-5" /> Lectures
                   </div>
                 </AccordionTrigger>
@@ -145,7 +166,7 @@ export default function ResourceModal({ subject, onClose }: ResourceModalProps) 
               </AccordionItem>
               <AccordionItem value="practicals">
                 <AccordionTrigger>
-                   <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-2">
                     <FlaskConical className="h-5 w-5" /> Practicals
                   </div>
                 </AccordionTrigger>
@@ -158,13 +179,11 @@ export default function ResourceModal({ subject, onClose }: ResourceModalProps) 
         </DialogContent>
       </Dialog>
       
-      {selectedVideoId && (
-        <YoutubeThumbnailModal
-          videoId={selectedVideoId}
-          isOpen={!!selectedVideoId}
-          onClose={() => setSelectedVideoId(null)}
-        />
-      )}
+      <YoutubeThumbnailModal
+        videoId={selectedVideoId}
+        isOpen={!!selectedVideoId}
+        onClose={() => setSelectedVideoId(null)}
+      />
     </>
   );
 }
