@@ -22,12 +22,13 @@ export default function AuthGuard({ children }: { children: React.ReactNode }) {
       return;
     }
 
+    // Only set initial load to false after the first check is complete
     if (isInitialLoad) {
       setIsInitialLoad(false);
     }
-
-    const isProtectedRoute = protectedRoutes.some(path => pathname.startsWith(path));
     
+    const isProtectedRoute = protectedRoutes.some(path => pathname.startsWith(path));
+
     if (user) {
       // User is logged in
       if (user.emailVerified) {
@@ -37,6 +38,7 @@ export default function AuthGuard({ children }: { children: React.ReactNode }) {
         }
       } else if (user.providerData.some(p => p.providerId === 'password')) {
         // Logged in with email, but not verified. Must be on verify-email page.
+        // Allow navigation to /login from /verify-email.
         if (pathname !== '/verify-email' && pathname !== '/login') {
           router.replace(`/verify-email?email=${user.email}`);
         }
@@ -47,9 +49,9 @@ export default function AuthGuard({ children }: { children: React.ReactNode }) {
         router.replace('/login');
       }
     }
-
   }, [user, isUserLoading, router, pathname, isInitialLoad]);
 
+  // Show a full-screen loader ONLY during the initial authentication check.
   if (isInitialLoad && isUserLoading) {
     return (
       <div className="flex min-h-screen w-full items-center justify-center bg-background">
@@ -58,14 +60,15 @@ export default function AuthGuard({ children }: { children: React.ReactNode }) {
     );
   }
 
-  // Prevent flash of unverified content on protected routes
+  // Prevent flash of unverified content on protected routes while redirecting.
   if (user && !user.emailVerified && user.providerData.some(p => p.providerId === 'password') && pathname !== '/verify-email' && pathname !== '/login') {
-     return (
+    return (
       <div className="flex min-h-screen w-full items-center justify-center bg-background">
         <Loader2 className="h-10 w-10 animate-spin text-primary" />
       </div>
     );
   }
 
+  // Once initial load is complete, render children immediately.
   return <>{children}</>;
 }
