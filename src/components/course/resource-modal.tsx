@@ -34,14 +34,19 @@ interface ResourceModalProps {
 }
 
 const getYouTubeVideoId = (url: string): string | null => {
-    if (!url) return null;
+    if (!url || url.includes('playlist?list=')) return null;
     const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
     const match = url.match(regExp);
     return (match && match[2].length === 11) ? match[2] : null;
 };
 
-const ResourceLink = ({ resource }: { resource: Resource }) => {
+const isYouTubePlaylist = (url: string): boolean => {
+  return url.includes('playlist?list=');
+};
+
+const ResourceLink = ({ resource, isPlaylist = false }: { resource: Resource, isPlaylist?: boolean }) => {
   const Icon = resource.type === 'youtube' ? Youtube : FileText;
+  const label = isPlaylist ? `${resource.label} [Playlist]` : resource.label;
   return (
     <li>
       <Link
@@ -51,7 +56,7 @@ const ResourceLink = ({ resource }: { resource: Resource }) => {
         className="flex items-center rounded-md p-2 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
       >
         <Icon className="mr-3 h-4 w-4 flex-shrink-0" />
-        <span className="flex-grow">{resource.label}</span>
+        <span className="flex-grow">{label}</span>
         <ExternalLink className="ml-2 h-3 w-3 flex-shrink-0" />
       </Link>
     </li>
@@ -61,7 +66,9 @@ const ResourceLink = ({ resource }: { resource: Resource }) => {
 const YoutubeLink = ({ resource, onClick }: { resource: Resource; onClick: (videoId: string) => void }) => {
   const videoId = getYouTubeVideoId(resource.url);
   if (!videoId) {
-    return <ResourceLink resource={resource} />;
+    // This can happen if the URL is a playlist or an invalid video link
+    // We'll render it as a direct link.
+    return <ResourceLink resource={resource} isPlaylist={isYouTubePlaylist(resource.url)} />;
   }
 
   return (
@@ -101,17 +108,20 @@ export default function ResourceModal({ subject, onClose }: ResourceModalProps) 
 
     return (
       <ul className="space-y-1 py-2">
-        {resources.map((resource) => (
-          isLecture ? (
-            <YoutubeLink 
-              key={resource.id} 
-              resource={resource} 
-              onClick={setSelectedVideoId} 
-            />
-          ) : (
-            <ResourceLink key={resource.id} resource={resource} />
-          )
-        ))}
+        {resources.map((resource) => {
+          if (isLecture) {
+             const isPlaylist = isYouTubePlaylist(resource.url);
+             if(isPlaylist) {
+                return <ResourceLink key={resource.id} resource={resource} isPlaylist={true} />;
+             }
+             const videoId = getYouTubeVideoId(resource.url);
+             if (videoId) {
+                return <YoutubeLink key={resource.id} resource={resource} onClick={setSelectedVideoId} />;
+             }
+          }
+          // Fallback for non-lecture resources or non-youtube lecture links
+          return <ResourceLink key={resource.id} resource={resource} />;
+        })}
       </ul>
     );
   };
