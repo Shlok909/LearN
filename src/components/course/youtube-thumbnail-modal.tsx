@@ -41,4 +41,3 @@ export default function YoutubeThumbnailModal({ videoId, isOpen, onClose }: Yout
     </Dialog>
   );
 }
-
