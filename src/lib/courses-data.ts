@@ -263,14 +263,13 @@ export const coursesData: CoursesData = {
             resources: {
               notes: [],
               pyqs: [
-                { id: 1, label: 'Link 1', url: '', type: 'pdf' },
-                { id: 2, label: 'Link 2', url: '', type: 'pdf' },
-                { id: 3, label: 'Link 3', url: '', type: 'pdf' },
-                { id: 4, label: 'Link 4', url: '', type: 'pdf' },
-                { id: 5, label: 'Link 5', url: '', type: 'pdf' },
-                { id: 6, label: 'Link 6', url: '', type: 'pdf' },
-                { id: 7, label: 'Link 7', url: '', type: 'pdf' },
-                { id: 8, label: 'Link 8',url: '', type: 'pdf' },
+                { id: 1, label: 'Java summer-2019', url: 'https://www.rtmnuonline.com/papers/bca-6-sem-programming-in-java-2244-summer-2019.pdf', type: 'pdf' },
+                { id: 2, label: 'Java summer-2018', url: 'https://www.rtmnuonline.com/papers/bca-6-sem-programming-in-java-paper-2-summer-2018.pdf', type: 'pdf' },
+                { id: 3, label: 'Java winter-2018_2', url: 'https://www.rtmnuonline.com/papers/bca-6-sem-programming-in-java-winter-2018.pdf', type: 'pdf' },
+                { id: 4, label: 'Java summer-2017', url: 'https://www.rtmnuonline.com/papers/bca-6-sem-programming-in-java-summer-2017.pdf', type: 'pdf' },
+                { id: 5, label: 'Java winter-2017', url: 'https://www.rtmnuonline.com/papers/bca-6-sem-programming-in-java-winter-2017.pdf', type: 'pdf' },
+                { id: 6, label: 'Java winter-2023', url: 'https://www.rtmnuonline.com/papers/btech-cse-3-sem-object-oriented-programming-with-java-2570-winter-2023.pdf', type: 'pdf' },
+                { id: 7, label: 'Java winter-2022', url: 'https://www.rtmnuonline.com/papers/btech-cse-3-sem-object-oriented-programming-with-java-2530-winter-2022.pdf', type: 'pdf' },
               ],
               lectures: [
                 { id: 1, label: 'Link 1 ', url: 'https://youtube.com/playlist?list=PLlg3g5kppv-9FB8xrju6852QezyQUPUHZ&si=_lcLLza5Wa42sjXx', type: 'youtube' },
@@ -285,7 +284,7 @@ export const coursesData: CoursesData = {
                 { id: 10,label: 'Link 10', url: 'https://youtube.com/playlist?list=PLr3OnN7KdzehfjBqP7o5pyvlcT4O2zi4n&si=liOvd9sAWeF2AWTF', type: 'youtube' },
                 { id: 11,label: 'Link 11', url: 'https://youtube.com/playlist?list=PL-G5fgAX3nWoMC2TjXd60tmOg_I-f_5Qh&si=LyQITM1H0peu5uFp', type: 'youtube' },
               ],
-              practicals: [{ id: 1, label: 'Link 1 II', url: '#', type: 'pdf' }],
+              practicals: [],
             },
           },
 
@@ -298,14 +297,15 @@ export const coursesData: CoursesData = {
             resources: {
               notes: [],
               pyqs: [
-                { id: 1, label: 'Link 1', url: '', type: 'pdf' },
-                { id: 2, label: 'Link 3', url: '', type: 'pdf' },
-                { id: 3, label: 'Link 4', url: '', type: 'pdf' },
-                { id: 4, label: 'Link 5', url: '', type: 'pdf' },
-                { id: 5, label: 'Link 6', url: '', type: 'pdf' },
-                { id: 6, label: 'Link 7', url: '', type: 'pdf' },
-                { id: 7, label: 'Link 8', url: '', type: 'pdf' },
-                { id: 8, label: 'Link 9',url: '', type: 'pdf' },
+                { id: 1, label: 'software-engineering-summer-2023', url: 'https://www.rtmnuonline.com/papers/bca-4-sem-computer-application-p1-software-engineering-1-1267-summer-2023.pdf', type: 'pdf' },
+                { id: 2, label: 'software-engineering-summer-2019', url: 'https://www.rtmnuonline.com/papers/bca-4-sem-software-engineering-1-2231-summer-2019.pdf', type: 'pdf' },
+                { id: 3, label: 'software-engineering-summer-2018', url: 'https://www.rtmnuonline.com/papers/bca-4-sem-software-engineering-1-paper-1-summer-2018.pdf', type: 'pdf' },
+                { id: 4, label: 'software-engineering-winter-2018', url: 'https://www.rtmnuonline.com/papers/bca-4-sem-software-engineering-1-winter-2018.pdf', type: 'pdf' },
+                { id: 5, label: 'software-engineering-summer-2017', url: 'https://www.rtmnuonline.com/papers/bca-4-sem-software-engineering-1-summer-2017.pdf', type: 'pdf' },
+                { id: 6, label: 'software-engineering-winter-2017', url: 'https://www.rtmnuonline.com/papers/bca-4-sem-software-engineering-1-winter-2017.pdf', type: 'pdf' },
+                { id: 7, label: 'software-engineering-summer-2016', url: 'https://www.rtmnuonline.com/papers/bca-4-sem-software-eng-1-summer-2016.pdf', type: 'pdf' },
+                { id: 8, label: 'software-engineering-winter-2023', url: 'https://www.rtmnuonline.com/papers/bca-5-sem-software-engineering-1321-c-winter-2023.pdf', type: 'pdf' },
+                { id: 9, label: 'software-engineering-summer-2019', url: 'https://www.rtmnuonline.com/papers/bca-5-sem-software-engineering-2-2240-summer-2019.pdf', type: 'pdf' },
               ],
               lectures: [
                 { id: 1, label: 'Link 1 ', url: 'https://youtube.com/playlist?list=PLlg3g5kppv-9eOE-Xt4newjrufPcKRG_Z&si=GJyFbZ0H6etqoOOh', type: 'youtube' },
@@ -317,9 +317,9 @@ export const coursesData: CoursesData = {
                 { id: 7, label: 'Link 7 ', url: 'https://youtube.com/playlist?list=PL-G5fgAX3nWoCfOETYwIm6aRLH_0USvSd&si=rWKC8iN3GLdCZI0K', type: 'youtube' },
                 { id: 8, label: 'Link 8 ', url: 'https://youtube.com/playlist?list=PL5lGYQg6y9m_B7Gd5tmayScXwiyO0cRat&si=Hm83hMnCGCTYusoV', type: 'youtube' },
               ],
-              practicals: [{ id: 1, label: 'Link 1 II', url: '#', type: 'pdf' }],
+              practicals: [],
             },
-          },
+          }, 
 
           {
             id: 'Python',
@@ -329,7 +329,7 @@ export const coursesData: CoursesData = {
             description: 'Learn Python and build your stuff',
             resources: {
               notes: [],
-              pyqs: [
+              pyqs: [/*
                 { id: 1, label: 'Link 1', url: '', type: 'pdf' },
                 { id: 2, label: 'Link 2', url: '', type: 'pdf' },
                 { id: 3, label: 'Link 3', url: '', type: 'pdf' },
@@ -338,7 +338,7 @@ export const coursesData: CoursesData = {
                 { id: 6, label: 'Link 6', url: '', type: 'pdf' },
                 { id: 7, label: 'Link 7', url: '', type: 'pdf' },
                 { id: 8, label: 'Link 8', url: '', type: 'pdf' },
-              ],
+              */],
               lectures: [
                 { id: 1, label: 'Link 1 ', url: 'https://youtube.com/playlist?list=PLqleLpAMfxGClAxSATq06jrPPOGexBKBI&si=ISAyQL6xMutgBrR_', type: 'youtube' },
                 { id: 2, label: 'Link 2 ', url: 'https://youtube.com/playlist?list=PLxCzCOWd7aiEb4apyN1Y8mD-QuUTr3SPQ&si=Nzml3KP-M428GGPz', type: 'youtube' },
@@ -366,7 +366,7 @@ export const coursesData: CoursesData = {
             description: 'Probability increases the chances of success',
             resources: {
               notes: [],
-              pyqs: [
+              pyqs: [/*
                 { id: 1, label: 'Link 1', url: '', type: 'pdf' },
                 { id: 2, label: 'Link 2', url: '', type: 'pdf' },
                 { id: 3, label: 'Link 3', url: '', type: 'pdf' },
@@ -375,7 +375,7 @@ export const coursesData: CoursesData = {
                 { id: 6, label: 'Link 6', url: '', type: 'pdf' },
                 { id: 7, label: 'Link 7', url: '', type: 'pdf' },
                 { id: 8, label: 'Link 8', url: '', type: 'pdf' },
-              ],
+              */],
               lectures: [
                 { id: 1, label: 'Link 1 ', url: 'https://youtu.be/dx4bqMlATQU?si=5-iWvjsXocrutO70', type: 'youtube' },
                 { id: 2, label: 'Link 2 ', url: 'https://youtu.be/ruWsWnik7YY?si=Xo0IFZxHD2XoEcls', type: 'youtube' },
@@ -401,7 +401,7 @@ export const coursesData: CoursesData = {
             description: 'Data Analytics increases the chances of chances',
             resources: {
               notes: [],
-              pyqs: [
+              pyqs: [/*
                 { id: 1, label: 'Link 1', url: '', type: 'pdf' },
                 { id: 2, label: 'Link 2', url: '', type: 'pdf' },
                 { id: 3, label: 'Link 3', url: '', type: 'pdf' },
@@ -410,7 +410,7 @@ export const coursesData: CoursesData = {
                 { id: 6, label: 'Link 6', url: '', type: 'pdf' },
                 { id: 7, label: 'Link 7', url: '', type: 'pdf' },
                 { id: 8, label: 'Link 8', url: '', type: 'pdf' },
-              ],
+              */],
               lectures: [
                 { id: 1, label: 'Link 1 ', url: 'https://youtube.com/playlist?list=PL5lGYQg6y9m9nJrJxJjA8K52lBhtuHpB0&si=v0-D4tbw9l0Xkhwn', type: 'youtube' },
                 { id: 2, label: 'Link 2 ', url: 'https://youtube.com/playlist?list=PLw1djS7l2tHNR3tjvLsnuxW5XEs4kh6kM&si=1DSxHGD1niixPqfU', type: 'youtube' },
