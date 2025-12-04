@@ -90,9 +90,7 @@ function SemesterPageContent({ course, semester }: { course: Course; semester: S
 
 // The main page component is now a server component that fetches data
 // and passes it to the client component that manages state.
-export default function SemesterPage({ params: paramsPromise }: { params: Promise<{ courseId: string; semesterId: string }> }) {
-  // Await the promise to resolve the params on the server
-  const params = React.use(paramsPromise);
+export default async function SemesterPage({ params }: { params: { courseId: string; semesterId: string } }) {
   const course = getCourseById(params.courseId);
   const semesterIdNum = parseInt(params.semesterId, 10);
 
