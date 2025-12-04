@@ -523,4 +523,3 @@ export function getCourseById(id: string): Course | undefined {
   return coursesData[id];
 }
 
-
