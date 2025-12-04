@@ -27,7 +27,7 @@ export default function RootLayout({
           <AuthGuard>
             <div id="background-container" />
             <AnimatedHeroBackground />
-            <div className="relative z-10">
+            <div className="relative z-10 animate-page-transition">
               {children}
             </div>
             <Toaster />
