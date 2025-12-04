@@ -1,3 +1,4 @@
+
 'use client';
 
 import React, { useState } from 'react';
@@ -10,9 +11,27 @@ import Footer from '@/components/layout/footer';
 import BackButton from '@/components/back-button';
 import type { Subject, Course, Semester } from '@/lib/types';
 import ResourceModal from '@/components/course/resource-modal';
+import YoutubeThumbnailModal from '@/components/course/youtube-thumbnail-modal';
 
-function SemesterClientPage({ course, semester }: { course: Course; semester: Semester }) {
+function SemesterPageContent({ course, semester }: { course: Course; semester: Semester }) {
   const [selectedSubject, setSelectedSubject] = useState<Subject | null>(null);
+  const [selectedVideoId, setSelectedVideoId] = useState<string | null>(null);
+
+  const handleOpenResources = (subject: Subject) => {
+    setSelectedSubject(subject);
+  };
+
+  const handleCloseResources = () => {
+    setSelectedSubject(null);
+  };
+
+  const handleOpenVideo = (videoId: string) => {
+    setSelectedVideoId(videoId);
+  };
+
+  const handleCloseVideo = () => {
+    setSelectedVideoId(null);
+  };
 
   return (
     <>
@@ -37,7 +56,7 @@ function SemesterClientPage({ course, semester }: { course: Course; semester: Se
                     </CardHeader>
                     <CardContent className="flex flex-grow flex-col justify-between p-6">
                        <p className="mb-4 text-sm text-muted-foreground md:text-base">{subject.description}</p>
-                       <button onClick={() => setSelectedSubject(subject)} className="mt-auto inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground ring-offset-background transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50">
+                       <button onClick={() => handleOpenResources(subject)} className="mt-auto inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground ring-offset-background transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50">
                          Access Resources <ArrowRight className="ml-2 h-4 w-4" />
                        </button>
                     </CardContent>
@@ -53,18 +72,26 @@ function SemesterClientPage({ course, semester }: { course: Course; semester: Se
           </div>
         </section>
       </main>
-      {selectedSubject && (
-        <ResourceModal
-          subject={selectedSubject}
-          onClose={() => setSelectedSubject(null)}
-        />
-      )}
+      
+      <ResourceModal
+        subject={selectedSubject}
+        onClose={handleCloseResources}
+        onOpenVideo={handleOpenVideo}
+      />
+      
+      <YoutubeThumbnailModal
+        videoId={selectedVideoId}
+        isOpen={!!selectedVideoId}
+        onClose={handleCloseVideo}
+      />
     </>
   );
 }
 
-// The main page component is now a server component
+// The main page component is now a server component that fetches data
+// and passes it to the client component that manages state.
 export default function SemesterPage({ params: paramsPromise }: { params: Promise<{ courseId: string; semesterId: string }> }) {
+  // Await the promise to resolve the params on the server
   const params = React.use(paramsPromise);
   const course = getCourseById(params.courseId);
   const semesterIdNum = parseInt(params.semesterId, 10);
@@ -82,8 +109,7 @@ export default function SemesterPage({ params: paramsPromise }: { params: Promis
   return (
     <div className="flex min-h-screen flex-col bg-background">
       <NavigationBar />
-      {/* We pass the server-fetched data as props to the new client component */}
-      <SemesterClientPage course={course} semester={semester} />
+      <SemesterPageContent course={course} semester={semester} />
       <Footer />
     </div>
   );
