@@ -368,7 +368,7 @@ export const coursesData: CoursesData = {
             resources: {
               notes: [],
               pyqs: [
-                { id: 1, label: 'Probability PUT', url: 'file:///C:/Users/SHLOK/Desktop/Probability%20PUT.pdf', type: 'pdf' },
+                /*{ id: 1, label: 'Probability PUT', url: 'file:///C:/Users/SHLOK/Desktop/Probability%20PUT.pdf', type: 'pdf' },
                 /*{ id: 2, label: 'Link 2', url: '', type: 'pdf' },
                 { id: 3, label: 'Link 3', url: '', type: 'pdf' },
                 { id: 4, label: 'Link 4', url: '', type: 'pdf' },
