@@ -306,6 +306,7 @@ export const coursesData: CoursesData = {
                 { id: 7, label: 'software-engineering-summer-2016', url: 'https://www.rtmnuonline.com/papers/bca-4-sem-software-eng-1-summer-2016.pdf', type: 'pdf' },
                 { id: 8, label: 'software-engineering-winter-2023', url: 'https://www.rtmnuonline.com/papers/bca-5-sem-software-engineering-1321-c-winter-2023.pdf', type: 'pdf' },
                 { id: 9, label: 'software-engineering-summer-2019', url: 'https://www.rtmnuonline.com/papers/bca-5-sem-software-engineering-2-2240-summer-2019.pdf', type: 'pdf' },
+                { id:10, label: 'software-engineering-PUT', url: 'https://i.postimg.cc/4yJwhGzF/SE-PUT.jpg', type: 'image' }
               ],
               lectures: [
                 { id: 1, label: 'Link 1 ', url: 'https://youtube.com/playlist?list=PLlg3g5kppv-9eOE-Xt4newjrufPcKRG_Z&si=GJyFbZ0H6etqoOOh', type: 'youtube' },
@@ -329,10 +330,10 @@ export const coursesData: CoursesData = {
             description: 'Learn Python and build your stuff',
             resources: {
               notes: [],
-              pyqs: [/*
-                { id: 1, label: 'Link 1', url: '', type: 'pdf' },
-                { id: 2, label: 'Link 2', url: '', type: 'pdf' },
-                { id: 3, label: 'Link 3', url: '', type: 'pdf' },
+              pyqs: [
+                { id: 1, label: 'Python Questions (Unit - 1)', url: 'https://i.postimg.cc/PJtK8HmS/Python-questions.jpg', type: 'image' },
+                { id: 2, label: 'Python PUT', url: 'https://i.postimg.cc/cCsT8WQB/python-put.jpg', type: 'image' },
+                /*{ id: 3, label: 'Link 3', url: '', type: 'pdf' },
                 { id: 4, label: 'Link 4', url: '', type: 'pdf' },
                 { id: 5, label: 'Link 5', url: '', type: 'pdf' },
                 { id: 6, label: 'Link 6', url: '', type: 'pdf' },
@@ -366,9 +367,9 @@ export const coursesData: CoursesData = {
             description: 'Probability increases the chances of success',
             resources: {
               notes: [],
-              pyqs: [/*
-                { id: 1, label: 'Link 1', url: '', type: 'pdf' },
-                { id: 2, label: 'Link 2', url: '', type: 'pdf' },
+              pyqs: [
+                { id: 1, label: 'Probability PUT', url: 'file:///C:/Users/SHLOK/Desktop/Probability%20PUT.pdf', type: 'pdf' },
+                /*{ id: 2, label: 'Link 2', url: '', type: 'pdf' },
                 { id: 3, label: 'Link 3', url: '', type: 'pdf' },
                 { id: 4, label: 'Link 4', url: '', type: 'pdf' },
                 { id: 5, label: 'Link 5', url: '', type: 'pdf' },
@@ -401,10 +402,10 @@ export const coursesData: CoursesData = {
             description: 'Data Analytics increases the chances of chances',
             resources: {
               notes: [],
-              pyqs: [/*
-                { id: 1, label: 'Link 1', url: '', type: 'pdf' },
-                { id: 2, label: 'Link 2', url: '', type: 'pdf' },
-                { id: 3, label: 'Link 3', url: '', type: 'pdf' },
+              pyqs: [
+                { id: 1, label: 'DAS PUT', url: 'https://i.postimg.cc/vB73BT6K/das-put.jpg', type: 'image' },
+                { id: 2, label: 'DAS (Unit - 2)', url: 'https://i.postimg.cc/wv50vMs2/das-pyq-(unit-2).jpg', type: 'image' },
+                /*{ id: 3, label: 'Link 3', url: '', type: 'pdf' },
                 { id: 4, label: 'Link 4', url: '', type: 'pdf' },
                 { id: 5, label: 'Link 5', url: '', type: 'pdf' },
                 { id: 6, label: 'Link 6', url: '', type: 'pdf' },
