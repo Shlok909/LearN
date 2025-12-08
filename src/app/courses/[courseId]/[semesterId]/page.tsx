@@ -1,7 +1,7 @@
 
 'use client';
 
-import { useState } from 'react';
+import { useState, use } from 'react';
 import { getCourseById } from '@/lib/courses-data';
 import { notFound } from 'next/navigation';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -12,7 +12,8 @@ import BackButton from '@/components/back-button';
 import type { Subject } from '@/lib/types';
 import ResourceModal from '@/components/course/resource-modal';
 
-export default function SemesterPage({ params }: { params: { courseId: string; semesterId: string } }) {
+export default function SemesterPage({ params: paramsProp }: { params: Promise<{ courseId: string; semesterId: string }> }) {
+  const params = use(paramsProp);
   const course = getCourseById(params.courseId);
   const semesterIdNum = parseInt(params.semesterId, 10);
 
