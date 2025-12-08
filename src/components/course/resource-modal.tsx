@@ -5,6 +5,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } f
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import Link from 'next/link';
 import { FileText, Youtube, BookOpen, FlaskConical, PencilRuler, ExternalLink } from 'lucide-react';
+import YoutubeThumbnailModal from './youtube-thumbnail-modal';
 
 // Mock types for demonstration
 interface Resource {
@@ -30,7 +31,6 @@ interface Subject {
 interface ResourceModalProps {
   subject: Subject;
   onClose: () => void;
-  onOpenVideo: (videoId: string) => void;
 }
 
 const getYouTubeVideoId = (url: string): string | null => {
@@ -84,7 +84,29 @@ const YoutubeLink = ({ resource, onClick }: { resource: Resource; onClick: (vide
   );
 };
 
-export default function ResourceModal({ subject, onClose, onOpenVideo }: ResourceModalProps) {
+export default function ResourceModal({ subject, onClose }: ResourceModalProps) {
+  const [selectedVideoId, setSelectedVideoId] = useState<string | null>(null);
+
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        if (selectedVideoId) {
+          setSelectedVideoId(null);
+        } else {
+          onClose();
+        }
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [selectedVideoId, onClose]);
+  
+  const handleOpenVideo = (videoId: string) => {
+    setSelectedVideoId(videoId);
+  };
+  const handleCloseVideo = () => {
+    setSelectedVideoId(null);
+  };
   
   const renderResourceList = (resources: Resource[], isLecture = false) => {
     if (resources.length === 0) {
@@ -101,7 +123,7 @@ export default function ResourceModal({ subject, onClose, onOpenVideo }: Resourc
              }
              const videoId = getYouTubeVideoId(resource.url);
              if (videoId) {
-                return <YoutubeLink key={resource.id} resource={resource} onClick={onOpenVideo} />;
+                return <YoutubeLink key={resource.id} resource={resource} onClick={handleOpenVideo} />;
              }
           }
           // Fallback for non-lecture resources or non-youtube lecture links
@@ -112,7 +134,8 @@ export default function ResourceModal({ subject, onClose, onOpenVideo }: Resourc
   };
 
   return (
-      <Dialog open={!!subject} onOpenChange={(open) => {
+    <>
+      <Dialog open={!!subject && !selectedVideoId} onOpenChange={(open) => {
         if (!open) {
           onClose();
         }
@@ -172,6 +195,15 @@ export default function ResourceModal({ subject, onClose, onOpenVideo }: Resourc
           </div>
         </DialogContent>
       </Dialog>
+      
+      {selectedVideoId && (
+        <YoutubeThumbnailModal
+          videoId={selectedVideoId}
+          isOpen={!!selectedVideoId}
+          onClose={handleCloseVideo}
+        />
+      )}
+    </>
   );
 }
 
