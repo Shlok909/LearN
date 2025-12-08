@@ -174,3 +174,4 @@ export default function ResourceModal({ subject, onClose, onOpenVideo }: Resourc
       </Dialog>
   );
 }
+
