@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { getCourseById } from '@/lib/courses-data';
 import { notFound } from 'next/navigation';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -10,9 +10,37 @@ import Footer from '@/components/layout/footer';
 import BackButton from '@/components/back-button';
 import type { Subject, Course, Semester } from '@/lib/types';
 import ResourceModal from '@/components/course/resource-modal';
+import YoutubeThumbnailModal from '@/components/course/youtube-thumbnail-modal';
 
-function SemesterClientPage({ course, semester }: { course: Course; semester: Semester }) {
+function SemesterPageContent({ course, semester }: { course: Course; semester: Semester }) {
   const [selectedSubject, setSelectedSubject] = useState<Subject | null>(null);
+  const [selectedVideoId, setSelectedVideoId] = useState<string | null>(null);
+
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        if (selectedVideoId) {
+          setSelectedVideoId(null);
+        } else if (selectedSubject) {
+          setSelectedSubject(null);
+        }
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [selectedSubject, selectedVideoId]);
+
+  const handleOpenVideo = (videoId: string) => {
+    setSelectedVideoId(videoId);
+  };
+
+  const handleCloseVideo = () => {
+    setSelectedVideoId(null);
+  };
+  
+  const handleCloseResourceModal = () => {
+    setSelectedSubject(null);
+  };
 
   return (
     <>
@@ -53,10 +81,20 @@ function SemesterClientPage({ course, semester }: { course: Course; semester: Se
           </div>
         </section>
       </main>
+      
       {selectedSubject && (
         <ResourceModal
           subject={selectedSubject}
-          onClose={() => setSelectedSubject(null)}
+          onClose={handleCloseResourceModal}
+          onOpenVideo={handleOpenVideo}
+        />
+      )}
+      
+      {selectedVideoId && (
+        <YoutubeThumbnailModal
+          videoId={selectedVideoId}
+          isOpen={!!selectedVideoId}
+          onClose={handleCloseVideo}
         />
       )}
     </>
@@ -64,8 +102,7 @@ function SemesterClientPage({ course, semester }: { course: Course; semester: Se
 }
 
 // The main page component is now a server component
-export default function SemesterPage({ params: paramsPromise }: { params: Promise<{ courseId: string; semesterId: string }> }) {
-  const params = React.use(paramsPromise);
+export default function SemesterPage({ params }: { params: { courseId: string; semesterId: string } }) {
   const course = getCourseById(params.courseId);
   const semesterIdNum = parseInt(params.semesterId, 10);
 
@@ -83,7 +120,7 @@ export default function SemesterPage({ params: paramsPromise }: { params: Promis
     <div className="flex min-h-screen flex-col bg-background">
       <NavigationBar />
       {/* We pass the server-fetched data as props to the new client component */}
-      <SemesterClientPage course={course} semester={semester} />
+      <SemesterPageContent course={course} semester={semester} />
       <Footer />
     </div>
   );
