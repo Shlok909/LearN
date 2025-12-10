@@ -46,11 +46,7 @@
     "genkit": "^1.20.0",
     "js-cookie": "^3.0.5",
     "lucide-react": "^0.475.0",
-<<<<<<< HEAD
     "next": "^15.5.7",
-=======
-    "next": "15.0.3",
->>>>>>> 8fee68c607df4f812e51ff85d38b724ba52f81bd
     "patch-package": "^8.0.0",
     "react": "^18.3.1",
     "react-day-picker": "^8.10.1",
