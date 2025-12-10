@@ -99,8 +99,15 @@ export default function ResourceModal({ subject, onClose }: ResourceModalProps) 
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [onClose, selectedVideoId]);
-
+  }, [selectedVideoId, onClose]);
+  
+  const handleOpenVideo = (videoId: string) => {
+    setSelectedVideoId(videoId);
+  };
+  const handleCloseVideo = () => {
+    setSelectedVideoId(null);
+  };
+  
   const renderResourceList = (resources: Resource[], isLecture = false) => {
     if (resources.length === 0) {
       return <p className="px-2 py-4 text-sm text-muted-foreground italic">No resources available yet.</p>;
@@ -116,7 +123,7 @@ export default function ResourceModal({ subject, onClose }: ResourceModalProps) 
              }
              const videoId = getYouTubeVideoId(resource.url);
              if (videoId) {
-                return <YoutubeLink key={resource.id} resource={resource} onClick={setSelectedVideoId} />;
+                return <YoutubeLink key={resource.id} resource={resource} onClick={handleOpenVideo} />;
              }
           }
           // Fallback for non-lecture resources or non-youtube lecture links
@@ -128,7 +135,7 @@ export default function ResourceModal({ subject, onClose }: ResourceModalProps) 
 
   return (
     <>
-      <Dialog open={!!subject} onOpenChange={(open) => {
+      <Dialog open={!!subject && !selectedVideoId} onOpenChange={(open) => {
         if (!open) {
           onClose();
         }
@@ -189,11 +196,14 @@ export default function ResourceModal({ subject, onClose }: ResourceModalProps) 
         </DialogContent>
       </Dialog>
       
-      <YoutubeThumbnailModal
-        videoId={selectedVideoId}
-        isOpen={!!selectedVideoId}
-        onClose={() => setSelectedVideoId(null)}
-      />
+      {selectedVideoId && (
+        <YoutubeThumbnailModal
+          videoId={selectedVideoId}
+          isOpen={!!selectedVideoId}
+          onClose={handleCloseVideo}
+        />
+      )}
     </>
   );
 }
+

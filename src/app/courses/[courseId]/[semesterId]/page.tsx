@@ -1,6 +1,7 @@
+
 'use client';
 
-import React, { useState } from 'react';
+import { useState, use } from 'react';
 import { getCourseById } from '@/lib/courses-data';
 import { notFound } from 'next/navigation';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -8,14 +9,37 @@ import { Book, ArrowRight } from 'lucide-react';
 import NavigationBar from '@/components/layout/navigation-bar';
 import Footer from '@/components/layout/footer';
 import BackButton from '@/components/back-button';
-import type { Subject, Course, Semester } from '@/lib/types';
+import type { Subject } from '@/lib/types';
 import ResourceModal from '@/components/course/resource-modal';
 
-function SemesterClientPage({ course, semester }: { course: Course; semester: Semester }) {
+export default function SemesterPage({ params: paramsProp }: { params: Promise<{ courseId: string; semesterId: string }> }) {
+  const params = use(paramsProp);
+  const course = getCourseById(params.courseId);
+  const semesterIdNum = parseInt(params.semesterId, 10);
+
   const [selectedSubject, setSelectedSubject] = useState<Subject | null>(null);
 
+  if (!course || isNaN(semesterIdNum)) {
+    notFound();
+  }
+  
+  const semester = course.semesters.find((s) => s.id === semesterIdNum);
+
+  if (!semester) {
+    notFound();
+  }
+  
+  const handleOpenModal = (subject: Subject) => {
+    setSelectedSubject(subject);
+  };
+
+  const handleCloseModal = () => {
+    setSelectedSubject(null);
+  };
+
   return (
-    <>
+    <div className="flex min-h-screen flex-col bg-background">
+      <NavigationBar />
       <main className="flex-grow">
         <section className="pt-8 pb-12 md:py-12 lg:py-16">
           <div className="container mx-auto px-4">
@@ -37,7 +61,7 @@ function SemesterClientPage({ course, semester }: { course: Course; semester: Se
                     </CardHeader>
                     <CardContent className="flex flex-grow flex-col justify-between p-6">
                        <p className="mb-4 text-sm text-muted-foreground md:text-base">{subject.description}</p>
-                       <button onClick={() => setSelectedSubject(subject)} className="mt-auto inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground ring-offset-background transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50">
+                       <button onClick={() => handleOpenModal(subject)} className="mt-auto inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground ring-offset-background transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50">
                          Access Resources <ArrowRight className="ml-2 h-4 w-4" />
                        </button>
                     </CardContent>
@@ -53,38 +77,14 @@ function SemesterClientPage({ course, semester }: { course: Course; semester: Se
           </div>
         </section>
       </main>
+      <Footer />
+      
       {selectedSubject && (
         <ResourceModal
           subject={selectedSubject}
-          onClose={() => setSelectedSubject(null)}
+          onClose={handleCloseModal}
         />
       )}
-    </>
-  );
-}
-
-// The main page component is now a server component
-export default function SemesterPage({ params: paramsPromise }: { params: Promise<{ courseId: string; semesterId: string }> }) {
-  const params = React.use(paramsPromise);
-  const course = getCourseById(params.courseId);
-  const semesterIdNum = parseInt(params.semesterId, 10);
-
-  if (!course || isNaN(semesterIdNum)) {
-    notFound();
-  }
-  
-  const semester = course.semesters.find((s) => s.id === semesterIdNum);
-
-  if (!semester) {
-    notFound();
-  }
-  
-  return (
-    <div className="flex min-h-screen flex-col bg-background">
-      <NavigationBar />
-      {/* We pass the server-fetched data as props to the new client component */}
-      <SemesterClientPage course={course} semester={semester} />
-      <Footer />
     </div>
   );
 }
