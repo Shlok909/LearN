@@ -318,7 +318,7 @@ export const coursesData: CoursesData = {
                 { id: 3, label: 'Link 3 ', url: 'https://youtube.com/playlist?list=PLXIPR4CD0noqAMtGtjXnIhcX3ChbLbGHr&si=I0Slla3JVDcn8pkJ', type: 'youtube' },
                 { id: 4, label: 'Link 4 ', url: 'https://youtube.com/playlist?list=PLu0W_9lII9agS67Uits0UnJyrYiXhDS6q&si=hlRNgEP7iJrDpShN', type: 'youtube' },
                 { id: 5, label: 'Link 5 ', url: 'https://youtu.be/UmnCZ7-9yDY?si=mFg59dKxePzTNosI', type: 'youtube' },
-                { id: 6, label: 'Link 6 ', url: 'https://youtube.com/playlist?list=PLqleLpAMfxGAdqZeY_4uVQOPCnAjhH-eT&si=s_hZPiL8Soy8LqDo', type: 'youtube' },
+                { id: 6, label: 'Link 6 ', url: 'https://youtube.com/playlist?list=PLqleLpAMfxGAdqZeYj2H6lyY2Q2ku7p9&si=s_hZPiL8Soy8LqDo', type: 'youtube' },
                 { id: 7, label: 'Link 7 ', url: 'https://youtu.be/32tp0Ot2JtU?si=TihILaK_iXssx-DB', type: 'youtube' },
                 { id: 8, label: 'Link 8 ', url: 'https://youtu.be/LepLT82RtxA?si=b1f4AhTTS6lawqjZ', type: 'youtube' },
                 { id: 9, label: 'Link 9 ', url: 'https://youtube.com/playlist?list=PL78RhpUUKSweClRi_l05UgfE3053-zkRf&si=tDPTs5tS7hkA0Bs3', type: 'youtube' },
