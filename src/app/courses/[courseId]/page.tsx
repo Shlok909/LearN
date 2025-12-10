@@ -1,4 +1,7 @@
 
+'use client';
+
+import { use } from 'react';
 import { getCourseById } from '@/lib/courses-data';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
@@ -17,7 +20,8 @@ const icons: { [key: string]: LucideIcon } = {
   Laptop
 };
 
-export default async function CoursePage({ params }: { params: { courseId: string } }) {
+export default function CoursePage({ params: paramsProp }: { params: Promise<{ courseId: string }> }) {
+  const params = use(paramsProp);
   const course = getCourseById(params.courseId);
 
   if (!course) {

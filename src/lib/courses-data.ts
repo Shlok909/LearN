@@ -17,7 +17,6 @@ export const coursesData: CoursesData = {
           {
             id: '1',
             name: 'C',
-            name: 'C',
             code: 'BCA101',
             icon: '📊',
             description: 'Master the fundamentals of data organization and algorithms.',
@@ -37,7 +36,6 @@ export const coursesData: CoursesData = {
           {
             id: '2',
             name: 'CAO',
-            name: 'CAO',
             code: 'BCA102',
             icon: '📜',
             description: 'Explore the foundational document of Indian democracy.',
@@ -46,16 +44,12 @@ export const coursesData: CoursesData = {
           {
             id: '3',
             name: 'MF',
-            id: '3',
-            name: 'MF',
             code: 'BCA103',
             icon: '🗄️',
             description: 'Learn to design, implement, and manage databases effectively.',
             resources: { notes: [], pyqs: [], lectures: [], practicals: [] },
           },
           {
-            id: 'English',
-            name: 'English',
             id: 'English',
             name: 'English',
             code: 'BCA104',
@@ -579,4 +573,3 @@ export function getCourses() {
 export function getCourseById(id: string): Course | undefined {
   return coursesData[id];
 }
-
