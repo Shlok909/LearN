@@ -110,8 +110,6 @@ export const coursesData: CoursesData = {
             pyqs: [
               { id: 1, label: 'link 1', url: 'https://i.postimg.cc/gk82SYrg/IMG-20250520-WA0017.jpg', type: 'external' },
               { id: 2, label: 'link 2', url: 'https://www.awesomescreenshot.com/image/57502621?key=984fb4f9fc4ad007e0b82bdcf190c914', type: 'external' },
-              { id: 1, label: 'link 1', url: 'https://i.postimg.cc/gk82SYrg/IMG-20250520-WA0017.jpg', type: 'external' },
-              { id: 2, label: 'link 2', url: 'https://www.awesomescreenshot.com/image/57502621?key=984fb4f9fc4ad007e0b82bdcf190c914', type: 'external' },
             ], 
             lectures: [
               { id: 1, label: 'Link 1 ', url: 'https://youtube.com/playlist?list=PLIEVEMAFhG48wZr7qyD4coAuF0EgieTz-&si=iqqsz9crtgRbSEf5', type: 'youtube' },
@@ -124,32 +122,6 @@ export const coursesData: CoursesData = {
               { id: 8, label: 'Link 8',  url: 'https://youtu.be/Dl85IEp8IRs?si=KpdLxq9_AJ1xc9JE', type: 'youtube' },  
               { id: 9, label: 'Link 9',  url: 'https://youtu.be/IusiYyQBTfo?si=-wW5a85NT5muGFhK', type: 'youtube' }, 
               { id: 10,label: 'Link 10', url: 'https://youtu.be/B1Ysu9xlmW0?si=XY-JeJCBiIij7dDp', type: 'youtube' },
-            ], 
-            practicals: [] 
-          },
-        },
-
-        {
-          id: 'web-technology-sem2',
-          name: 'Web Technology',
-          code: 'BCA102',
-          icon: '🌐',
-          description: 'Dive into modern web development. HTML, CSS, JavaScript, and frameworks.',
-          resources: { 
-            notes: [], 
-            pyqs: [
-              { id: 1, label: 'Web Technology summer 2016', url: 'https://www.rtmnuonline.com/papers/bca-3-sem-web-technology-summer-2016.pdf', type: 'pdf' },
-              { id: 2, label: 'Web Technology winter 2016', url: 'https://www.rtmnuonline.com/papers/bca-3-sem-web-technology-winter-2016.pdf', type: 'pdf' },
-              { id: 3, label: 'Web Technology summer 2019', url: 'https://www.rtmnuonline.com/papers/bca-4-sem-web-technology-2-2235-summer-2019.pdf', type: 'pdf' },
-              { id: 4, label: 'Web Technology summer 2018', url: 'https://www.rtmnuonline.com/papers/bca-3-sem-web-technology-summer-2018.pdf', type: 'pdf' },
-              { id: 5, label: 'Web Technology winter 2018', url: 'https://www.rtmnuonline.com/papers/bca-3-sem-web-technology-winter-2018.pdf', type: 'pdf' },
-              { id: 6, label: 'Web Technology summer 2017', url: 'https://www.rtmnuonline.com/papers/bca-3-sem-web-technology-summer-2017.pdf', type: 'pdf' },
-              { id: 7, label: 'Web Technology winter 2017', url: 'https://www.rtmnuonline.com/papers/bca-3-sem-web-technology-winter-2017.pdf', type: 'pdf' },
-            ], 
-            lectures: [
-              { id: 1, label: 'Link 1 ', url: 'https://youtu.be/1V9mhVgVH3A?si=na6l6GkjruofsR4A', type: 'youtube' },
-              { id: 2, label: 'Link 2 ', url: 'https://youtube.com/playlist?list=PLrjkTql3jnm8d1ddpVKifXO_fPjSKATCp&si=7iDNZzFCcK9DXiC_', type: 'youtube' },
-              { id: 3, label: 'Link 3 ', url: 'https://youtube.com/playlist?list=PLV8vIYTIdSnbwIFENjqBK7yyAkSVSoLBC&si=_k06Hv9tmzDDbJmU', type: 'youtube' },
             ], 
             practicals: [] 
           },
@@ -231,20 +203,12 @@ export const coursesData: CoursesData = {
               { id: 5, label: ' C++ winter 2017',  url: 'https://www.rtmnuonline.com/papers/bca-2-sem-programming-in-cpp-winter-2017.pdf', type: 'pdf' },
               { id: 6, label: ' C++ winter 2016',  url: 'https://www.rtmnuonline.com/papers/bca-2-sem-programing-in-cpp-summer-2016.pdf', type: 'pdf' },
               { id: 7, label: ' C++ winter 2016_2',  url: 'https://www.rtmnuonline.com/papers/bca-2-sem-programming-in-cpp-winter-2016.pdf', type: 'pdf' },
-              { id: 7, label: ' C++ winter 2016_2',  url: 'https://www.rtmnuonline.com/papers/bca-2-sem-programming-in-cpp-winter-2016.pdf', type: 'pdf' },
               { id: 8, label: ' C++ winter 2015',  url: 'https://www.rtmnuonline.com/papers/bca-2-sem-programming-in-cpp-winter-2015.pdf', type: 'pdf' },
-            
-            ], lectures: [
+            ], 
+            lectures: [
               { id: 1, label: 'Link 1 ', url: 'https://youtube.com/playlist?list=PL724pdDXl9Q0yZUx9bkqarHO584JOsKfE&si=Tt7SUIIwwmYm2f_a', type: 'youtube' },
               { id: 2, label: 'Link 2 ', url: 'https://youtube.com/playlist?list=PLmRclvVt5DtlXMvqL0zDqQu9Cvy6rsmd4&si=DN_whLhVx31_Pmuv', type: 'youtube' },
               { id: 3, label: 'Link 3 ', url: 'https://youtube.com/playlist?list=PLqleLpAMfxGDq9Ehl8FUstcRrCRQPQO7n&si=ltxcBEEYDa6UdO3K', type: 'youtube' },
-              { id: 4, label: 'Link 4 ', url: 'https://youtu.be/stqrJl3pIaI?si=eYa1p3seFIDjO0RD', type: 'youtube' },
-              { id: 5, label: 'Link 5 ', url: 'https://youtu.be/OQ0En1dQ3zI?si=pXqWcqDoKGqFc3AZ', type: 'youtube' },
-              { id: 6, label: 'Link 6 ', url: 'https://youtu.be/mlIUKyZIUUU?si=N-C1uF9w3rp0VbFv', type: 'youtube' },
-              { id: 7, label: 'Link 7 ', url: 'https://youtube.com/playlist?list=PLxCzCOWd7aiF6yRNI5OHQsnUJQfl7Geqj&si=jV9OsM6ZAyxfe1HY', type: 'youtube' },
-              { id: 8, label: 'Link 8 ', url: 'https://youtu.be/9roJTTghZJI?si=yi4iSn53TeDTIBii', type: 'youtube' },
-              { id: 9, label: 'Link 9 ', url: 'https://youtu.be/oi1ffu6lBXE?si=ywnaLOR6HpE55VJn', type: 'youtube' },
-              { id: 10, label: 'Link 10', url: 'https://youtu.be/oi1ffu6lBXE?si=ywnaLOR6HpE55VJn', type: 'youtube' },
               { id: 4, label: 'Link 4 ', url: 'https://youtu.be/stqrJl3pIaI?si=eYa1p3seFIDjO0RD', type: 'youtube' },
               { id: 5, label: 'Link 5 ', url: 'https://youtu.be/OQ0En1dQ3zI?si=pXqWcqDoKGqFc3AZ', type: 'youtube' },
               { id: 6, label: 'Link 6 ', url: 'https://youtu.be/mlIUKyZIUUU?si=N-C1uF9w3rp0VbFv', type: 'youtube' },
@@ -269,8 +233,6 @@ export const coursesData: CoursesData = {
                 { id: 5, label: ' Operating System summer 2019',   url: 'https://www.rtmnuonline.com/papers/bca-2-sem-linux-operating-system-2223-summer-2019.pdf', type: 'pdf' },
                 { id: 6, label: ' Operating System summer 2018_2',   url: 'https://www.rtmnuonline.com/papers/bca-2-sem-linux-operating-system-2018.pdf', type: 'pdf' },
                 { id: 7, label: ' Operating System summer 2017_2',   url: 'https://www.rtmnuonline.com/papers/bca-2-sem-linux-operating-system-2017.pdf', type: 'pdf' },
-                { id: 6, label: ' Operating System summer 2018_2',   url: 'https://www.rtmnuonline.com/papers/bca-2-sem-linux-operating-system-2018.pdf', type: 'pdf' },
-                { id: 7, label: ' Operating System summer 2017_2',   url: 'https://www.rtmnuonline.com/papers/bca-2-sem-linux-operating-system-2017.pdf', type: 'pdf' },
                 { id: 8, label: ' Operating System summer 2017_1', url: 'https://www.rtmnuonline.com/papers/bca-2-sem-linux-operating-system-summer-2017.pdf', type: 'pdf' },
                 ], 
               lectures: [
@@ -285,7 +247,6 @@ export const coursesData: CoursesData = {
                 { id: 9, label: 'Link 9 ', url: 'https://youtube.com/playlist?list=PLG9aCp4uE-s17rFjWM8KchGlffXgOzzVP&si=zZlP4oQHi-ctWDc5', type: 'youtube' },
                 { id: 10,label: 'Link 10 ', url: 'https://youtube.com/playlist?list=PLV8vIYTIdSnZ67NQObdXE0gFjrzPrNKHp&si=2ipfEHzxrG0rc0dn', type: 'youtube' },
                 { id: 11,label: 'Link 11 ', url: 'https://youtube.com/playlist?list=PLqcuf9-ILPYARwquS3KOD3bDe0NSaD-oK&si=ZhAB8Pl9pHLFz3Aj', type: 'youtube' },
-                { id: 12,label: 'Link 12 ', url: 'https://youtube.com/playlist?list=PLdo5W4Nhv31a5ucW_S1K3-x6ztBRD-PNa&si=COQ8zrzb8QFlPXTd', type: 'youtube' },
                 { id: 12,label: 'Link 12 ', url: 'https://youtube.com/playlist?list=PLdo5W4Nhv31a5ucW_S1K3-x6ztBRD-PNa&si=COQ8zrzb8QFlPXTd', type: 'youtube' },
               ], 
               practicals: [] } },
@@ -339,15 +300,18 @@ export const coursesData: CoursesData = {
             resources: {
               notes: [],
               pyqs: [
-                { id: 1, label: 'software-engineering-summer-2023', url: 'https://www.rtmnuonline.com/papers/bca-4-sem-computer-application-p1-software-engineering-1-1267-summer-2023.pdf', type: 'pdf' },
-                { id: 2, label: 'software-engineering-summer-2019', url: 'https://www.rtmnuonline.com/papers/bca-4-sem-software-engineering-1-2231-summer-2019.pdf', type: 'pdf' },
-                { id: 3, label: 'software-engineering-summer-2018', url: 'https://www.rtmnuonline.com/papers/bca-4-sem-software-engineering-1-paper-1-summer-2018.pdf', type: 'pdf' },
-                { id: 4, label: 'software-engineering-winter-2018', url: 'https://www.rtmnuonline.com/papers/bca-4-sem-software-engineering-1-winter-2018.pdf', type: 'pdf' },
-                { id: 5, label: 'software-engineering-summer-2017', url: 'https://www.rtmnuonline.com/papers/bca-4-sem-software-engineering-1-summer-2017.pdf', type: 'pdf' },
-                { id: 6, label: 'software-engineering-winter-2017', url: 'https://www.rtmnuonline.com/papers/bca-4-sem-software-engineering-1-winter-2017.pdf', type: 'pdf' },
-                { id: 7, label: 'software-engineering-summer-2016', url: 'https://www.rtmnuonline.com/papers/bca-4-sem-software-eng-1-summer-2016.pdf', type: 'pdf' },
-                { id: 8, label: 'software-engineering-winter-2023', url: 'https://www.rtmnuonline.com/papers/bca-5-sem-software-engineering-1321-c-winter-2023.pdf', type: 'pdf' },
-                { id: 9, label: 'software-engineering-summer-2019', url: 'https://www.rtmnuonline.com/papers/bca-5-sem-software-engineering-2-2240-summer-2019.pdf', type: 'pdf' },
+                { id: 1, label: 'Unit - 1 (Question Bank)', url: 'https://drive.google.com/file/d/1I9UGHVwK5A2LFlLX5Y1w8jdZ83_b8ocC/view', type: 'pdf' },
+                { id: 2, label: 'Unit - 3 (Question Bank)', url: 'https://drive.google.com/file/d/1M1NPL4T3s1A-1AUiPs07j21Z9uUohHEk/view', type: 'pdf' },
+                { id: 3, label: 'Unit - 4 (Question Bank)', url: 'https://drive.google.com/file/d/1zhNqEBFkLd8xLCoF-tt7HR8adKhHWGrO/view', type: 'pdf' },
+                { id: 4, label: 'software-engineering-summer-2023', url: 'https://www.rtmnuonline.com/papers/bca-4-sem-computer-application-p1-software-engineering-1-1267-summer-2023.pdf', type: 'pdf' },
+                { id: 5, label: 'software-engineering-summer-2019', url: 'https://www.rtmnuonline.com/papers/bca-4-sem-software-engineering-1-2231-summer-2019.pdf', type: 'pdf' },
+                { id: 6, label: 'software-engineering-summer-2018', url: 'https://www.rtmnuonline.com/papers/bca-4-sem-software-engineering-1-paper-1-summer-2018.pdf', type: 'pdf' },
+                { id: 7, label: 'software-engineering-winter-2018', url: 'https://www.rtmnuonline.com/papers/bca-4-sem-software-engineering-1-winter-2018.pdf', type: 'pdf' },
+                { id: 8, label: 'software-engineering-summer-2017', url: 'https://www.rtmnuonline.com/papers/bca-4-sem-software-engineering-1-summer-2017.pdf', type: 'pdf' },
+                { id: 9, label: 'software-engineering-winter-2017', url: 'https://www.rtmnuonline.com/papers/bca-4-sem-software-engineering-1-winter-2017.pdf', type: 'pdf' },
+                { id:10, label: 'software-engineering-summer-2016', url: 'https://www.rtmnuonline.com/papers/bca-4-sem-software-eng-1-summer-2016.pdf', type: 'pdf' },
+                { id:11, label: 'software-engineering-winter-2023', url: 'https://www.rtmnuonline.com/papers/bca-5-sem-software-engineering-1321-c-winter-2023.pdf', type: 'pdf' },
+                { id:12, label: 'software-engineering-summer-2019', url: 'https://www.rtmnuonline.com/papers/bca-5-sem-software-engineering-2-2240-summer-2019.pdf', type: 'pdf' },
               ],
               lectures: [
                 { id: 1, label: 'Link 1 ', url: 'https://youtube.com/playlist?list=PLlg3g5kppv-9eOE-Xt4newjrufPcKRG_Z&si=GJyFbZ0H6etqoOOh', type: 'youtube' },
