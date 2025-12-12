@@ -50,7 +50,7 @@ export default function CoursePage({ params: paramsProp }: { params: Promise<{ c
                   {course.description}
                 </p>
                 <div className="mt-8 text-center">
-                  <Button variant="outline" onClick={() => setIsSyllabusOpen(true)}>
+                  <Button onClick={() => setIsSyllabusOpen(true)} className="bg-white text-primary hover:bg-white/90">
                     <BookOpen className="mr-2 h-4 w-4" />
                     Syllabus
                   </Button>
