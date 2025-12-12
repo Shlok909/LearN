@@ -131,7 +131,7 @@ export default function ResourceModal({ subject, onClose }: ResourceModalProps) 
 
   return (
     <Dialog open={!!subject} onOpenChange={(open) => !open && onClose()}>
-      <DialogContent className="max-w-2xl overflow-hidden transition-all duration-300">
+      <DialogContent className="max-w-2xl overflow-hidden transition-all duration-300" showCloseButton={!selectedVideoId}>
         {selectedVideoId ? (
           // Video Preview Content
           <div>
