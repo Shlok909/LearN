@@ -43,18 +43,18 @@ export default function CoursePage({ params: paramsProp }: { params: Promise<{ c
               <BackButton href="/home" className="mb-8" />
               
               <div className="relative mb-12 text-center md:mb-16">
-                <div className="absolute top-0 right-0">
-                  <Button variant="outline" onClick={() => setIsSyllabusOpen(true)}>
-                    <BookOpen className="mr-2 h-4 w-4" />
-                    Syllabus
-                  </Button>
-                </div>
                 <Icon className="mx-auto mb-4 h-16 w-16 md:h-20 md:w-20 text-primary" />
                 <h1 className="mb-2 text-3xl font-bold text-foreground md:text-5xl">{course.fullName}</h1>
                 <p className="text-base md:text-lg font-semibold text-muted-foreground">{course.duration} • {course.totalSemesters} Semesters</p>
                 <p className="mx-auto mt-4 max-w-3xl text-base md:text-lg text-muted-foreground">
                   {course.description}
                 </p>
+                <div className="mt-8 text-center">
+                  <Button variant="outline" onClick={() => setIsSyllabusOpen(true)}>
+                    <BookOpen className="mr-2 h-4 w-4" />
+                    Syllabus
+                  </Button>
+                </div>
               </div>
 
               <div className="mx-auto grid max-w-6xl gap-5 grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
