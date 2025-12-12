@@ -1,8 +1,8 @@
 
 'use client';
 
-import { Dialog, DialogContent, DialogTitle } from '@/components/ui/dialog';
-import { BookX } from 'lucide-react';
+import { Dialog, DialogContent, DialogTitle, DialogClose } from '@/components/ui/dialog';
+import { BookX, X } from 'lucide-react';
 
 interface SyllabusModalProps {
   isOpen: boolean;
@@ -15,8 +15,14 @@ export default function SyllabusModal({ isOpen, onClose, pdfUrl }: SyllabusModal
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="flex h-full w-full flex-col p-0 sm:h-[90vh] sm:max-w-3xl">
+      <DialogContent className="flex h-full w-full flex-col p-0 sm:h-[90vh] sm:max-w-3xl" showCloseButton={false}>
         <DialogTitle className="sr-only">Course Syllabus</DialogTitle>
+        
+        <DialogClose className="absolute left-4 top-4 z-20 rounded-full p-1 bg-white text-accent transition-opacity hover:opacity-80 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none">
+          <X className="h-4 w-4" />
+          <span className="sr-only">Close</span>
+        </DialogClose>
+
         {embedUrl ? (
           <div className="h-full flex-grow">
             <iframe
