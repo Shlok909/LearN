@@ -7,6 +7,7 @@ import Link from 'next/link';
 import { FileText, Youtube, BookOpen, FlaskConical, PencilRuler, ExternalLink, ArrowLeft } from 'lucide-react';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
+import { ScrollArea } from '@/components/ui/scroll-area';
 
 // Mock types for demonstration
 interface Resource {
@@ -105,22 +106,24 @@ export default function ResourceModal({ subject, onClose }: ResourceModalProps) 
     }
 
     return (
-      <ul className="space-y-1 py-2">
-        {resources.map((resource) => {
-          if (isLecture) {
-             const isPlaylist = isYouTubePlaylist(resource.url);
-             if(isPlaylist) {
-                return <ResourceLink key={resource.id} resource={resource} isPlaylist={true} />;
-             }
-             const videoId = getYouTubeVideoId(resource.url);
-             if (videoId) {
-                return <YoutubeLink key={resource.id} resource={resource} onClick={() => handleOpenVideo(videoId)} />;
-             }
-          }
-          // Fallback for non-lecture resources or non-youtube lecture links
-          return <ResourceLink key={resource.id} resource={resource} />;
-        })}
-      </ul>
+      <ScrollArea className="h-48">
+        <ul className="space-y-1 py-2 pr-4">
+          {resources.map((resource) => {
+            if (isLecture) {
+               const isPlaylist = isYouTubePlaylist(resource.url);
+               if(isPlaylist) {
+                  return <ResourceLink key={resource.id} resource={resource} isPlaylist={true} />;
+               }
+               const videoId = getYouTubeVideoId(resource.url);
+               if (videoId) {
+                  return <YoutubeLink key={resource.id} resource={resource} onClick={() => handleOpenVideo(videoId)} />;
+               }
+            }
+            // Fallback for non-lecture resources or non-youtube lecture links
+            return <ResourceLink key={resource.id} resource={resource} />;
+          })}
+        </ul>
+      </ScrollArea>
     );
   };
 
@@ -169,7 +172,7 @@ export default function ResourceModal({ subject, onClose }: ResourceModalProps) 
               <DialogDescription className="pt-2">{subject.description}</DialogDescription>
             </DialogHeader>
 
-            <div className="py-4 max-h-[70vh] overflow-y-auto pr-2">
+            <div className="py-4 pr-2">
               <Accordion type="multiple" className="w-full" defaultValue={['notes']}>
                 <AccordionItem value="notes">
                   <AccordionTrigger>
