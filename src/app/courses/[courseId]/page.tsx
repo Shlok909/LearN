@@ -22,8 +22,6 @@ const icons: { [key: string]: LucideIcon } = {
   Laptop
 };
 
-const syllabusPdfUrl = "https://drive.google.com/file/d/1Lx4aehsRTuEv1U2dv8Ug6Ef6NxwLMJ7t/preview";
-
 export default function CoursePage({ params: paramsProp }: { params: Promise<{ courseId: string }> }) {
   const params = use(paramsProp);
   const course = getCourseById(params.courseId);
@@ -77,7 +75,7 @@ export default function CoursePage({ params: paramsProp }: { params: Promise<{ c
       <SyllabusModal 
         isOpen={isSyllabusOpen} 
         onClose={() => setIsSyllabusOpen(false)} 
-        pdfUrl={syllabusPdfUrl}
+        pdfUrl={course.syllabusPdfUrl}
       />
     </>
   );

@@ -9,6 +9,7 @@ export const coursesData: CoursesData = {
     totalSemesters: 8,
     icon: 'GraduationCap',
     description: 'Degree is a professional degree. The course is designed to provide students with the knowledge and skills required to succeed in computer science and information technology.',
+    syllabusPdfUrl: "https://drive.google.com/file/d/1Lx4aehsRTuEv1U2dv8Ug6Ef6NxwLMJ7t/preview",
     semesters: [
       {
         id: 1,
@@ -430,7 +431,7 @@ export const coursesData: CoursesData = {
                 { id: 2, label: 'Link 2 ', url: 'https://youtu.be/ruWsWnik7YY?si=Xo0IFZxHD2XoEcls', type: 'youtube' },
                 { id: 3, label: 'Link 3 ', url: 'https://youtube.com/playlist?list=PLEHGYFbPuuME9Gfl5r5CCWCzJ-pRfFVpL&si=B9JlEaQdceFJIlET', type: 'youtube' },
                 { id: 4, label: 'Link 4 ', url: 'https://youtube.com/playlist?list=PLxCzCOWd7aiFjZP4z1_3Kr3m3J5wu5Q8V&si=chEZHb5b14SAgve5', type: 'youtube' },
-                { id: 5, label: 'Link 5 ', url: 'https://youtube.com/playlist?list=PLU6SqdYcYsfJuwkSQOO5ogFeTGC0mY4ja&si=V6bhR0uJrdtGVBYM', type: 'youtube' },
+                { id: 5, label: 'Link 5 ', url: 'https://youtube.com/playlist?list=PLU6SqdYcYsfJuwkSQOO5ogFeTGC0hvkHD&si=V6bhR0uJrdtGVBYM', type: 'youtube' },
                 { id: 6, label: 'Link 6 ', url: 'https://youtube.com/playlist?list=PLU6SqdYcYsfJPF-4HphQQ8OceDtqhlSW8&si=lDrqQlEl6zcvtXz-', type: 'youtube' },
                 { id: 7, label: 'Link 7 ', url: 'https://youtube.com/playlist?list=PLOEeYltRrWu6DgdAAEAo9Uj5jucA0Di5Z&si=anm5C4FhqRf0wLNN', type: 'youtube' },
                 { id: 8, label: 'Link 8 ', url: 'https://youtube.com/playlist?list=PLWpLtDYKhjfoDrzfLHxQCbOxyrxPEW1ZP&si=UKdXUSca0Xpf-qaz', type: 'youtube' },

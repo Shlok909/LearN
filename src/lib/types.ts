@@ -36,6 +36,7 @@ export interface Course {
   icon: string;
   description: string;
   semesters: Semester[];
+  syllabusPdfUrl?: string;
 }
 
 export type CoursesData = {
