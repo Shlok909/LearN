@@ -124,7 +124,6 @@ export default function ResourceModal({ subject, onClose }: ResourceModalProps) 
     );
   };
 
-  const videoUrl = selectedVideoId ? `https://www.youtube.com/watch?v=${selectedVideoId}` : '';
   const thumbnailUrl = selectedVideoId ? `https://img.youtube.com/vi/${selectedVideoId}/hqdefault.jpg` : '';
 
   return (
@@ -141,7 +140,10 @@ export default function ResourceModal({ subject, onClose }: ResourceModalProps) 
               <DialogTitle>Video Preview</DialogTitle>
             </DialogHeader>
             <div className="p-4">
-              <Link href={videoUrl} target="_blank" rel="noopener noreferrer" className="block w-full cursor-pointer overflow-hidden rounded-lg border-2 border-transparent transition-all hover:border-primary hover:shadow-lg">
+              <button
+                onClick={() => setSelectedVideoId(null)}
+                className="block w-full cursor-pointer overflow-hidden rounded-lg border-2 border-transparent transition-all hover:border-primary hover:shadow-lg"
+              >
                 <Image
                   src={thumbnailUrl}
                   alt="YouTube video thumbnail"
@@ -150,9 +152,9 @@ export default function ResourceModal({ subject, onClose }: ResourceModalProps) 
                   className="w-full h-auto object-cover"
                   data-ai-hint="youtube thumbnail"
                 />
-              </Link>
+              </button>
               <p className="mt-2 text-center text-sm text-muted-foreground">
-                Click the thumbnail to watch the video on YouTube.
+                Click the thumbnail to close the preview.
               </p>
             </div>
           </div>
