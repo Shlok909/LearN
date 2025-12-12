@@ -4,8 +4,9 @@ import { useState, useEffect } from 'react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import Link from 'next/link';
-import { FileText, Youtube, BookOpen, FlaskConical, PencilRuler, ExternalLink } from 'lucide-react';
-import YoutubeThumbnailModal from './youtube-thumbnail-modal';
+import { FileText, Youtube, BookOpen, FlaskConical, PencilRuler, ExternalLink, ArrowLeft } from 'lucide-react';
+import Image from 'next/image';
+import { Button } from '@/components/ui/button';
 
 // Mock types for demonstration
 interface Resource {
@@ -63,18 +64,11 @@ const ResourceLink = ({ resource, isPlaylist = false }: { resource: Resource, is
   );
 };
 
-const YoutubeLink = ({ resource, onClick }: { resource: Resource; onClick: (videoId: string) => void }) => {
-  const videoId = getYouTubeVideoId(resource.url);
-  if (!videoId) {
-    // This can happen if the URL is a playlist or an invalid video link
-    // We'll render it as a direct link.
-    return <ResourceLink resource={resource} isPlaylist={isYouTubePlaylist(resource.url)} />;
-  }
-
+const YoutubeLink = ({ resource, onClick }: { resource: Resource; onClick: () => void }) => {
   return (
     <li>
       <button
-        onClick={() => onClick(videoId)}
+        onClick={onClick}
         className="flex w-full items-center rounded-md p-2 text-left text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
       >
         <Youtube className="mr-3 h-4 w-4 flex-shrink-0" />
@@ -104,9 +98,6 @@ export default function ResourceModal({ subject, onClose }: ResourceModalProps) 
   const handleOpenVideo = (videoId: string) => {
     setSelectedVideoId(videoId);
   };
-  const handleCloseVideo = () => {
-    setSelectedVideoId(null);
-  };
   
   const renderResourceList = (resources: Resource[], isLecture = false) => {
     if (resources.length === 0) {
@@ -123,7 +114,7 @@ export default function ResourceModal({ subject, onClose }: ResourceModalProps) 
              }
              const videoId = getYouTubeVideoId(resource.url);
              if (videoId) {
-                return <YoutubeLink key={resource.id} resource={resource} onClick={handleOpenVideo} />;
+                return <YoutubeLink key={resource.id} resource={resource} onClick={() => handleOpenVideo(videoId)} />;
              }
           }
           // Fallback for non-lecture resources or non-youtube lecture links
@@ -133,77 +124,96 @@ export default function ResourceModal({ subject, onClose }: ResourceModalProps) 
     );
   };
 
-  return (
-    <>
-      <Dialog open={!!subject && !selectedVideoId} onOpenChange={(open) => {
-        if (!open) {
-          onClose();
-        }
-      }}>
-        <DialogContent className="max-h-[90vh] max-w-2xl overflow-y-auto">
-          <DialogHeader>
-            <DialogTitle className="flex items-center gap-3 text-2xl">
-              <span className="text-3xl">{subject.icon}</span>
-              {subject.name}
-            </DialogTitle>
-            <DialogDescription className="pt-2">{subject.description}</DialogDescription>
-          </DialogHeader>
+  const videoUrl = selectedVideoId ? `https://www.youtube.com/watch?v=${selectedVideoId}` : '';
+  const thumbnailUrl = selectedVideoId ? `https://img.youtube.com/vi/${selectedVideoId}/hqdefault.jpg` : '';
 
-          <div className="py-4">
-            <Accordion type="multiple" className="w-full" defaultValue={['notes']}>
-              <AccordionItem value="notes">
-                <AccordionTrigger>
-                  <div className="flex items-center gap-2">
-                    <BookOpen className="h-5 w-5" /> Notes
-                  </div>
-                </AccordionTrigger>
-                <AccordionContent>
-                  {renderResourceList(subject.resources.notes)}
-                </AccordionContent>
-              </AccordionItem>
-              <AccordionItem value="pyqs">
-                <AccordionTrigger>
-                  <div className="flex items-center gap-2">
-                    <PencilRuler className="h-5 w-5" /> Previous Year Questions
-                  </div>
-                </AccordionTrigger>
-                <AccordionContent>
-                  {renderResourceList(subject.resources.pyqs)}
-                </AccordionContent>
-              </AccordionItem>
-              <AccordionItem value="lectures">
-                <AccordionTrigger>
-                  <div className="flex items-center gap-2">
-                    <Youtube className="h-5 w-5" /> Lectures
-                  </div>
-                </AccordionTrigger>
-                <AccordionContent>
-                  {renderResourceList(subject.resources.lectures, true)}
-                </AccordionContent>
-              </AccordionItem>
-              <AccordionItem value="practicals">
-                <AccordionTrigger>
-                  <div className="flex items-center gap-2">
-                    <FlaskConical className="h-5 w-5" /> Practicals
-                  </div>
-                </AccordionTrigger>
-                <AccordionContent>
-                  {renderResourceList(subject.resources.practicals)}
-                </AccordionContent>
-              </AccordionItem>
-            </Accordion>
+  return (
+    <Dialog open={!!subject} onOpenChange={(open) => !open && onClose()}>
+      <DialogContent className="max-w-2xl overflow-hidden transition-all duration-300">
+        {selectedVideoId ? (
+          // Video Preview Content
+          <div>
+            <DialogHeader className="flex-row items-center space-x-2">
+              <Button variant="ghost" size="icon" className="h-8 w-8" onClick={() => setSelectedVideoId(null)}>
+                <ArrowLeft className="h-5 w-5" />
+                <span className="sr-only">Back to resources</span>
+              </Button>
+              <DialogTitle>Video Preview</DialogTitle>
+            </DialogHeader>
+            <div className="p-4">
+              <Link href={videoUrl} target="_blank" rel="noopener noreferrer" className="block w-full cursor-pointer overflow-hidden rounded-lg border-2 border-transparent transition-all hover:border-primary hover:shadow-lg">
+                <Image
+                  src={thumbnailUrl}
+                  alt="YouTube video thumbnail"
+                  width={1280}
+                  height={720}
+                  className="w-full h-auto object-cover"
+                  data-ai-hint="youtube thumbnail"
+                />
+              </Link>
+              <p className="mt-2 text-center text-sm text-muted-foreground">
+                Click the thumbnail to watch the video on YouTube.
+              </p>
+            </div>
           </div>
-        </DialogContent>
-      </Dialog>
-      
-      {selectedVideoId && (
-        <YoutubeThumbnailModal
-          videoId={selectedVideoId}
-          isOpen={!!selectedVideoId}
-          onClose={handleCloseVideo}
-        />
-      )}
-    </>
+        ) : (
+          // Main Resources Content
+          <>
+            <DialogHeader>
+              <DialogTitle className="flex items-center gap-3 text-2xl">
+                <span className="text-3xl">{subject.icon}</span>
+                {subject.name}
+              </DialogTitle>
+              <DialogDescription className="pt-2">{subject.description}</DialogDescription>
+            </DialogHeader>
+
+            <div className="py-4 max-h-[70vh] overflow-y-auto pr-2">
+              <Accordion type="multiple" className="w-full" defaultValue={['notes']}>
+                <AccordionItem value="notes">
+                  <AccordionTrigger>
+                    <div className="flex items-center gap-2">
+                      <BookOpen className="h-5 w-5" /> Notes
+                    </div>
+                  </AccordionTrigger>
+                  <AccordionContent>
+                    {renderResourceList(subject.resources.notes)}
+                  </AccordionContent>
+                </AccordionItem>
+                <AccordionItem value="pyqs">
+                  <AccordionTrigger>
+                    <div className="flex items-center gap-2">
+                      <PencilRuler className="h-5 w-5" /> Previous Year Questions
+                    </div>
+                  </AccordionTrigger>
+                  <AccordionContent>
+                    {renderResourceList(subject.resources.pyqs)}
+                  </AccordionContent>
+                </AccordionItem>
+                <AccordionItem value="lectures">
+                  <AccordionTrigger>
+                    <div className="flex items-center gap-2">
+                      <Youtube className="h-5 w-5" /> Lectures
+                    </div>
+                  </AccordionTrigger>
+                  <AccordionContent>
+                    {renderResourceList(subject.resources.lectures, true)}
+                  </AccordionContent>
+                </AccordionItem>
+                <AccordionItem value="practicals">
+                  <AccordionTrigger>
+                    <div className="flex items-center gap-2">
+                      <FlaskConical className="h-5 w-5" /> Practicals
+                    </div>
+                  </AccordionTrigger>
+                  <AccordionContent>
+                    {renderResourceList(subject.resources.practicals)}
+                  </AccordionContent>
+                </AccordionItem>
+              </Accordion>
+            </div>
+          </>
+        )}
+      </DialogContent>
+    </Dialog>
   );
 }
-
