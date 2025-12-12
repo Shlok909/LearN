@@ -7,10 +7,10 @@ import Link from 'next/link';
 export default function BackButton({ href, className }: { href?: string; className?: string }) {
   const target = href || '/';
   return (
-    <Button variant="outline" className={className} asChild>
+    <Button variant="outline" className={className} asChild size="icon">
       <Link href={target}>
-        <ArrowLeft className="mr-2 h-4 w-4" />
-        Go Back
+        <ArrowLeft className="h-4 w-4" />
+        <span className="sr-only">Go Back</span>
       </Link>
     </Button>
   );
