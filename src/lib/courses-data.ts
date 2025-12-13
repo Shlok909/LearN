@@ -253,7 +253,7 @@ export const coursesData: CoursesData = {
             ], 
             practicals: [] 
           } 
-        ],
+        ]
       },
 
     /* SEMESTER 3 BCA YEAAAAAAAAAAAAAAAAAAAAAAAAHHHHHHHHH!!!!!!!! */
@@ -388,7 +388,7 @@ export const coursesData: CoursesData = {
                 { id: 5, label: 'Link 5 ', url: 'https://youtube.com/playlist?list=PLU6SqdYcYsfJuwkSQOO5ogFeTGC0hvkHD&si=V6bhR0uJrdtGVBYM', type: 'youtube' },
                 { id: 6, label: 'Link 6 ', url: 'https://youtube.com/playlist?list=PLU6SqdYcYsfJPF-4HphQQ8OceDtqhlSW8&si=lDrqQlEl6zcvtXz-', type: 'youtube' },
                 { id: 7, label: 'Link 7 ', url: 'https://youtube.com/playlist?list=PLOEeYltRrWu6DgdAAEAo9Uj5jucA0Di5Z&si=anm5C4FhqRf0wLNN', type: 'youtube' },
-                { id: 8, label: 'Link 8 ', url: 'https://youtube.com/playlist?list=PLWpLtDYKhjfoDrzfLHxQCbOxyrxPEW1ZP&si=UKdXUSca0Xpf-qaz', type: 'youtube' },
+                { id: 8, label: 'Link 8 ', url: 'https://youtube.com/playlist?list=PLWpLtDYKhjfoDrzfLHxQCbOxyrxPEW1ZP&si=UKdXUSca0Xpf-qaz', type'youtube' },
                 { id: 9, label: 'Link 9', url: 'https://youtube.com/playlist?list=PLxCzCOWd7aiFjZP4z1_3Kr3m3J5wu5Q8V&si=Lv1_j5AwKt9loK3n', type: 'youtube' },
                 { id: 10,label:'Link 10', url: 'https://youtube.com/playlist?list=PLU6SqdYcYsfLRq3tu-g_hvkHDcorrtcBK&si=DrZSvIHm90cU8Bej', type: 'youtube' },
               ],
