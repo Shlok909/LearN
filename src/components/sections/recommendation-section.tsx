@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, useEffect } from 'react';
@@ -165,4 +164,3 @@ const RecommendationSection = () => {
 };
 
 export default RecommendationSection;
-
