@@ -19,7 +19,7 @@ export default function HomePage() {
             <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground md:text-xl">
               Your journey to knowledge begins now.
             </p>
-            <div className="mt-10 flex items-center justify-center gap-x-6">
+            <div className="mt-10 flex flex-col items-center justify-center gap-y-4 sm:flex-row sm:gap-x-6 sm:gap-y-0">
               <Button asChild size="lg">
                 <Link href="#courses">Get Started</Link>
               </Button>
@@ -36,4 +36,3 @@ export default function HomePage() {
     </div>
   );
 }
-
