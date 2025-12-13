@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from 'react';
 
-const NUM_PARTICLES = 150;
+const NUM_PARTICLES = 500;
 
 const createParticle = (i: number) => {
   const size = Math.random() * 2 + 1;
