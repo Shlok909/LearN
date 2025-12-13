@@ -167,7 +167,7 @@ const NavigationBar = ({ hideNavLinks = false }: { hideNavLinks?: boolean }) => 
                   <span className="sr-only">Open menu</span>
                 </Button>
               </SheetTrigger>
-              <SheetContent side="right" className="w-[250px] bg-primary/95 p-0 backdrop-blur-md">
+              <SheetContent side="right" className="w-[250px] bg-card/95 p-0 backdrop-blur-md">
                 <SheetHeader className="border-b border-white/20 p-4">
                   <SheetTitle className="text-2xl font-bold text-white">LearNova</SheetTitle>
                 </SheetHeader>
