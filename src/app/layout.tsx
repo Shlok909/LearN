@@ -3,7 +3,7 @@ import { Toaster } from "@/components/ui/toaster"
 import './globals.css';
 import { FirebaseClientProvider } from '@/firebase';
 import AuthGuard from '@/components/auth-guard';
-import NeoGalaxyBackground from '@/components/ui/NeoGalaxyBackground';
+import CosmicBackground from '@/components/ui/CosmicBackground';
 
 export const metadata: Metadata = {
   title: 'LearNova - Your Gateway to Learning',
@@ -25,7 +25,7 @@ export default function RootLayout({
       <body className="font-body antialiased">
         <FirebaseClientProvider>
           <AuthGuard>
-            <NeoGalaxyBackground />
+            <CosmicBackground />
             <div className="relative z-10 animate-page-transition">
               {children}
             </div>
