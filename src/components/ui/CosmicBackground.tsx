@@ -5,18 +5,18 @@ import React, { useRef, useEffect } from 'react';
 // --- Tweakable Parameters ---
 
 // --- Starfield ---
-const STATIC_STAR_COUNT = 200;
-const PARALLAX_STAR_COUNT = 50;
-const STAR_TWINKLE_SPEED = 0.005;
-const STATIC_STAR_OPACITY = { min: 0.1, max: 0.6 };
-const PARALLAX_STAR_OPACITY = { min: 0.4, max: 0.9 };
-const PARALLAX_LAYER_SPEED = 0.2;
+const STATIC_STAR_COUNT = 200; // Base number of static stars
+const PARALLAX_STAR_COUNT = 50; // Number of stars in the parallax layer
+const STAR_TWINKLE_SPEED = 0.005; // How fast stars twinkle
+const STATIC_STAR_OPACITY = { min: 0.1, max: 0.6 }; // Opacity range for static stars
+const PARALLAX_STAR_OPACITY = { min: 0.4, max: 0.9 }; // Opacity range for parallax stars
+const PARALLAX_LAYER_SPEED = 0.2; // Base speed for the parallax star layer
 
 // --- Shooting Stars ---
-const SHOOTING_STAR_FREQUENCY = 0.01; // Chance per frame
-const MAX_SHOOTING_STARS = 2;
-const SHOOTING_STAR_SPEED = 12;
-const SHOOTING_STAR_LENGTH = 120;
+const SHOOTING_STAR_FREQUENCY = 0.01; // Chance per frame for a new shooting star to appear
+const MAX_SHOOTING_STARS = 2; // Maximum number of shooting stars on screen at once
+const SHOOTING_STAR_SPEED = 12; // Speed of shooting stars
+const SHOOTING_STAR_LENGTH = 120; // Length of the shooting star's trail
 const SHOOTING_STAR_TRAIL_COLORS = [
   { stop: 0, color: 'rgba(102, 252, 241, 0.8)' }, // Cyan-ish
   { stop: 0.5, color: 'rgba(191, 102, 252, 0.4)' }, // Purple-ish
@@ -24,16 +24,16 @@ const SHOOTING_STAR_TRAIL_COLORS = [
 ];
 
 // --- Nebulas ---
-const NEBULA_COUNT = 3;
-const NEBULA_BASE_RADIUS = 350;
-const NEBULA_SPEED = 0.04;
+const NEBULA_COUNT = 3; // Number of nebula clouds
+const NEBULA_BASE_RADIUS = 350; // Base size of nebulas
+const NEBULA_SPEED = 0.04; // How fast nebulas drift
 const NEBULA_COLORS = [
-    { stop: 0, color: 'rgba(2, 6, 23, 0.6)' },
-    { stop: 0.5, color: 'rgba(26, 0, 42, 0.4)' },
-    { stop: 1, color: 'rgba(85, 0, 68, 0.2)' },
+    { stop: 0, color: 'rgba(2, 6, 23, 0.6)' }, // Deep blue/navy
+    { stop: 0.5, color: 'rgba(26, 0, 42, 0.4)' }, // Indigo/purple
+    { stop: 1, color: 'rgba(85, 0, 68, 0.2)' }, // Magenta/violet
 ];
 
-// --- Interfaces ---
+// --- TypeScript Interfaces ---
 interface Star {
   x: number;
   y: number;
@@ -128,9 +128,11 @@ const CosmicBackground: React.FC = () => {
     const drawNebulas = () => {
       nebulas.forEach(nebula => {
         if(!ctx) return;
+        // Move the nebula
         nebula.x += Math.cos(nebula.angle) * nebula.speed;
         nebula.y += Math.sin(nebula.angle) * nebula.speed;
 
+        // Wrap around screen edges
         if (nebula.x - nebula.radius > canvas.width) nebula.x = -nebula.radius;
         if (nebula.x + nebula.radius < 0) nebula.x = canvas.width + nebula.radius;
         if (nebula.y - nebula.radius > canvas.height) nebula.y = -nebula.radius;
@@ -153,6 +155,7 @@ const CosmicBackground: React.FC = () => {
     const drawStars = (stars: Star[]) => {
       stars.forEach(star => {
         if(!ctx) return;
+        // Handle twinkling
         star.opacity += star.twinkleDirection * STAR_TWINKLE_SPEED;
         if (star.opacity > 1 || star.opacity < 0.1) star.twinkleDirection *= -1;
 
@@ -167,7 +170,9 @@ const CosmicBackground: React.FC = () => {
       parallaxStars.forEach(star => {
         if(!ctx) return;
         star.x += star.speed;
-        if (star.x > canvas.width) star.x = 0;
+        if (star.x > canvas.width) star.x = 0; // Wrap around screen
+
+        // Handle twinkling
         star.opacity += star.twinkleDirection * STAR_TWINKLE_SPEED;
         if (star.opacity > 1 || star.opacity < 0.1) star.twinkleDirection *= -1;
 
@@ -196,12 +201,14 @@ const CosmicBackground: React.FC = () => {
         star.x += Math.cos(star.angle) * star.speed;
         star.y += Math.sin(star.angle) * star.speed;
 
+        // Remove if off-screen
         if (star.x < -star.length || star.x > canvas.width + star.length || star.y > canvas.height + star.length) {
             shootingStars.splice(index, 1);
         }
       });
     };
 
+    // --- Animation Loop ---
     const animate = () => {
       if (!ctx) return;
       ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -215,6 +222,7 @@ const CosmicBackground: React.FC = () => {
       drawParallaxStars();
       drawShootingStars();
       
+      // Randomly create new shooting stars
       if (Math.random() < SHOOTING_STAR_FREQUENCY && shootingStars.length < MAX_SHOOTING_STARS) {
         createShootingStar();
       }
@@ -224,6 +232,7 @@ const CosmicBackground: React.FC = () => {
 
     animate();
 
+    // --- Cleanup ---
     return () => {
       window.removeEventListener('resize', setCanvasSize);
       cancelAnimationFrame(animationFrameId);
