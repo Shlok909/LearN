@@ -347,11 +347,11 @@ export const coursesData: CoursesData = {
                 { id: 1, label: 'Unit - 1 (Question Bank)', url: 'https://docs.google.com/document/d/16dY5WB7WIg8j7P8y9uDdTQaaQWa5Btk8/edit', type: 'pdf' },
                 { id: 2, label: 'Unit - 2 (Question Bank)', url: 'https://docs.google.com/document/d/1wpAmN5li5qoZZOf2CSZc6Wq42XgZAaYo/edit?usp=sharing&ouid=107657214653588220367&rtpof=true&sd=true', type: 'pdf' },
                 { id: 3, label: 'Unit - 3 (Question Bank)', url: 'https://docs.google.com/document/d/1WrhKekbsnqrel4QS6Ef2KcPt4cxYIsIO/edit?usp=sharing&ouid=107657214653588220367&rtpof=true&sd=true', type: 'pdf' },
-                { id: 4, label: 'Link 4', url: '', type: 'pdf' },
+                /*{ id: 4, label: 'Link 4', url: '', type: 'pdf' },
                 { id: 5, label: 'Link 5', url: '', type: 'pdf' },
                 { id: 6, label: 'Link 6', url: '', type: 'pdf' },
                 { id: 7, label: 'Link 7', url: '', type: 'pdf' },
-                { id: 8, label: 'Link 8', url: '', type: 'pdf' },
+                { id: 8, label: 'Link 8', url: '', type: 'pdf' },*/
               ],
               lectures: [
                 { id: 1, label: 'Link 1 ', url: 'https://youtube.com/playlist?list=PLqleLpAMfxGClAxSATq06jrPPOGexBKBI&si=ISAyQL6xMutgBrR_', type: 'youtube' },
