@@ -39,11 +39,11 @@ const CourseCard: FC<CourseCardProps> = ({ id, icon, name, duration, description
         <CardContent className="flex flex-grow flex-col justify-between">
           <p className="mb-6 flex-grow text-sm leading-relaxed text-muted-foreground">{description}</p>
           <div className="mt-auto self-center">
-            <Link href={`/courses/${id}`} onClick={(e) => e.stopPropagation()} passHref>
-                <Button variant="link" className="text-primary group-hover:text-secondary">
-                    Access Resources <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
-            </Link>
+            <Button variant="link" className="text-primary group-hover:text-secondary" asChild>
+              <div>
+                Access Resources <ArrowRight className="ml-2 h-4 w-4" />
+              </div>
+            </Button>
           </div>
         </CardContent>
       </Card>
