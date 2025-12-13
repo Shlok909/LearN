@@ -216,45 +216,49 @@ export const coursesData: CoursesData = {
               { id: 9, label: 'Link 9 ', url: 'https://youtu.be/oi1ffu6lBXE?si=ywnaLOR6HpE55VJn', type: 'youtube' },
               { id: 10, label: 'Link 10', url: 'https://youtu.be/oi1ffu6lBXE?si=ywnaLOR6HpE55VJn', type: 'youtube' },
             ], 
-            practicals: [] } },
+            practicals: [] 
+          } 
+        },
         
-            { id: 'operating-system-sem2', 
-            name: 'Operating System', 
-            code: 'BCA106', icon: '💻', 
-            description: 'Understand how operating systems work.', 
-            resources: { 
-              notes: [], 
-              pyqs: [
-                { id: 1, label: ' Operating System summer 2018',   url: 'https://www.rtmnuonline.com/papers/bca-1-sem-operating-systems-paper-5-summer-2018.pdf', type: 'pdf' },
-                { id: 2, label: ' Operating System winter 2017',   url: 'https://www.rtmnuonline.com/papers/bca-1-sem-operating-systems-winter-2017.pdf', type: 'pdf' },
-                { id: 3, label: ' Operating System summer 2017',   url: 'https://www.rtmnuonline.com/papers/bca-1-sem-operating-systems-summer-2017.pdf', type: 'pdf' },
-                { id: 4, label: ' Operating System summer 2024',   url: 'https://www.rtmnuonline.com/papers/bca-2-sem-linux-operating-system-1304-summer-2024.pdf', type: 'pdf' },
-                { id: 5, label: ' Operating System summer 2019',   url: 'https://www.rtmnuonline.com/papers/bca-2-sem-linux-operating-system-2223-summer-2019.pdf', type: 'pdf' },
-                { id: 6, label: ' Operating System summer 2018_2',   url: 'https://www.rtmnuonline.com/papers/bca-2-sem-linux-operating-system-2018.pdf', type: 'pdf' },
-                { id: 7, label: ' Operating System summer 2017_2',   url: 'https://www.rtmnuonline.com/papers/bca-2-sem-linux-operating-system-2017.pdf', type: 'pdf' },
-                { id: 8, label: ' Operating System summer 2017_1', url: 'https://www.rtmnuonline.com/papers/bca-2-sem-linux-operating-system-summer-2017.pdf', type: 'pdf' },
-                ], 
-              lectures: [
-                { id: 1, label: 'Link 1 ', url: 'https://youtu.be/xw_OuOhjauw?si=AKRM9F2qZJBIXS-j', type: 'youtube' },
-                { id: 2, label: 'Link 2 ', url: 'https://youtu.be/8XBtAjKwCm4?si=L3dllyH_lYBQaWUy', type: 'youtube' },
-                { id: 3, label: 'Link 3 ', url: 'https://youtu.be/A4G0hOI6XyQ?si=hXf7JWhHz2qKkJyM', type: 'youtube' },
-                { id: 4, label: 'Link 4 ', url: 'https://youtube.com/playlist?list=PLuAADu3OvBt6kxY_YZSSYaaTWkgYrCQVO&si=SOeDjC6_CmNmpmIB', type: 'youtube' },
-                { id: 5, label: 'Link 5 ', url: 'https://youtube.com/playlist?list=PLxCzCOWd7aiGz9donHRrE9I3Mwn6XdP8p&si=1s4sUwTJInjWMjpD', type: 'youtube' },
-                { id: 6, label: 'Link 6 ', url: 'https://youtube.com/playlist?list=PLBlnK6fEyqRiVhbXDGLXDk_OQAeuVcp2O&si=nVpzri-9H_R9OJHs', type: 'youtube' },
-                { id: 7, label: 'Link 7 ', url: 'https://youtube.com/playlist?list=PL23dd-8zssJDbCZI4Rle3vuQokIAdiDdB&si=8Ms8SXpuhlBnku-L', type: 'youtube' },
-                { id: 8, label: 'Link 8 ', url: 'https://youtube.com/playlist?list=PLmXKhU9FNesSFvj6gASuWmQd23Ul5omtD&si=kfmrvkJlTcc7kHbS', type: 'youtube' },
-                { id: 9, label: 'Link 9 ', url: 'https://youtube.com/playlist?list=PLG9aCp4uE-s17rFjWM8KchGlffXgOzzVP&si=zZlP4oQHi-ctWDc5', type: 'youtube' },
-                { id: 10,label: 'Link 10 ', url: 'https://youtube.com/playlist?list=PLV8vIYTIdSnZ67NQObdXE0gFjrzPrNKHp&si=2ipfEHzxrG0rc0dn', type: 'youtube' },
-                { id: 11,label: 'Link 11 ', url: 'https://youtube.com/playlist?list=PLqcuf9-ILPYARwquS3KOD3bDe0NSaD-oK&si=ZhAB8Pl9pHLFz3Aj', type: 'youtube' },
-                { id: 12,label: 'Link 12 ', url: 'https://youtube.com/playlist?list=PLdo5W4Nhv31a5ucW_S1K3-x6ztBRD-PNa&si=COQ8zrzb8QFlPXTd', type: 'youtube' },
-              ], 
-              practicals: [] } 
-            },
-          ],
+        { 
+          id: 'operating-system-sem2', 
+          name: 'Operating System', 
+          code: 'BCA106', icon: '💻', 
+          description: 'Understand how operating systems work.', 
+          resources: { 
+            notes: [], 
+            pyqs: [
+              { id: 1, label: ' Operating System summer 2018',   url: 'https://www.rtmnuonline.com/papers/bca-1-sem-operating-systems-paper-5-summer-2018.pdf', type: 'pdf' },
+              { id: 2, label: ' Operating System winter 2017',   url: 'https://www.rtmnuonline.com/papers/bca-1-sem-operating-systems-winter-2017.pdf', type: 'pdf' },
+              { id: 3, label: ' Operating System summer 2017',   url: 'https://www.rtmnuonline.com/papers/bca-1-sem-operating-systems-summer-2017.pdf', type: 'pdf' },
+              { id: 4, label: ' Operating System summer 2024',   url: 'https://www.rtmnuonline.com/papers/bca-2-sem-linux-operating-system-1304-summer-2024.pdf', type: 'pdf' },
+              { id: 5, label: ' Operating System summer 2019',   url: 'https://www.rtmnuonline.com/papers/bca-2-sem-linux-operating-system-2223-summer-2019.pdf', type: 'pdf' },
+              { id: 6, label: ' Operating System summer 2018_2',   url: 'https://www.rtmnuonline.com/papers/bca-2-sem-linux-operating-system-2018.pdf', type: 'pdf' },
+              { id: 7, label: ' Operating System summer 2017_2',   url: 'https://www.rtmnuonline.com/papers/bca-2-sem-linux-operating-system-2017.pdf', type: 'pdf' },
+              { id: 8, label: ' Operating System summer 2017_1', url: 'https://www.rtmnuonline.com/papers/bca-2-sem-linux-operating-system-summer-2017.pdf', type: 'pdf' },
+            ], 
+            lectures: [
+              { id: 1, label: 'Link 1 ', url: 'https://youtu.be/xw_OuOhjauw?si=AKRM9F2qZJBIXS-j', type: 'youtube' },
+              { id: 2, label: 'Link 2 ', url: 'https://youtu.be/8XBtAjKwCm4?si=L3dllyH_lYBQaWUy', type: 'youtube' },
+              { id: 3, label: 'Link 3 ', url: 'https://youtu.be/A4G0hOI6XyQ?si=hXf7JWhHz2qKkJyM', type: 'youtube' },
+              { id: 4, label: 'Link 4 ', url: 'https://youtube.com/playlist?list=PLuAADu3OvBt6kxY_YZSSYaaTWkgYrCQVO&si=SOeDjC6_CmNmpmIB', type: 'youtube' },
+              { id: 5, label: 'Link 5 ', url: 'https://youtube.com/playlist?list=PLxCzCOWd7aiGz9donHRrE9I3Mwn6XdP8p&si=1s4sUwTJInjWMjpD', type: 'youtube' },
+              { id: 6, label: 'Link 6 ', url: 'https://youtube.com/playlist?list=PLBlnK6fEyqRiVhbXDGLXDk_OQAeuVcp2O&si=nVpzri-9H_R9OJHs', type: 'youtube' },
+              { id: 7, label: 'Link 7 ', url: 'https://youtube.com/playlist?list=PL23dd-8zssJDbCZI4Rle3vuQokIAdiDdB&si=8Ms8SXpuhlBnku-L', type: 'youtube' },
+              { id: 8, label: 'Link 8 ', url: 'https://youtube.com/playlist?list=PLmXKhU9FNesSFvj6gASuWmQd23Ul5omtD&si=kfmrvkJlTcc7kHbS', type: 'youtube' },
+              { id: 9, label: 'Link 9 ', url: 'https://youtube.com/playlist?list=PLG9aCp4uE-s17rFjWM8KchGlffXgOzzVP&si=zZlP4oQHi-ctWDc5', type: 'youtube' },
+              { id: 10,label: 'Link 10 ', url: 'https://youtube.com/playlist?list=PLV8vIYTIdSnZ67NQObdXE0gFjrzPrNKHp&si=2ipfEHzxrG0rc0dn', type: 'youtube' },
+              { id: 11,label: 'Link 11 ', url: 'https://youtube.com/playlist?list=PLqcuf9-ILPYARwquS3KOD3bDe0NSaD-oK&si=ZhAB8Pl9pHLFz3Aj', type: 'youtube' },
+              { id: 12,label: 'Link 12 ', url: 'https://youtube.com/playlist?list=PLdo5W4Nhv31a5ucW_S1K3-x6ztBRD-PNa&si=COQ8zrzb8QFlPXTd', type: 'youtube' },
+            ], 
+            practicals: [] 
+          } 
+        ],
       },
 
     /* SEMESTER 3 BCA YEAAAAAAAAAAAAAAAAAAAAAAAAHHHHHHHHH!!!!!!!! */
-      { id: 3, 
+      { 
+        id: 3, 
         name: 'Semester 3', 
         subjects: [
           {
@@ -344,9 +348,9 @@ export const coursesData: CoursesData = {
             resources: {
               notes: [],
               pyqs: [
-                { id: 1, label: 'Unit - 1 (Question Bank)', url: 'https://docs.google.com/document/d/16dY5WB7WIg8j7P8y9uDdTQaaQWa5Btk8/edit', type: 'doc' },
-                { id: 2, label: 'Unit - 2 (Question Bank)', url: 'https://docs.google.com/document/d/1wpAmN5li5qoZZOf2CSZc6Wq42XgZAaYo/edit?usp=sharing&ouid=107657214653588220367&rtpof=true&sd=true', type: 'doc' },
-                { id: 3, label: 'Unit - 3 (Question Bank)', url: 'https://docs.google.com/document/d/1WrhKekbsnqrel4QS6Ef2KcPt4cxYIsIO/edit?usp=sharing&ouid=107657214653588220367&rtpof=true&sd=true', type: 'doc' },
+                { id: 1, label: 'Unit - 1 (Question Bank)', url: 'https://docs.google.com/document/d/16dY5WB7WIg8j7P8y9uDdTQaaQWa5Btk8/edit', type: 'external' },
+                { id: 2, label: 'Unit - 2 (Question Bank)', url: 'https://docs.google.com/document/d/1wpAmN5li5qoZZOf2CSZc6Wq42XgZAaYo/edit?usp=sharing&ouid=107657214653588220367&rtpof=true&sd=true', type: 'external' },
+                { id: 3, label: 'Unit - 3 (Question Bank)', url: 'https://docs.google.com/document/d/1WrhKekbsnqrel4QS6Ef2KcPt4cxYIsIO/edit?usp=sharing&ouid=107657214653588220367&rtpof=true&sd=true', type: 'external' },
                 { id: 4, label: 'Link 4', url: '', type: 'pdf' },
                 { id: 5, label: 'Link 5', url: '', type: 'pdf' },
                 { id: 6, label: 'Link 6', url: '', type: 'pdf' },
@@ -380,16 +384,7 @@ export const coursesData: CoursesData = {
             description: 'Probability increases the chances of success',
             resources: {
               notes: [],
-              pyqs: [/*
-                { id: 1, label: 'Link 1', url: '', type: 'pdf' },
-                { id: 2, label: 'Link 2', url: '', type: 'pdf' },
-                { id: 3, label: 'Link 3', url: '', type: 'pdf' },
-                { id: 4, label: 'Link 4', url: '', type: 'pdf' },
-                { id: 5, label: 'Link 5', url: '', type: 'pdf' },
-                { id: 6, label: 'Link 6', url: '', type: 'pdf' },
-                { id: 7, label: 'Link 7', url: '', type: 'pdf' },
-                { id: 8, label: 'Link 8', url: '', type: 'pdf' },
-              */],
+              pyqs: [],
               lectures: [
                 { id: 1, label: 'Link 1 ', url: 'https://youtu.be/dx4bqMlATQU?si=5-iWvjsXocrutO70', type: 'youtube' },
                 { id: 2, label: 'Link 2 ', url: 'https://youtu.be/ruWsWnik7YY?si=Xo0IFZxHD2XoEcls', type: 'youtube' },
@@ -414,16 +409,7 @@ export const coursesData: CoursesData = {
             description: 'Data Analytics increases the chances of chances',
             resources: {
               notes: [],
-              pyqs: [/*
-                { id: 1, label: 'Link 1', url: '', type: 'pdf' },
-                { id: 2, label: 'Link 2', url: '', type: 'pdf' },
-                { id: 3, label: 'Link 3', url: '', type: 'pdf' },
-                { id: 4, label: 'Link 4', url: '', type: 'pdf' },
-                { id: 5, label: 'Link 5', url: '', type: 'pdf' },
-                { id: 6, label: 'Link 6', url: '', type: 'pdf' },
-                { id: 7, label: 'Link 7', url: '', type: 'pdf' },
-                { id: 8, label: 'Link 8', url: '', type: 'pdf' },
-              */],
+              pyqs: [],
               lectures: [
                 { id: 1, label: 'Link 1 ', url: 'https://youtube.com/playlist?list=PL5lGYQg6y9m9nJrJxJjA8K52lBhtuHpB0&si=v0-D4tbw9l0Xkhwn', type: 'youtube' },
                 { id: 2, label: 'Link 2 ', url: 'https://youtube.com/playlist?list=PLw1djS7l2tHNR3tjvLsnuxW5XEs4kh6kM&si=1DSxHGD1niixPqfU', type: 'youtube' },
@@ -439,8 +425,9 @@ export const coursesData: CoursesData = {
               ],
               practicals: [],
             },
-          },
-        ] },
+          }
+        ] 
+      },
       { id: 4, name: 'Semester 4', subjects: [] },
       { id: 5, name: 'Semester 5', subjects: [] },
       { id: 6, name: 'Semester 6', subjects: [] },
