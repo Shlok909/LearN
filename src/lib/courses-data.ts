@@ -216,9 +216,10 @@ export const coursesData: CoursesData = {
               { id: 9, label: 'Link 9 ', url: 'https://youtu.be/oi1ffu6lBXE?si=ywnaLOR6HpE55VJn', type: 'youtube' },
               { id: 10, label: 'Link 10', url: 'https://youtu.be/oi1ffu6lBXE?si=ywnaLOR6HpE55VJn', type: 'youtube' },
             ], 
-            practicals: [] } },
+            practicals: [] } 
+          },
         
-            { id: 'operating-system-sem2', 
+          { id: 'operating-system-sem2', 
             name: 'Operating System', 
             code: 'BCA106', icon: '💻', 
             description: 'Understand how operating systems work.', 
@@ -233,7 +234,7 @@ export const coursesData: CoursesData = {
                 { id: 6, label: ' Operating System summer 2018_2',   url: 'https://www.rtmnuonline.com/papers/bca-2-sem-linux-operating-system-2018.pdf', type: 'pdf' },
                 { id: 7, label: ' Operating System summer 2017_2',   url: 'https://www.rtmnuonline.com/papers/bca-2-sem-linux-operating-system-2017.pdf', type: 'pdf' },
                 { id: 8, label: ' Operating System summer 2017_1', url: 'https://www.rtmnuonline.com/papers/bca-2-sem-linux-operating-system-summer-2017.pdf', type: 'pdf' },
-                ], 
+              ], 
               lectures: [
                 { id: 1, label: 'Link 1 ', url: 'https://youtu.be/xw_OuOhjauw?si=AKRM9F2qZJBIXS-j', type: 'youtube' },
                 { id: 2, label: 'Link 2 ', url: 'https://youtu.be/8XBtAjKwCm4?si=L3dllyH_lYBQaWUy', type: 'youtube' },
@@ -248,9 +249,10 @@ export const coursesData: CoursesData = {
                 { id: 11,label: 'Link 11 ', url: 'https://youtube.com/playlist?list=PLqcuf9-ILPYARwquS3KOD3bDe0NSaD-oK&si=ZhAB8Pl9pHLFz3Aj', type: 'youtube' },
                 { id: 12,label: 'Link 12 ', url: 'https://youtube.com/playlist?list=PLdo5W4Nhv31a5ucW_S1K3-x6ztBRD-PNa&si=COQ8zrzb8QFlPXTd', type: 'youtube' },
               ], 
-              practicals: [] } 
-            },
-          ],
+              practicals: [] 
+            }
+          },
+        ],
       },
 
     /* SEMESTER 3 BCA YEAAAAAAAAAAAAAAAAAAAAAAAAHHHHHHHHH!!!!!!!! */
@@ -259,7 +261,7 @@ export const coursesData: CoursesData = {
         subjects: [
           {
             id: 'Java',
-            name: 'Java Programming ',
+            name: 'Java Programming',
             code: 'BCA301',
             icon: '☕',
             description: 'Learn the fundamentals of Java programming.',
@@ -348,11 +350,6 @@ export const coursesData: CoursesData = {
                 { id: 1, label: 'Unit - 1 (Question Bank)', url: 'https://docs.google.com/document/d/16dY5WB7WIg8j7P8y9uDdTQaaQWa5Btk8/edit', type: 'pdf' },
                 { id: 2, label: 'Unit - 2 (Question Bank)', url: 'https://docs.google.com/document/d/1wpAmN5li5qoZZOf2CSZc6Wq42XgZAaYo/edit?usp=sharing&ouid=107657214653588220367&rtpof=true&sd=true', type: 'pdf' },
                 { id: 3, label: 'Unit - 3 (Question Bank)', url: 'https://docs.google.com/document/d/1WrhKekbsnqrel4QS6Ef2KcPt4cxYIsIO/edit?usp=sharing&ouid=107657214653588220367&rtpof=true&sd=true', type: 'pdf' },
-                /*{ id: 4, label: 'Link 4', url: '', type: 'pdf' },
-                { id: 5, label: 'Link 5', url: '', type: 'pdf' },
-                { id: 6, label: 'Link 6', url: '', type: 'pdf' },
-                { id: 7, label: 'Link 7', url: '', type: 'pdf' },
-                { id: 8, label: 'Link 8', url: '', type: 'pdf' },*/
               ],
               lectures: [
                 { id: 1, label: 'Link 1 ', url: 'https://youtube.com/playlist?list=PLqleLpAMfxGClAxSATq06jrPPOGexBKBI&si=ISAyQL6xMutgBrR_', type: 'youtube' },
@@ -423,7 +420,8 @@ export const coursesData: CoursesData = {
               practicals: [],
             },
           },
-        ] },
+        ] 
+      },
       { id: 4, name: 'Semester 4', subjects: [] },
       { id: 5, name: 'Semester 5', subjects: [] },
       { id: 6, name: 'Semester 6', subjects: [] },
