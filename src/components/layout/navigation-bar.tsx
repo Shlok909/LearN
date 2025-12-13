@@ -81,25 +81,27 @@ const NavigationBar = ({ hideNavLinks = false }: { hideNavLinks?: boolean }) => 
   return (
     <header className="sticky top-0 z-[1000] h-[70px] bg-transparent backdrop-blur-sm shadow-md">
       <nav className="container mx-auto flex h-full items-center justify-between px-4">
-        <Link href="/" className="text-2xl font-bold text-white md:text-[28px]">
-          LearNova
-        </Link>
+        <div className="flex items-center gap-8 md:gap-12">
+          <Link href="/" className="text-2xl font-bold text-white md:text-[28px]">
+            LearNova
+          </Link>
 
-        {/* Desktop Menu */}
-        {!hideNavLinks && (
-          <div className="hidden items-center space-x-8 md:flex">
-            {getNavItems().map((item) => (
-              <Link
-                key={item.name}
-                href={item.href}
-                onClick={handleScroll}
-                className="nav-link text-base font-medium"
-              >
-                {item.name}
-              </Link>
-            ))}
-          </div>
-        )}
+          {/* Desktop Menu */}
+          {!hideNavLinks && (
+            <div className="hidden items-center space-x-8 md:flex">
+              {getNavItems().map((item) => (
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  onClick={handleScroll}
+                  className="nav-link text-base font-medium"
+                >
+                  {item.name}
+                </Link>
+              ))}
+            </div>
+          )}
+        </div>
 
         <div className="flex items-center gap-4">
           <div className="hidden md:flex items-center gap-4">
