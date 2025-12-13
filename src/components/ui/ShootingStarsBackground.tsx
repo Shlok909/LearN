@@ -1,3 +1,4 @@
+
 "use client";
 
 import React, { useRef, useEffect } from 'react';
@@ -38,7 +39,7 @@ const ShootingStarsBackground: React.FC = () => {
     // --- Tweakable Parameters ---
     const STAR_COUNT = 300; // Number of static stars
     const STAR_TWINKLE_SPEED = 0.05; // How fast stars twinkle
-    const SHOOTING_STAR_FREQUENCY = 0.015; // Chance of a new shooting star each frame
+    const SHOOTING_STAR_FREQUENCY = 0.03; // Chance of a new shooting star each frame
     const SHOOTING_STAR_SPEED = 15; // Pixels per frame
     const SHOOTING_STAR_LENGTH = 150; // Length of the star's trail
 
