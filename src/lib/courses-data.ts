@@ -266,13 +266,14 @@ export const coursesData: CoursesData = {
             resources: {
               notes: [],
               pyqs: [
-                { id: 1, label: 'Java summer-2019', url: 'https://www.rtmnuonline.com/papers/bca-6-sem-programming-in-java-2244-summer-2019.pdf', type: 'pdf' },
-                { id: 2, label: 'Java summer-2018', url: 'https://www.rtmnuonline.com/papers/bca-6-sem-programming-in-java-paper-2-summer-2018.pdf', type: 'pdf' },
-                { id: 3, label: 'Java winter-2018_2', url: 'https://www.rtmnuonline.com/papers/bca-6-sem-programming-in-java-winter-2018.pdf', type: 'pdf' },
-                { id: 4, label: 'Java summer-2017', url: 'https://www.rtmnuonline.com/papers/bca-6-sem-programming-in-java-summer-2017.pdf', type: 'pdf' },
-                { id: 5, label: 'Java winter-2017', url: 'https://www.rtmnuonline.com/papers/bca-6-sem-programming-in-java-winter-2017.pdf', type: 'pdf' },
-                { id: 6, label: 'Java winter-2023', url: 'https://www.rtmnuonline.com/papers/btech-cse-3-sem-object-oriented-programming-with-java-2570-winter-2023.pdf', type: 'pdf' },
-                { id: 7, label: 'Java winter-2022', url: 'https://www.rtmnuonline.com/papers/btech-cse-3-sem-object-oriented-programming-with-java-2530-winter-2022.pdf', type: 'pdf' },
+                { id: 1, label: 'Java Important Questions', url: 'https://drive.google.com/file/d/1u75BMkivX6M1pXO4OzWXUZ8PUxwu82Oz/view', type: 'pdf' },
+                { id: 2, label: 'Java summer-2019', url: 'https://www.rtmnuonline.com/papers/bca-6-sem-programming-in-java-2244-summer-2019.pdf', type: 'pdf' },
+                { id: 3, label: 'Java summer-2018', url: 'https://www.rtmnuonline.com/papers/bca-6-sem-programming-in-java-paper-2-summer-2018.pdf', type: 'pdf' },
+                { id: 4, label: 'Java winter-2018_2', url: 'https://www.rtmnuonline.com/papers/bca-6-sem-programming-in-java-winter-2018.pdf', type: 'pdf' },
+                { id: 5, label: 'Java summer-2017', url: 'https://www.rtmnuonline.com/papers/bca-6-sem-programming-in-java-summer-2017.pdf', type: 'pdf' },
+                { id: 6, label: 'Java winter-2017', url: 'https://www.rtmnuonline.com/papers/bca-6-sem-programming-in-java-winter-2017.pdf', type: 'pdf' },
+                { id: 7, label: 'Java winter-2023', url: 'https://www.rtmnuonline.com/papers/btech-cse-3-sem-object-oriented-programming-with-java-2570-winter-2023.pdf', type: 'pdf' },
+                { id: 8, label: 'Java winter-2022', url: 'https://www.rtmnuonline.com/papers/btech-cse-3-sem-object-oriented-programming-with-java-2530-winter-2022.pdf', type: 'pdf' },
               ],
               lectures: [
                 { id: 1, label: 'Link 1 ', url: 'https://youtube.com/playlist?list=PLlg3g5kppv-9FB8xrju6852QezyQUPUHZ&si=_lcLLza5Wa42sjXx', type: 'youtube' },
