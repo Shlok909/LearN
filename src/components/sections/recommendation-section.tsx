@@ -147,7 +147,7 @@ const RecommendationSection = () => {
                       </FormItem>
                     )}
                   />
-                  <Button type="submit" disabled={isLoading} className="w-full">
+                  <Button type="submit" disabled={isLoading} className="w-full bg-white text-primary hover:bg-white/90">
                     {isLoading ? (
                       <><Loader2 className="mr-2 h-4 w-4 animate-spin" /> Submitting...</>
                     ) : (
