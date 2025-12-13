@@ -81,29 +81,29 @@ const NavigationBar = ({ hideNavLinks = false }: { hideNavLinks?: boolean }) => 
   return (
     <header className="sticky top-0 z-[1000] h-[70px] bg-transparent backdrop-blur-sm shadow-md">
       <nav className="container mx-auto flex h-full items-center justify-between px-4">
-        <div className="flex items-center gap-8 md:gap-12">
+        <div className="flex-1 flex justify-start">
           <Link href="/" className="text-2xl font-bold text-white md:text-[28px]">
             LearNova
           </Link>
-
-          {/* Desktop Menu */}
-          {!hideNavLinks && (
-            <div className="hidden items-center space-x-8 md:flex">
-              {getNavItems().map((item) => (
-                <Link
-                  key={item.name}
-                  href={item.href}
-                  onClick={handleScroll}
-                  className="nav-link text-base font-medium"
-                >
-                  {item.name}
-                </Link>
-              ))}
-            </div>
-          )}
         </div>
 
-        <div className="flex items-center gap-4">
+        {/* Desktop Menu */}
+        {!hideNavLinks && (
+          <div className="hidden items-center justify-center space-x-8 md:flex flex-1">
+            {getNavItems().map((item) => (
+              <Link
+                key={item.name}
+                href={item.href}
+                onClick={handleScroll}
+                className="nav-link text-base font-medium"
+              >
+                {item.name}
+              </Link>
+            ))}
+          </div>
+        )}
+
+        <div className="flex flex-1 items-center justify-end gap-4">
           <div className="hidden md:flex items-center gap-4">
             {isUserLoading ? (
               <div className="h-10 w-24 rounded-md bg-gray-700 animate-pulse" />
