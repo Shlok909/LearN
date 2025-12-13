@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
 import { Toaster } from "@/components/ui/toaster"
 import './globals.css';
-import AnimatedHeroBackground from '@/components/sections/animated-hero-background';
 import { FirebaseClientProvider } from '@/firebase';
 import AuthGuard from '@/components/auth-guard';
+import ShootingStarsBackground from '@/components/ui/ShootingStarsBackground';
 
 export const metadata: Metadata = {
   title: 'LearNova - Your Gateway to Learning',
@@ -25,8 +25,7 @@ export default function RootLayout({
       <body className="font-body antialiased">
         <FirebaseClientProvider>
           <AuthGuard>
-            <div id="background-container" />
-            <AnimatedHeroBackground />
+            <ShootingStarsBackground />
             <div className="relative z-10 animate-page-transition">
               {children}
             </div>
