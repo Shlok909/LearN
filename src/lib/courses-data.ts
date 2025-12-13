@@ -288,7 +288,7 @@ export const coursesData: CoursesData = {
                 { id: 7, label: 'Link 7 ', url: 'https://youtu.be/32tp0Ot2JtU?si=TihILaK_iXssx-DB', type: 'youtube' },
                 { id: 8, label: 'Link 8 ', url: 'https://youtu.be/LepLT82RtxA?si=b1f4AhTTS6lawqjZ', type: 'youtube' },
                 { id: 9, label: 'Link 9 ', url: 'https://youtube.com/playlist?list=PL78RhpUUKSweClRi_l05UgfE3053-zkRf&si=tDPTs5tS7hkA0Bs3', type: 'youtube' },
-                { id: 10,label: 'Link 10', url: 'https://youtube.com/playlist?list=PLr3OnN7KdzehfjBqP7o5pyvlcT4O2zi4n&si=liOvd9sAWeF2AWTF', type: 'youtube' },
+                { id: 10,label: 'Link 10', url: 'https://youtube.com/playlist?list=PLr3OnN7KdzegkcczKY8vcaSWN6clHds8e&si=KY7JcDOpPd4J4SuJ', type: 'youtube' },
                 { id: 11,label: 'Link 11', url: 'https://youtube.com/playlist?list=PL-G5fgAX3nWoMC2TjXd60tmOg_I-f_5Qh&si=LyQITM1H0peu5uFp', type: 'youtube' },
               ],
               practicals: [],
