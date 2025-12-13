@@ -11,7 +11,7 @@ export default function HomePage() {
     <div className="flex min-h-screen flex-col bg-background">
       <NavigationBar />
       <main className="flex-grow">
-        <section className="py-24 text-center md:py-32">
+        <section className="py-28 text-center md:py-40">
           <div className="container">
             <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl md:text-6xl">
               Welcome to LearNova
