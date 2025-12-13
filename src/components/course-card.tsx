@@ -39,7 +39,7 @@ const CourseCard: FC<CourseCardProps> = ({ id, icon, name, duration, description
         <CardContent className="flex flex-grow flex-col justify-between">
           <p className="mb-6 flex-grow text-sm leading-relaxed text-muted-foreground">{description}</p>
           <div className="mt-auto self-center">
-            <Button variant="link" className="text-primary group-hover:text-secondary">
+            <Button variant="outline" className="border-white text-white bg-transparent group-hover:bg-white group-hover:text-primary transition-all duration-300">
               Access Resources <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
           </div>
