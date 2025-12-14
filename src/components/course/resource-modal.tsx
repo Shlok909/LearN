@@ -73,7 +73,7 @@ const YoutubeLink = ({ resource, onClick }: { resource: Resource; onClick: () =>
         className="flex w-full items-center rounded-md p-2 text-left text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
       >
         <Youtube className="mr-3 h-4 w-4 flex-shrink-0" />
-        <span className="flex-grow">{resource.label} [One - Short]</span>
+        <span className="flex-grow">{resource.label} [One - Shot]</span>
       </button>
     </li>
   );
@@ -128,6 +128,7 @@ export default function ResourceModal({ subject, onClose }: ResourceModalProps) 
   };
 
   const thumbnailUrl = selectedVideoId ? `https://img.youtube.com/vi/${selectedVideoId}/hqdefault.jpg` : '';
+  const videoUrl = selectedVideoId ? `https://www.youtube.com/watch?v=${selectedVideoId}` : '';
 
   return (
     <Dialog open={!!subject} onOpenChange={(open) => !open && onClose()}>
@@ -143,8 +144,7 @@ export default function ResourceModal({ subject, onClose }: ResourceModalProps) 
               <DialogTitle>Video Preview</DialogTitle>
             </DialogHeader>
             <div className="p-4">
-              <button
-                onClick={() => setSelectedVideoId(null)}
+              <Link href={videoUrl} target="_blank" rel="noopener noreferrer"
                 className="block w-full cursor-pointer overflow-hidden rounded-lg border-2 border-transparent transition-all hover:border-primary hover:shadow-lg"
               >
                 <Image
@@ -155,9 +155,9 @@ export default function ResourceModal({ subject, onClose }: ResourceModalProps) 
                   className="w-full h-auto object-cover"
                   data-ai-hint="youtube thumbnail"
                 />
-              </button>
+              </Link>
               <p className="mt-2 text-center text-sm text-muted-foreground">
-                Click the thumbnail to close the preview.
+                Click the thumbnail to watch the video on YouTube.
               </p>
             </div>
           </div>
