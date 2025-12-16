@@ -190,7 +190,6 @@ export const coursesData: CoursesData = {
                 { id: 8, label: 'Link 8', url: 'https://youtube.com/playlist?list=PL3qvHcrYGy1u2egw2tipHWODV6elVC2Gg&si=w03M87Hiz5UpeJco', type: 'youtube' },
                 { id: 9, label: 'Link 9', url: 'https://youtube.com/playlist?list=PLXIPR4CD0nooFtFvd2GlN1qzxy6qhg_nv&si=47U5dekRyZev5nZJ', type: 'youtube' },
                 { id:10, label: 'Link 10',url: 'https://youtu.be/gnzpeJGgPXA?si=v1pklVWBZbNg2Coa', type: 'youtube' },
-                { id:11, label: 'Link 11',url: 'https://www.youtube.com/live/aSuALrOyiWg?si=lOPOsc4Y0z7Rzs1K', type: 'youtube' },
               ],
               practicals: [],
             } },
