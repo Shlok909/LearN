@@ -58,7 +58,7 @@ export default function SemesterPage({ params: paramsProp }: { params: Promise<{
         <section className="relative pt-8 pb-12 md:py-12 lg:py-16">
           <div className="container mx-auto px-4">
             <div className="mb-8 flex items-center justify-between">
-              <BackButton href={`/courses/${course.id}`} />
+              <BackButton href={`/courses/${course.id}`} className="text-white" />
               {isBcaSem1 && (
                 <Button
                   variant="outline"
