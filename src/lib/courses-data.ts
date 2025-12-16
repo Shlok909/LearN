@@ -49,7 +49,7 @@ export const coursesData: CoursesData = {
             code: 'BCA103',
             icon: '🗄️',
             description: 'Learn to design, implement, and manage databases effectively.',
-            resources: { notes: [], pyqs: [], lectures: [], practicals: [] },
+            resources: { notes: [], pyqs: [], lectures: [],practicals: []},
           },
           {
             id: '4',
@@ -57,10 +57,10 @@ export const coursesData: CoursesData = {
             code: 'BCA104',
             icon: '🌐',
             description: 'Dive into modern web development. HTML, CSS, JavaScript, and frameworks.',
-            resources: { notes: [], pyqs: [], lectures: [], practicals: [] },
+            resources: { notes: [], pyqs: [], lectures: [],practicals: []},
           },
-          { id: '5', name: 'Vedic maths', code: 'BCA105', icon: '⚡', description: 'Master object-oriented programming with C++.', resources: { notes: [], pyqs: [], lectures: [], practicals: [] } },
-          { id: '6', name: 'EVS', code: 'BCA106', icon: '💻', description: 'Understand how operating systems work.', resources: { notes: [], pyqs: [], lectures: [], practicals: [] } },
+          { id: '5', name: 'Vedic maths', code: 'BCA105', icon: '⚡', description: 'Master object-oriented programming with C++.', resources: { notes: [], pyqs: [], lectures: [],practicals: []} },
+          { id: '6', name: 'EVS', code: 'BCA106', icon: '💻', description: 'Understand how operating systems work.', resources: { notes: [], pyqs: [], lectures: [],practicals: []} },
         ],
       },
       
