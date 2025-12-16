@@ -119,7 +119,7 @@ export default function SemesterPage({ params: paramsProp }: { params: Promise<{
           <AlertDialogHeader>
             <AlertDialogTitle>Important Information</AlertDialogTitle>
             <AlertDialogDescription asChild>
-              <ul className="list-disc space-y-2 pl-5 pt-2 text-left">
+              <ul className="list-disc space-y-2 pl-5 pt-2 text-left text-card-foreground">
                 <li>The Practicals prints which you are able to see in the pdf will be provided by the teacher staff.</li>
                 <li>In semester 1 there are only two practical related subjects: "Programming with C" and "Basics of Computer Architecture".</li>
                 <li>Credits for the Practical records go to 'Savi Sorte' and for Vedic Maths notes 'Anuj Shindhe'.</li>
