@@ -18,16 +18,14 @@ export const coursesData: CoursesData = {
         subjects: [
           {
             id: '1',
-            name: 'C',
+            name: 'Programing with C',
             code: 'BCA101',
-            icon: '📊',
-            description: 'Master the fundamentals of data organization and algorithms.',
+            icon: '⚡',
+            description: 'Master the fundamentals of programming',
             resources: {
-              notes: [
-                { id: 1, label: 'Link 1 II', url: '#', type: 'pdf' },
-              ],
+              notes: [],
               pyqs: [
-                { id: 1, label: 'Data structures summer 2019', url: '#', type: 'pdf' },
+                { id: 1, label: '', url: '#', type: 'pdf' },
               ],
               lectures: [
                 { id: 1, label: 'Link 1 II', url: '#', type: 'youtube' },
@@ -37,30 +35,84 @@ export const coursesData: CoursesData = {
           },
           {
             id: '2',
-            name: 'CAO',
+            name: 'Computer Architecture',
             code: 'BCA102',
-            icon: '📜',
-            description: 'Explore the foundational document of Indian democracy.',
-            resources: { notes: [], pyqs: [], lectures: [], practicals: [] },
+            icon: '🖥️',
+            description: 'Explore the foundational of computer architecture',
+            resources: { 
+              notes: [],
+              pyqs: [
+                { id: 1, label: '', url: '#', type: 'pdf' },
+                { id: 1, label: '', url: '#', type: 'pdf' },
+              ],
+              lectures: [
+                { id: 1, label: 'Link 1 II', url: '#', type: 'youtube' },
+              ],
+              practicals: [{ id: 1, label: 'Link 1 II', url: '#', type: 'pdf' }],
+            },
           },
           {
             id: '3',
-            name: 'MF',
+            name: 'Mathematical Foundation',
             code: 'BCA103',
-            icon: '🗄️',
-            description: 'Learn to design, implement, and manage databases effectively.',
-            resources: { notes: [], pyqs: [], lectures: [],practicals: []},
+            icon: '🧮',
+            description: 'Learn the mathematics in a playful way',
+            resources: { 
+              notes: [],
+              pyqs: [
+                { id: 1, label: '', url: '#', type: 'pdf' },
+              ],
+              lectures: [
+                { id: 1, label: 'Link 1 II', url: '#', type: 'youtube' },
+              ],
+              practicals: [{ id: 1, label: 'Link 1 II', url: '#', type: 'pdf' }],
+            },
           },
           {
             id: '4',
             name: 'English',
             code: 'BCA104',
-            icon: '🌐',
-            description: 'Dive into modern web development. HTML, CSS, JavaScript, and frameworks.',
-            resources: { notes: [], pyqs: [], lectures: [],practicals: []},
+            icon: '🗄️',
+            description: 'Dive into the stories and embrace your imagination. ',
+            resources: { notes: [],
+              pyqs: [
+                { id: 1, label: '', url: '#', type: 'pdf' },
+              ],
+              lectures: [
+                { id: 1, label: 'Link 1 II', url: '#', type: 'youtube' },
+              ],
+              practicals: [{ id: 1, label: 'Link 1 II', url: '#', type: 'pdf' }],
+            },
           },
-          { id: '5', name: 'Vedic maths', code: 'BCA105', icon: '⚡', description: 'Master object-oriented programming with C++.', resources: { notes: [], pyqs: [], lectures: [],practicals: []} },
-          { id: '6', name: 'EVS', code: 'BCA106', icon: '💻', description: 'Understand how operating systems work.', resources: { notes: [], pyqs: [], lectures: [],practicals: []} },
+          { id: '5', 
+            name: 'Vedic maths', 
+            code: 'BCA105', 
+            icon: '📊', 
+            description: 'Learn the very root of the mathematics.', 
+            resources: { notes: [],
+              pyqs: [
+                { id: 1, label: '', url: '#', type: 'pdf' },
+              ],
+              lectures: [
+                { id: 1, label: 'Link 1 II', url: '#', type: 'youtube' },
+              ],
+              practicals: [{ id: 1, label: 'Link 1 II', url: '#', type: 'pdf' }],
+            },
+          },
+          { id: '6', 
+            name: 'EVS', 
+            code: 'BCA106', 
+            icon: '🏞️', 
+            description: 'Understand how operating systems work.', 
+            resources: { notes: [],
+              pyqs: [
+                { id: 1, label: '', url: '#', type: 'pdf' },
+              ],
+              lectures: [
+                { id: 1, label: 'Link 1 II', url: '#', type: 'youtube' },
+              ],
+              practicals: [{ id: 1, label: 'Link 1 II', url: '#', type: 'pdf' }],
+            } },
         ],
       },
       
