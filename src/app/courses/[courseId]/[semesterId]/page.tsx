@@ -57,19 +57,21 @@ export default function SemesterPage({ params: paramsProp }: { params: Promise<{
       <main className="flex-grow">
         <section className="relative pt-8 pb-12 md:py-12 lg:py-16">
           <div className="container mx-auto px-4">
-            {isBcaSem1 && (
-              <Button
-                variant="outline"
-                size="icon"
-                className="absolute top-28 right-4 h-12 w-12 md:top-6 md:right-10 z-10 rounded-full"
-                onClick={() => setIsInfoModalOpen(true)}
-              >
-                <AlertCircle className="h-6 w-6" />
-                <span className="sr-only">Important Information</span>
-              </Button>
-            )}
-
-            <BackButton href={`/courses/${course.id}`} className="mb-8" />
+            <div className="mb-8 flex items-center justify-between">
+              <BackButton href={`/courses/${course.id}`} />
+              {isBcaSem1 && (
+                <Button
+                  variant="outline"
+                  size="icon"
+                  className="h-10 w-10 rounded-full"
+                  onClick={() => setIsInfoModalOpen(true)}
+                >
+                  <AlertCircle className="h-5 w-5" />
+                  <span className="sr-only">Important Information</span>
+                </Button>
+              )}
+            </div>
+            
             <div className="mb-12 text-center md:mb-16">
               <h1 className="mb-2 text-3xl font-bold text-foreground md:text-5xl">{course.name} - {semester.name}</h1>
               <p className="text-lg md:text-xl text-primary font-semibold">{course.fullName}</p>
