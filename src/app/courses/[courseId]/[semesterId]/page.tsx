@@ -61,7 +61,7 @@ export default function SemesterPage({ params: paramsProp }: { params: Promise<{
               <Button
                 variant="outline"
                 size="icon"
-                className="absolute top-4 right-4 h-12 w-12 md:top-6 md:right-10 z-10 rounded-full"
+                className="absolute top-28 right-4 h-12 w-12 md:top-6 md:right-10 z-10 rounded-full"
                 onClick={() => setIsInfoModalOpen(true)}
               >
                 <AlertCircle className="h-6 w-6" />
