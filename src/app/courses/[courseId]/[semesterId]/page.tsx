@@ -5,12 +5,22 @@ import { useState, use } from 'react';
 import { getCourseById } from '@/lib/courses-data';
 import { notFound } from 'next/navigation';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Book, ArrowRight } from 'lucide-react';
+import { Book, ArrowRight, AlertCircle } from 'lucide-react';
 import NavigationBar from '@/components/layout/navigation-bar';
 import Footer from '@/components/layout/footer';
 import BackButton from '@/components/back-button';
 import type { Subject } from '@/lib/types';
 import ResourceModal from '@/components/course/resource-modal';
+import { Button } from '@/components/ui/button';
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from '@/components/ui/alert-dialog';
 
 export default function SemesterPage({ params: paramsProp }: { params: Promise<{ courseId: string; semesterId: string }> }) {
   const params = use(paramsProp);
@@ -18,6 +28,8 @@ export default function SemesterPage({ params: paramsProp }: { params: Promise<{
   const semesterIdNum = parseInt(params.semesterId, 10);
 
   const [selectedSubject, setSelectedSubject] = useState<Subject | null>(null);
+  const [isInfoModalOpen, setIsInfoModalOpen] = useState(false);
+
 
   if (!course || isNaN(semesterIdNum)) {
     notFound();
@@ -37,12 +49,26 @@ export default function SemesterPage({ params: paramsProp }: { params: Promise<{
     setSelectedSubject(null);
   };
 
+  const isBcaSem1 = course.id === 'bca' && semester.id === 1;
+
   return (
     <div className="flex min-h-screen flex-col bg-background">
       <NavigationBar />
       <main className="flex-grow">
-        <section className="pt-8 pb-12 md:py-12 lg:py-16">
+        <section className="relative pt-8 pb-12 md:py-12 lg:py-16">
           <div className="container mx-auto px-4">
+            {isBcaSem1 && (
+              <Button
+                variant="outline"
+                size="icon"
+                className="absolute top-4 right-4 md:top-6 md:right-10 z-10 rounded-full"
+                onClick={() => setIsInfoModalOpen(true)}
+              >
+                <AlertCircle className="h-5 w-5" />
+                <span className="sr-only">Important Information</span>
+              </Button>
+            )}
+
             <BackButton href={`/courses/${course.id}`} className="mb-8" />
             <div className="mb-12 text-center md:mb-16">
               <h1 className="mb-2 text-3xl font-bold text-foreground md:text-5xl">{course.name} - {semester.name}</h1>
@@ -85,6 +111,24 @@ export default function SemesterPage({ params: paramsProp }: { params: Promise<{
           onClose={handleCloseModal}
         />
       )}
+
+      <AlertDialog open={isInfoModalOpen} onOpenChange={setIsInfoModalOpen}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Important Information</AlertDialogTitle>
+            <AlertDialogDescription asChild>
+              <ul className="list-disc space-y-2 pl-5 pt-2 text-left">
+                <li>The Practicals prints which you are able to see in the pdf will be provided by the teacher staff.</li>
+                <li>In semester 1 there are only two practical related subjects: "Programming with C" and "Basics of Computer Architecture".</li>
+                <li>Credits for the Practical records go to 'Savi Sorte' and for Vedic Maths notes 'Anuj Shindhe'.</li>
+              </ul>
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogAction>Got it</AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </div>
   );
 }
