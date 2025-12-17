@@ -11,7 +11,26 @@ interface SyllabusModalProps {
 }
 
 export default function SyllabusModal({ isOpen, onClose, pdfUrl }: SyllabusModalProps) {
-  const embedUrl = pdfUrl?.replace('/view?usp=drive_link', '/preview');
+  let embedUrl: string | undefined;
+
+  if (pdfUrl) {
+    try {
+      const url = new URL(pdfUrl);
+      if (url.hostname === 'drive.google.com') {
+        // For URLs like "https://drive.google.com/file/d/FILE_ID/view?usp=sharing"
+        // we transform it to "https://drive.google.com/file/d/FILE_ID/preview"
+        embedUrl = `${url.origin}/file/d/${url.pathname.split('/')[3]}/preview`;
+      } else {
+        // If it's not a Google Drive link, use it as is (though embedding might be blocked)
+        embedUrl = pdfUrl;
+      }
+    } catch (error) {
+      // If the URL is invalid, treat it as not available
+      console.error("Invalid PDF URL:", error);
+      embedUrl = undefined;
+    }
+  }
+
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
