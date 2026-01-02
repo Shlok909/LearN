@@ -512,19 +512,19 @@ export const coursesData: CoursesData = {
           },
 
           {
-            id: 'Probability-Statistics',
-            name: 'Probability & Statistics',
+            id: 'Statistics',
+            name: 'Statistics',
             code: 'BCA304',
             icon: '🧮',
-            description: 'Probability increases the chances of success',
+            description: 'Statistically increases the chances of success',
             resources: {
               notes: [],
               pyqs: [],
               lectures: [
-                { id: 1, label: 'Link 1 ', url: 'https://youtu.be/dx4bqMlATQU?si=5-iWvjsXocrutO70', type: 'youtube' },
-                { id: 2, label: 'Link 2 ', url: 'https://youtu.be/cJ914xcxOYs?si=JnGpe4TY_pvasFs6', type: 'youtube' },
-                { id: 3, label: 'Link 3 ', url: 'https://youtube.com/playlist?list=PLEHGYFbPuuME9Gfl5r5CCWCzJ-pRfFVpL&si=B9JlEaQdceFJIlET', type: 'youtube' },
-                { id: 4, label: 'Link 4 ', url: 'https://youtube.com/playlist?list=PLxCzCOWd7aiFjZP4z1_3Kr3m3J5wu5Q8V&si=chEZHb5b14SAgve5', type: 'youtube' },
+                { id: 1, label: 'Link 1 ', url: 'https://youtu.be/MyPx7y2LQKA?si=zBUf1l0ny_hSSwrO', type: 'youtube' },
+                { id: 2, label: 'Link 2 ', url: 'https://youtu.be/SJyhSU8PsTk?si=U0MX0c_gi1ZV9rFz', type: 'youtube' },
+                { id: 3, label: 'Link 3 ', url: 'https://youtu.be/5sakfGibqVw?si=T-t-TQKUmUBiK2eo', type: 'youtube' },
+                { id: 4, label: 'Link 4 ', url: 'https://youtu.be/cJ914xcxOYs?si=Dv3Q550zdtAVW6gA', type: 'youtube' },
                 { id: 5, label: 'Link 5 ', url: 'https://youtube.com/playlist?list=PLU6SqdYcYsfJuwkSQOO5ogFeTGC0hvkHD&si=V6bhR0uJrdtGVBYM', type: 'youtube' },
                 { id: 6, label: 'Link 6 ', url: 'https://youtube.com/playlist?list=PLU6SqdYcYsfJPF-4HphQQ8OceDtqhlSW8&si=lDrqQlEl6zcvtXz-', type: 'youtube' },
                 { id: 7, label: 'Link 7 ', url: 'https://youtube.com/playlist?list=PLOEeYltRrWu6DgdAAEAo9Uj5jucA0Di5Z&si=anm5C4FhqRf0wLNN', type: 'youtube' },
